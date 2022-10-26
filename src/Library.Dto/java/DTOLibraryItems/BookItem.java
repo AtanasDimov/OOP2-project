@@ -2,9 +2,25 @@ package DTOLibraryItems;
 
 import Contracts.LibraryItemInterface;
 
+import java.util.List;
+
 public class BookItem extends PaperMedia implements LibraryItemInterface {
-    public BookItem(String title, String description) {
+    private List<Autor> autors;
+
+    public BookItem(String title, String description, List<Autor> autors) {
         super(title, description);
+        this.autors.addAll(autors);
     }
 
+    public void addAutor(Autor autor){
+        this.autors.add(autor);
+    }
+
+    public List<Autor> getAutors() {
+        return autors;
+    }
+
+    public void setAutors(List<Autor> autors) {
+        this.autors = autors;
+    }
 }
