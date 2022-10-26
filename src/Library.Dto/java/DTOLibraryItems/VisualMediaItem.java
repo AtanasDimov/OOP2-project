@@ -2,11 +2,13 @@ package DTOLibraryItems;
 
 import Contracts.LibraryItemInterface;
 
+import java.time.LocalDate;
+
 public class VisualMediaItem extends BaseLibraryItem implements LibraryItemInterface {
     //list of actors and corresponding roles
 
     public String Tags;
-    public VisualMediaItem(String title, String description) {
-        super(title, description);
+    public VisualMediaItem(String title, String description, LocalDate publishDate) {
+        super(title, description, publishDate);
     }
 }
