@@ -2,13 +2,14 @@ package DTOLibraryItems;
 
 import Contracts.LibraryItemInterface;
 
+import java.time.LocalDate;
 import java.util.List;
 
-public class BookItem extends PaperMedia implements LibraryItemInterface {
+public class BookItem extends PaperMedia {
     private List<Autor> autors;
 
-    public BookItem(String title, String description, List<Autor> autors) {
-        super(title, description);
+    public BookItem(String title, String description, LocalDate publishDate, List<Autor> autors) {
+        super(title, description, publishDate);
         this.autors.addAll(autors);
     }
 
