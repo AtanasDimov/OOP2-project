@@ -1,10 +1,10 @@
 package DTOLibraryItems;
 
-public class RefrenceItem {
+public class ReferenceItem {
     private String name;
-    private RefrenceEnum type;
+    private ReferenceEnum type;
 
-    public RefrenceItem(String name, RefrenceEnum type) {
+    public ReferenceItem(String name, ReferenceEnum type) {
         this.name = name;
         this.type = type;
     }
@@ -17,11 +17,11 @@ public class RefrenceItem {
         this.name = name;
     }
 
-    public RefrenceEnum getType() {
+    public ReferenceEnum getType() {
         return type;
     }
 
-    public void setType(RefrenceEnum type) {
+    public void setType(ReferenceEnum type) {
         this.type = type;
     }
 }
