@@ -2,14 +2,14 @@ package DTOLibraryItems;
 
 import java.time.LocalDate;
 
-public class PaperMedia extends BaseLibraryItem {
+public class PaperMediaItem extends BaseLibraryItem {
     private int pageCount;
 
-    public PaperMedia(String title, String description, LocalDate publishDate) {
+    public PaperMediaItem(String title, String description, LocalDate publishDate) {
         super(title, description, publishDate);
     }
 
-    public PaperMedia(String title, String description, LocalDate publishDate, int pageCount) {
+    public PaperMediaItem(String title, String description, LocalDate publishDate, int pageCount) {
         super(title, description, publishDate);
         this.pageCount = pageCount;
     }

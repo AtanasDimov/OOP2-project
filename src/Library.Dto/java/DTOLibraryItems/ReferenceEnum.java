@@ -1,6 +1,6 @@
 package DTOLibraryItems;
 
-public enum RefrenceEnum {
+public enum ReferenceEnum {
     Dictionary,
     Textbook,
     PhoneBook

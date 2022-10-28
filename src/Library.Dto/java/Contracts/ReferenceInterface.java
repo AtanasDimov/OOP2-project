@@ -1,5 +1,5 @@
 package Contracts;
 
-public interface RefrenceInterface {
+public interface ReferenceInterface {
     boolean IsOccupied();
 }

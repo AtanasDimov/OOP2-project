@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ReaderProfile {
+public class ReaderAccount {
     private  UUID id;
     private final LocalDate firstRegistration;
     private String firstName;
@@ -24,7 +24,7 @@ public class ReaderProfile {
         this.borrowedItems = borrowedItems;
     }
 
-    public ReaderProfile(LocalDate firstRegistration, String firstName, String lastName) {
+    public ReaderAccount(LocalDate firstRegistration, String firstName, String lastName) {
         this.id = UUID.randomUUID();
         this.firstRegistration = firstRegistration;
         this.firstName = firstName;
