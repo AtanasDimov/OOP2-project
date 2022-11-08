@@ -1,11 +1,12 @@
 package DTOLibraryItems;
 
+import Contracts.AuthorInterface;
 import Contracts.LibraryItemInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Author {
+public abstract class Author implements AuthorInterface {
     private String[] name;
     private String description;
     private List<LibraryItemInterface> work = new ArrayList<>();

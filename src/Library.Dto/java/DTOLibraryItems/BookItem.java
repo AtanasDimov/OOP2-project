@@ -1,25 +1,22 @@
 package DTOLibraryItems;
 
+import Contracts.LibraryItemInterface;
+
 import java.time.LocalDate;
-import java.util.List;
 
 public class BookItem extends PaperMediaItem {
-    private List<Author> authors;
+    private BookAuthor author;
 
-    public BookItem(String title, String description, LocalDate publishDate, List<Author> authors) {
-        super(title, description, publishDate);
-        this.authors.addAll(authors);
+    public BookItem(String title, String description, LocalDate publishDate, int pageCount, BookAuthor аuthor) {
+        super(title, description, publishDate, pageCount);
+        this.author = аuthor;
     }
 
-    public void addAutor(Author author){
-        this.authors.add(author);
+    public BookAuthor getАuthor() {
+        return author;
     }
 
-    public List<Author> getAutors() {
-        return authors;
-    }
-
-    public void setAutors(List<Author> authors) {
-        this.authors = authors;
+    public void setАuthor(BookAuthor аuthor) {
+        this.author = аuthor;
     }
 }
