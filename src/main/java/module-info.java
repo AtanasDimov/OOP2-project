@@ -8,6 +8,7 @@ module com.example.librarysoftware {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.persistence;
 
     opens com.example.librarysoftware to javafx.fxml;
     exports com.example.librarysoftware;
