@@ -1,8 +1,17 @@
 package DTOAccount;
 
 import Contracts.AccountsInterface;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+
+@Table(name = "Account")
 public class AccountBase implements AccountsInterface {
+
+    @Id
+    private int accountId;
     private String username;
     private String password;
 
