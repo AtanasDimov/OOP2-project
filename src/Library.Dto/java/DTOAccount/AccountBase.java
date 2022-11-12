@@ -3,6 +3,7 @@ package DTOAccount;
 import Contracts.AccountsInterface;
 
 public class AccountBase implements AccountsInterface {
+    
     private String username;
     private String password;
 
