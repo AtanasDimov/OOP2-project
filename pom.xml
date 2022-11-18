@@ -38,6 +38,14 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>D:/OOP2_Ultimate/LibrarySoftware/ojdbc11.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
     <build>
