@@ -6,11 +6,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class BorrowItem implements BorrowItemInterface {
-     private UUID itemID;
-     private UUID readerID;
-     private LocalDateTime lendingHour;
-     private LocalDateTime dueBy;
-     private boolean isArchive = false;
+    private UUID itemID;
+    private UUID readerID;
+    private LocalDateTime lendingHour;
+    private LocalDateTime dueBy;
+    private boolean isArchive = false;
 
     public BorrowItem(UUID itemID, UUID readerID, LocalDateTime lendingHour, LocalDateTime dueBy) {
         this.itemID = itemID;

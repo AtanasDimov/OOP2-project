@@ -8,14 +8,13 @@ public class OperatorAccount extends AccountBase implements OperatorInterface {
     public OperatorAccount(String username, String password) {
         super(username, password);
     }
-
     @Override
-    public boolean CreateReaderProfile() {
-        return true;
+    public boolean CreateReaderAccount() {
+        return false;
     }
 
     @Override
-    public boolean DeleteReaderProfile() {
+    public boolean DeleteReaderAccount() {
         return true;
     }
 }

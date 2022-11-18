@@ -1,6 +1,6 @@
 package Contracts;
 
 public interface OperatorInterface {
-    boolean CreateReaderProfile();
-    boolean DeleteReaderProfile();
+    boolean CreateReaderAccount();
+    boolean DeleteReaderAccount();
 }
