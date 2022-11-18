@@ -1,0 +1,20 @@
+package Library.Dto.java.DTOAccount;
+
+import Library.Dto.java.Contracts.OperatorInterface;
+
+public class OperatorAccount extends AccountBase implements OperatorInterface {
+
+
+    public OperatorAccount(String username, String password) {
+        super(username, password);
+    }
+    @Override
+    public boolean CreateReaderAccount() {
+        return false;
+    }
+
+    @Override
+    public boolean DeleteReaderAccount() {
+        return true;
+    }
+}
