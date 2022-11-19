@@ -15,9 +15,14 @@ public class AccountBase implements AccountsInterface {
     private String username;
     private String password;
 
+
     public AccountBase(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public AccountBase() {
+
     }
 
     public String getUsername() {
