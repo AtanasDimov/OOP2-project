@@ -3,12 +3,17 @@ package Library.Dto.java.DTOAccount;
 
 import Library.Dto.java.Contracts.BorrowItemInterface;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ReaderAccount {
+@Entity
+@DiscriminatorValue("3")
+
+public class ReaderAccount extends AccountBase implements BorrowItemInterface {
     private  UUID id;
     private final LocalDate firstRegistration;
     private String firstName;

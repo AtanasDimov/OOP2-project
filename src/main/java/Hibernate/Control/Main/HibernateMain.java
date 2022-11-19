@@ -1,6 +1,7 @@
 package Hibernate.Control.Main;
 
 import Library.Dto.java.DTOAccount.AccountBase;
+import Library.Dto.java.DTOAccount.Admin;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -10,37 +11,57 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.List;
+
 public class HibernateMain {
-    /*private static final VarHandle MODIFIERS;
+    private StandardServiceRegistry registry;
+    public  HibernateMain() {
+        this.registry = new StandardServiceRegistryBuilder()
+                .configure()
+                .build();
+    }
 
-    static {
+
+    public Object GetObject(String query){
+
+        Session session;
+        List<Object> objects;
+        SessionFactory factory;
         try {
-            var lookup = MethodHandles.privateLookupIn(Field.class, MethodHandles.lookup());
-            MODIFIERS = lookup.findVarHandle(Field.class, "modifiers", int.class);
-        } catch (IllegalAccessException | NoSuchFieldException ex) {
-            throw new RuntimeException(ex);
+        factory = new MetadataSources(registry)
+                .buildMetadata().buildSessionFactory();
+        session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+         objects = session.createQuery(query).getResultList();
+        transaction.commit();
         }
-    }*/
-    public static void main(String[] args){
-     //   Configuration configuration = new Configuration().configure();
-        //configuration.addAnnotatedClass(AccountBase.class);
-       // StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+        catch(Exception ex){}
+        finally {
+            session.close();
+            factory.close();
+            return objects.get(0);
+        }
 
-        /*var emptyElementDataField = ArrayList.class.getDeclaredField("EMPTY_ELEMENTDATA");
-        MODIFIERS.set(emptyElementDataField, emptyElementDataField.getModifiers() & ~Modifier.FINAL);*/
+    }
+    public void AddObject(Object object){
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure()
                 .build();
-        SessionFactory factory = new MetadataSources(registry)
-                .buildMetadata().buildSessionFactory();
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
-        AccountBase ac = new AccountBase("first", "second");
-        session.save(ac);
-        transaction.commit();
-        session.close();
-        factory.close();
+        Session session;
+        SessionFactory factory;
+        try {
+            factory = new MetadataSources(registry)
+                    .buildMetadata().buildSessionFactory();
+            session = factory.openSession();
+            Transaction transaction = session.beginTransaction();
+            session.save(object);
+        }catch(Exception ex){
+        }finally{
+            session.close();
+            factory.close();
+        }
+
+
 
     }
-
 }

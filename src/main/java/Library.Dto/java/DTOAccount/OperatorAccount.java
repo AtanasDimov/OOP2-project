@@ -2,6 +2,11 @@ package Library.Dto.java.DTOAccount;
 
 import Library.Dto.java.Contracts.OperatorInterface;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+@Entity
+@DiscriminatorValue("2")
+
 public class OperatorAccount extends AccountBase implements OperatorInterface {
 
 

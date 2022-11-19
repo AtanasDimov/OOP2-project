@@ -1,13 +1,13 @@
 package Library.Dto.java.DTOAccount;
 import Library.Dto.java.Contracts.AccountsInterface;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-
-@Table(name = "Account")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="account_type",
+        discriminatorType = DiscriminatorType.INTEGER)
+@Table(name = "Accounts")
 public class AccountBase implements AccountsInterface {
 
     @Id

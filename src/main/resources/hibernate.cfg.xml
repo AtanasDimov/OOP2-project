@@ -7,13 +7,16 @@
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dblib</property>
     <property name="connection.username">postgres</property>
-    <property name="connection.password">SYSTEM</property>
+    <property name="connection.password">superuser</property>
     <property name="hibernate.dialect"> org.hibernate.dialect.PostgreSQL82Dialect</property>
     <property name="hbm2ddl.auto">create</property>
      
     <property name="show_sql">true</property>
-         
+
     <mapping class="Library.Dto.java.DTOAccount.AccountBase"/>
+    <mapping class="Library.Dto.java.DTOAccount.Admin"/>
+    <mapping class="Library.Dto.java.DTOAccount.OperatorAccount"/>
+
       
   </session-factory>
 </hibernate-configuration>
