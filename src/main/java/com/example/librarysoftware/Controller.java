@@ -4,6 +4,7 @@ import Hibernate.Control.Main.HibernateMain;
 import Hibernate.Control.Main.LibraryRepository;
 import Library.Dto.java.Contracts.AccountsInterface;
 import Library.Dto.java.DTOAccount.Admin;
+import Utils.QueryGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -18,7 +19,7 @@ public class Controller {
         String username = user.getText();
         String password = pass.getText();
         LibraryRepository lr = new LibraryRepository(new HibernateMain());
-        String query = "from Accounts where username='" + username + "' AND password='" + password + "'";
+        String query = QueryGenerator.GetLoginQuery(username, password);
         AccountsInterface account = (AccountsInterface) lr.GetObject(query);
     }
 
