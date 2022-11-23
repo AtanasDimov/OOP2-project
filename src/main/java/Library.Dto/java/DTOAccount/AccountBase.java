@@ -3,7 +3,7 @@ import Library.Dto.java.Contracts.AccountsInterface;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="Accounts")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="account_type",
         discriminatorType = DiscriminatorType.INTEGER)
