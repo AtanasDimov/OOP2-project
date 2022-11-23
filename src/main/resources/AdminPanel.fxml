@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminPanel">
+   <children>
+      <Text layoutX="30.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back," />
+      <Text fx:id="TxtRole" layoutX="116.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="admin" />
+      <Button fx:id="btnLogout" layoutX="32.0" layoutY="166.0" mnemonicParsing="false" text="Logout" />
+      <Button fx:id="btnAdd" layoutX="32.0" layoutY="52.0" mnemonicParsing="false" text="AddOperator()" />
+      <Button fx:id="btnRemove" layoutX="32.0" layoutY="94.0" mnemonicParsing="false" text="RemoveOperator()" />
+      <TableView layoutX="220.0" layoutY="20.0" prefHeight="213.0" prefWidth="338.0">
+        <columns>
+          <TableColumn fx:id="OperatorTable" prefWidth="75.0" text="C1" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

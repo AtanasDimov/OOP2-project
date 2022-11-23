@@ -27,41 +27,37 @@ public class HibernateMain {
         Session session;
         List<Object> objects;
         SessionFactory factory;
-        try {
         factory = new MetadataSources(registry)
                 .buildMetadata().buildSessionFactory();
         session = factory.openSession();
         Transaction transaction = session.beginTransaction();
          objects = session.createQuery(query).getResultList();
         transaction.commit();
-        }
-        catch(Exception ex){}
-        finally {
+
+
             session.close();
             factory.close();
             return objects.get(0);
         }
 
-    }
+
     public void AddObject(Object object){
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure()
                 .build();
         Session session;
         SessionFactory factory;
-        try {
             factory = new MetadataSources(registry)
                     .buildMetadata().buildSessionFactory();
             session = factory.openSession();
             Transaction transaction = session.beginTransaction();
             session.save(object);
-        }catch(Exception ex){
-        }finally{
-            session.close();
-            factory.close();
+
+           session.close();
+             factory.close();
         }
 
 
 
     }
-}
+
