@@ -9,6 +9,7 @@ import java.io.IOException;
 
 
 public class AdminPanel extends Application {
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/AdminPanel.fxml"));
