@@ -52,7 +52,7 @@ public class HibernateMain {
             session = factory.openSession();
             Transaction transaction = session.beginTransaction();
             session.save(object);
-
+            transaction.commit();
            session.close();
              factory.close();
         }

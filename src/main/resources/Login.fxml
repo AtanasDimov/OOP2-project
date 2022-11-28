@@ -9,7 +9,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="306.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.Controller">
    <children>
       <Button fx:id="submit" layoutX="60.0" layoutY="139.0" mnemonicParsing="false" onAction="#Submit" text="Submit" />
-      <Button fx:id="clear" layoutX="131.0" layoutY="139.0" mnemonicParsing="false" onAction="#Clear"text="Clear" />
+      <Button fx:id="clear" layoutX="131.0" layoutY="139.0" mnemonicParsing="false" onAction="#Clear" text="Clear" />
       <TextField fx:id="user" layoutX="60.0" layoutY="47.0" promptText="username" />
       <PasswordField fx:id="pass" layoutX="60.0" layoutY="85.0" promptText="password" />
    </children>
