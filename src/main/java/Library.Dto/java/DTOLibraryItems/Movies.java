@@ -1,7 +1,11 @@
 package Library.Dto.java.DTOLibraryItems;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.time.LocalDate;
 
+@Entity
+@DiscriminatorValue("1")
 public class Movies extends VisualMediaItem{
     private MovieDirector director;
     private MoviesAgeRating rating;

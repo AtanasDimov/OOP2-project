@@ -1,7 +1,11 @@
 package Library.Dto.java.DTOLibraryItems;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.time.LocalDate;
 
+@Entity
+@DiscriminatorValue("2")
 public class MusicItem extends AudioMediaItem{
     private MusicArtist artist;
     private String album;

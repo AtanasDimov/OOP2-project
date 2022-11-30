@@ -4,8 +4,12 @@ package Library.Dto.java.DTOLibraryItems;
 
 import Library.Dto.java.Contracts.BorrowItemInterface;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="media_type",
+        discriminatorType = DiscriminatorType.INTEGER)
 public class AudioMediaItem extends BaseLibraryItem implements BorrowItemInterface {
     private int runtime;
 

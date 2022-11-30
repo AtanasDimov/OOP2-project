@@ -3,19 +3,22 @@ package Library.Dto.java.DTOLibraryItems;
 
 import Library.Dto.java.Contracts.LibraryItemInterface;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
-
+@MappedSuperclass
 public abstract class BaseLibraryItem implements LibraryItemInterface {
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private UUID readerID = null;
     private String title;
     private String description;
     private String itemGenre;
     private LocalDate publishDate;
 
+    public BaseLibraryItem(){}
     public BaseLibraryItem(String title, String description, LocalDate publishDate) {
-        this.id = UUID.randomUUID();
         this.title = title;
         this.description = description;
         this.itemGenre = itemGenre;
@@ -38,7 +41,7 @@ public abstract class BaseLibraryItem implements LibraryItemInterface {
         this.publishDate = publishDate;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 

@@ -2,8 +2,13 @@ package Library.Dto.java.DTOLibraryItems;
 
 import Library.Dto.java.Contracts.LibraryItemInterface;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="media_type",
+        discriminatorType = DiscriminatorType.INTEGER)
 public class VisualMediaItem extends BaseLibraryItem implements LibraryItemInterface {
     private int runtime;
     private String videoQuality;

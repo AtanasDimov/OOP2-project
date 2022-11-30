@@ -15,6 +15,8 @@ import java.util.List;
 
 public class HibernateMain {
     private StandardServiceRegistry registry;
+    SessionFactory factory;
+    Session session;
     public  HibernateMain() {
         this.registry = new StandardServiceRegistryBuilder()
                 .configure()
@@ -24,9 +26,7 @@ public class HibernateMain {
 
     public Object GetObject(String query){
 
-        Session session;
         List<Object> objects;
-        SessionFactory factory;
         factory = new MetadataSources(registry)
                 .buildMetadata().buildSessionFactory();
         session = factory.openSession();
@@ -34,30 +34,40 @@ public class HibernateMain {
          objects = session.createQuery(query).getResultList();
         transaction.commit();
 
-
-            session.close();
-            factory.close();
             return objects.get(0);
         }
 
+
+    public List<Object> GetListOfObject(String query)
+    {
+        List<Object> objects;
+        factory = new MetadataSources(registry)
+                .buildMetadata().buildSessionFactory();
+        session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+        objects = session.createQuery(query).getResultList();
+        transaction.commit();
+
+        return objects;
+    }
 
     public void AddObject(Object object){
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure()
                 .build();
-        Session session;
-        SessionFactory factory;
+
             factory = new MetadataSources(registry)
                     .buildMetadata().buildSessionFactory();
             session = factory.openSession();
             Transaction transaction = session.beginTransaction();
             session.save(object);
             transaction.commit();
-           session.close();
-             factory.close();
         }
 
-
-
+        public void CloseSession()
+        {
+            session.close();
+            factory.close();
+        }
     }
 
