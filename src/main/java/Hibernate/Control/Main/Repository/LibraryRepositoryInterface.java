@@ -1,4 +1,4 @@
-package Hibernate.Control.Main;
+package Hibernate.Control.Main.Repository;
 
 public interface LibraryRepositoryInterface {
     void AddObject(Object object);

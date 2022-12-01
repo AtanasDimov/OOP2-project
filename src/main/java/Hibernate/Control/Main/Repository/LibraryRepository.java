@@ -1,13 +1,13 @@
-package Hibernate.Control.Main;
+package Hibernate.Control.Main.Repository;
 
+import Hibernate.Control.Main.HibernateMain;
 import Library.Dto.java.DTOLibraryItems.Author;
-import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 import Library.Dto.java.DTOLibraryItems.BookItem;
 import Utils.QueryGenerator;
 
 import java.util.List;
 
-public class LibraryRepository implements LibraryRepositoryInterface{
+public class LibraryRepository implements LibraryRepositoryInterface {
     private HibernateMain hibernateManager;
 
     public LibraryRepository(HibernateMain hibernateManager)
@@ -25,11 +25,5 @@ public class LibraryRepository implements LibraryRepositoryInterface{
         Object result = hibernateManager.GetObject(query);
         hibernateManager.CloseSession();
         return result;
-    }
-
-    public void GetLazyDataAuthor(Author a){
-        List<BookItem> b = (List<BookItem>)(List<?>)hibernateManager.GetListOfObject(QueryGenerator.GetLoadLazyDataAuthorQuery(a));
-        a.lazyLoad(b);
-        hibernateManager.CloseSession();
     }
 }
