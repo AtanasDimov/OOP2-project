@@ -10,6 +10,11 @@ public class Logger {
     public void LogMessage(String message){
         System.out.println(LocalDate.now() + message);
     }
+
+    public void LogException(Exception ex){
+        LogMessage(ex.getMessage());
+    }
+
     public void LogException(LibraryException ex){
         LogMessage(ex.getMessage());
         switch (ex.getSeverityCode()){
