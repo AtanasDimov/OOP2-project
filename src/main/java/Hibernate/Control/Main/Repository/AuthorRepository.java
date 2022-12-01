@@ -15,7 +15,7 @@ public class AuthorRepository extends LibraryRepository{
         this.hibernateManager = hibernateManager;
     }
 
-    public Object GetEagerAuthor(String query){
+    public Author GetEagerAuthor(String query){
         Author author = (Author)super.GetObject(query);
         author.getWork();
         return author;
