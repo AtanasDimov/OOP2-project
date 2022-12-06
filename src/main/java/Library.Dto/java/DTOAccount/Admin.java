@@ -21,4 +21,9 @@ public class Admin extends AccountBase implements AdminInterface {
     public boolean CreateOperator() {
         return true;
     }
+
+    @Override
+    public boolean DeleteOperator() {
+        return true;
+    }
 }
