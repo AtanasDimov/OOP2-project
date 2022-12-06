@@ -5,6 +5,7 @@ import Library.Dto.java.Contracts.LibraryItemInterface;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 @MappedSuperclass
 public abstract class BaseLibraryItem implements LibraryItemInterface {
@@ -17,12 +18,20 @@ public abstract class BaseLibraryItem implements LibraryItemInterface {
     private String itemGenre;
     private LocalDate publishDate;
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Item_Author",
+            joinColumns = { @JoinColumn(name = "item_id") },
+            inverseJoinColumns = { @JoinColumn(name = "author_id") }
+    )
+    protected List<Author> author;
     public BaseLibraryItem(){}
-    public BaseLibraryItem(String title, String description, LocalDate publishDate) {
+    public BaseLibraryItem(String title, String description, LocalDate publishDate, List<Author> authors) {
         this.title = title;
         this.description = description;
-        this.itemGenre = itemGenre;
+        //this.itemGenre = itemGenre;
         this.publishDate = this.publishDate;
+        author.addAll(authors);
     }
 
     public String getItemGenre() {
@@ -59,5 +68,12 @@ public abstract class BaseLibraryItem implements LibraryItemInterface {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public List<Author> getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author.add(author);
     }
 }

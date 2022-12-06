@@ -5,6 +5,8 @@ import Library.Dto.java.Contracts.LibraryItemInterface;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="media_type",
@@ -14,8 +16,8 @@ public class PaperMediaItem extends BaseLibraryItem implements LibraryItemInterf
 
     public PaperMediaItem(){}
 
-    public PaperMediaItem(String title, String description, LocalDate publishDate, int pageCount) {
-        super(title, description, publishDate);
+    public PaperMediaItem(String title, String description, LocalDate publishDate, int pageCount, List<Author> author) {
+        super(title, description, publishDate, author);
         this.pageCount = pageCount;
     }
 
