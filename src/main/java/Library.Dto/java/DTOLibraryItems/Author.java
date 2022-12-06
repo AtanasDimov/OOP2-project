@@ -21,7 +21,7 @@ public abstract class Author implements AuthorInterface {
     private String[] name;
     private String description;
     @ManyToMany(mappedBy = "author")
-    private List<BookItem> work = new ArrayList<>();
+    private List<BaseLibraryItem> work = new ArrayList<>();
 
     public Author(){}
     public Author(String[] name) {
