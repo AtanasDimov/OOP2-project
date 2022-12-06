@@ -5,13 +5,14 @@ import Library.Dto.java.Contracts.LibraryItemInterface;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="item_type",
         discriminatorType = DiscriminatorType.INTEGER)
-public abstract class BaseLibraryItem implements LibraryItemInterface {
+public class BaseLibraryItem implements LibraryItemInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -77,6 +78,8 @@ public abstract class BaseLibraryItem implements LibraryItemInterface {
     }
 
     public void setAuthor(Author author) {
+        if(this.author == null)
+            this.author = new ArrayList<>();
         this.author.add(author);
     }
 }

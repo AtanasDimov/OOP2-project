@@ -2,6 +2,7 @@ package Hibernate.Control.Main.Repository;
 
 import Hibernate.Control.Main.HibernateMain;
 import Library.Dto.java.DTOLibraryItems.Author;
+import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 import Library.Dto.java.DTOLibraryItems.BookItem;
 import Utils.QueryGenerator;
 
@@ -22,7 +23,7 @@ public class AuthorRepository extends LibraryRepository{
     }
 
     public void GetLazyDataAuthor(Author a){
-        List<BookItem> b = (List<BookItem>)(List<?>)hibernateManager.GetListOfObject(QueryGenerator.GetLoadLazyDataAuthorQuery(a));
+        List<BaseLibraryItem> b = (List<BaseLibraryItem>)(List<?>)hibernateManager.GetListOfObject(QueryGenerator.GetLoadLazyDataAuthorQuery(a));
         a.lazyLoad(b);
         hibernateManager.CloseSession();
     }

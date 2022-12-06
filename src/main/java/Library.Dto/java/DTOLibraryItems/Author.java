@@ -21,7 +21,7 @@ public abstract class Author implements AuthorInterface {
     private String[] name;
     private String description;
     @ManyToMany(mappedBy = "author")
-    private List<BaseLibraryItem> work = new ArrayList<>();
+    private List<BaseLibraryItem> work;
 
     public Author(){}
     public Author(String[] name) {
@@ -44,23 +44,25 @@ public abstract class Author implements AuthorInterface {
         this.description = description;
     }
 
-    public void addWork(BookItem w)
+    public void addWork(BaseLibraryItem w)
     {
+        if(this.work == null)
+            this.work = new ArrayList<>();
         this.work.add(w);
     }
 
-    public void addWork(List<BookItem> w){
+    public void addWork(List<BaseLibraryItem> w){
         this.work.addAll(w);
     }
 
     public int getId(){
         return this.id;
     }
-    public void lazyLoad(List<BookItem> w){
+    public void lazyLoad(List<BaseLibraryItem> w){
         this.work = w;
     }
 
-    public List<BookItem> getWork(){
+    public List<BaseLibraryItem> getWork(){
         return this.work;
     }
 }
