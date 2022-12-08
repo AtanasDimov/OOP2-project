@@ -15,6 +15,7 @@ public class AccountHelper {
     public static boolean CheckIfExists(String username, String password){
         String hashedPass = "";
         try{
+            //byte[] hash = PasswordHasher.HashPassword(password);
             hashedPass = PasswordHasher.HashPassword(password);
         }catch(Exception ex){
             Logger log = new Logger();
@@ -43,6 +44,7 @@ public class AccountHelper {
 
         String hashedPass = "";
         try{
+            //byte[] hash = PasswordHasher.HashPassword(password);
             hashedPass = PasswordHasher.HashPassword(password);
         }catch(Exception ex){
             Logger log = new Logger();
@@ -50,7 +52,6 @@ public class AccountHelper {
             log.LogException(lEx);
         }
 
-        //refactor, add password, generate username
         OperatorAccount operator = new OperatorAccount(username, hashedPass);
 
         LibraryRepository lr = new LibraryRepository(new HibernateMain());
@@ -71,6 +72,7 @@ public class AccountHelper {
 
         String hashedPass = "";
         try{
+            //byte[] hash = PasswordHasher.HashPassword(password);
             hashedPass = PasswordHasher.HashPassword(password);
         }catch(Exception ex){
             Logger log = new Logger();

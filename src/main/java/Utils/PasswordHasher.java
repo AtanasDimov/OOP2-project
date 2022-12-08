@@ -9,7 +9,7 @@ import java.security.spec.KeySpec;
 
 public class PasswordHasher {
     public static String HashPassword(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        SecureRandom random = new SecureRandom();
+        /*SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
         random.nextBytes(salt);
 
@@ -18,6 +18,12 @@ public class PasswordHasher {
 
         byte[] hash = factory.generateSecret(spec).getEncoded();
 
-        return hash.toString();
+        return hash;*/
+
+        int hash = 7;
+        for (int i = 0; i < password.length(); i++) {
+            hash = hash*31 + password.charAt(i);
+        }
+        return Integer.toString(hash);
     }
 }
