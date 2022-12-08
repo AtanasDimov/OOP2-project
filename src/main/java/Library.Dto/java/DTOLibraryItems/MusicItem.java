@@ -2,11 +2,12 @@ package Library.Dto.java.DTOLibraryItems;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue("2")
+@PrimaryKeyJoinColumn(name="AudioMediaItem_ID")
 public class MusicItem extends AudioMediaItem{
     private String album;
 

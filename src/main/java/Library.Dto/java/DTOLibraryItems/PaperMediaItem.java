@@ -8,10 +8,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorValue("3")
-@DiscriminatorColumn(name="media_type",
-        discriminatorType = DiscriminatorType.INTEGER)
 public class PaperMediaItem extends BaseLibraryItem implements LibraryItemInterface {
     private int pageCount;
 

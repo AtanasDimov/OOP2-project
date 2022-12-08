@@ -2,11 +2,12 @@ package Library.Dto.java.DTOLibraryItems;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue("1")
+@PrimaryKeyJoinColumn(name="ArchiveItem_ID")
 public class ReferenceItem extends ArchiveItem{
     private ReferenceEnum type;
 

@@ -7,10 +7,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorValue("4")
-@DiscriminatorColumn(name="media_type",
-        discriminatorType = DiscriminatorType.INTEGER)
 public class VisualMediaItem extends BaseLibraryItem implements LibraryItemInterface {
     private int runtime;
     private String videoQuality;

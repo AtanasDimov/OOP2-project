@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue("1")
+@PrimaryKeyJoinColumn(name="PaperMediaItem_ID")
 public class BookItem extends PaperMediaItem {
 
 
