@@ -9,8 +9,8 @@ public class QueryGenerator {
         return query;
     }
 
-    public static String GetLoadLazyDataAuthorQuery(Author a){
-        String query = "SELECT a.work FROM Author a WHERE a.id = " + a.getId();
+    public static String GetLoadLazyDataAuthorQuery(int id){
+        String query = "FROM Author a left join fetch a.work WHERE a.id=" + id;
         return query;
     }
 

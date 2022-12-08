@@ -16,15 +16,15 @@ public class AuthorRepository extends LibraryRepository{
         this.hibernateManager = hibernateManager;
     }
 
-    public Author GetEagerAuthor(String query){
+    public Author GetAuthor(String query){
         Author author = (Author)super.GetObject(query);
-        author.getWork();
         return author;
     }
 
-    public void GetLazyDataAuthor(Author a){
-        List<BaseLibraryItem> b = (List<BaseLibraryItem>)(List<?>)hibernateManager.GetListOfObject(QueryGenerator.GetLoadLazyDataAuthorQuery(a));
-        a.lazyLoad(b);
+    public Author GetLazyDataAuthor(Author a){
+        Author result = (Author) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataAuthorQuery(a.getId()));
+        a = result;
         hibernateManager.CloseSession();
+        return result;
     }
 }

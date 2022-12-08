@@ -3,7 +3,7 @@ package com.example.librarysoftware;
 import Hibernate.Control.Main.HibernateMain;
 import Hibernate.Control.Main.Repository.AuthorRepository;
 import Hibernate.Control.Main.Repository.LibraryRepository;
-import Library.Dto.java.DTOLibraryItems.*;
+import Library.Dto.java.DTOLibraryItems.Author;
 import Utils.QueryGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,9 +24,9 @@ public class Controller {
         //String password = pass.getText();
 
         /*String[] name = {"Adolf", "Hitler"};
-        BookAuthor author = new BookAuthor(name);
+        Author author = new BookAuthor(name);
 
-        PaperMediaItem book = new PaperMediaItem();
+        BookItem book = new BookItem();
         book.setTitle("Neshto");
         book.setPageCount(50);
         book.setDescription("Hitler");
@@ -42,11 +42,10 @@ public class Controller {
         lr.AddObject(book);*/
 
         AuthorRepository ar = new AuthorRepository(new HibernateMain());
-        BookAuthor grigor = (BookAuthor) ar.GetEagerAuthor(QueryGenerator.AuthorGetById(2));
-        //ar.GetLazyDataAuthor(grigor);
+        Author grigor = ar.GetAuthor(QueryGenerator.AuthorGetById(1));
+        ar = new AuthorRepository(new HibernateMain());
+        ar.GetLazyDataAuthor(grigor);
 
-        int aaa = 0;
-        aaa += 2;
 
     }
 
