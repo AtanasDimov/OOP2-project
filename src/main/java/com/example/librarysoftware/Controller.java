@@ -4,6 +4,7 @@ import Hibernate.Control.Main.HibernateMain;
 import Hibernate.Control.Main.Repository.AuthorRepository;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Library.Dto.java.DTOLibraryItems.Author;
+import Utils.AccountHelper;
 import Utils.QueryGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,36 +17,19 @@ import java.util.List;
 
 public class Controller {
     @FXML
-    private TextField user;
+    private TextField Login_Username;
     @FXML
-    private PasswordField pass;
+    private PasswordField Login_Password;
     public void Submit(ActionEvent e) {
-        //String username = user.getText();
-        //String password = pass.getText();
+        String username = Login_Username.getText();
+        String password = Login_Password.getText();
 
-        /*String[] name = {"Adolf", "Hitler"};
-        Author author = new BookAuthor(name);
-
-        BookItem book = new BookItem();
-        book.setTitle("Neshto");
-        book.setPageCount(50);
-        book.setDescription("Hitler");
-        book.setPublishDate(LocalDate.now());
-        book.setAuthor(author);
-
-        List<BaseLibraryItem> items = new ArrayList<>();
-        items.add(book);
-
-        author.addWork(book);
-
-        LibraryRepository lr = new LibraryRepository(new HibernateMain());
-        lr.AddObject(book);*/
-
-        AuthorRepository ar = new AuthorRepository(new HibernateMain());
-        Author grigor = ar.GetEagerAuthor(1);
-        //ar = new AuthorRepository(new HibernateMain());
-        //ar.GetLazyDataAuthor(grigor);
-
+        if(AccountHelper.CheckIfExists(username, password)){
+            //logic
+        }
+        else{
+            //logic
+        }
 
     }
 
