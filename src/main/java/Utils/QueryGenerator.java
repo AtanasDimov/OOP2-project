@@ -18,4 +18,9 @@ public class QueryGenerator {
         String query = "FROM Author WHERE id = " + id;
         return query;
     }
+
+    public static String GetLoadLazyDataBookItemQuery(int id) {
+        String query = "FROM BookItem b left join fetch b.author WHERE b.id=" + id;
+        return query;
+    }
 }

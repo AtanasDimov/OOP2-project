@@ -9,16 +9,9 @@ import Utils.QueryGenerator;
 import java.util.List;
 
 public class AuthorRepository extends LibraryRepository{
-    HibernateMain hibernateManager;
 
     public AuthorRepository(HibernateMain hibernateManager) {
         super(hibernateManager);
-        this.hibernateManager = hibernateManager;
-    }
-
-    public Author GetAuthor(String query){
-        Author author = (Author)super.GetObject(query);
-        return author;
     }
 
     public Author GetEagerAuthor(int id){

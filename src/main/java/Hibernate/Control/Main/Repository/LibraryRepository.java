@@ -8,7 +8,7 @@ import Utils.QueryGenerator;
 import java.util.List;
 
 public class LibraryRepository implements LibraryRepositoryInterface {
-    private HibernateMain hibernateManager;
+    protected HibernateMain hibernateManager;
 
     public LibraryRepository(HibernateMain hibernateManager)
     {
