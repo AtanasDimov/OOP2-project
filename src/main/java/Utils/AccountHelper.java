@@ -5,6 +5,7 @@ import ExceptionHandling.SeverityCodes;
 import Hibernate.Control.Main.HibernateMain;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Library.Dto.java.DTOAccount.AccountBase;
+import Library.Dto.java.DTOAccount.OperatorAccount;
 import Library.Dto.java.DTOAccount.ReaderAccount;
 import Logger.Logger;
 
@@ -32,6 +33,31 @@ public class AccountHelper {
         }
     }
 
+    public static boolean RegisterOperator(String username, String password){
+        if(CheckIfExists(username, password)){
+            Logger log = new Logger();
+            LibraryException lEx = new LibraryException("Operator user with these credentials already exists", SeverityCodes.Light);
+            log.LogException(lEx);
+            return false;
+        }
+
+        String hashedPass = "";
+        try{
+            hashedPass = PasswordHasher.HashPassword(password);
+        }catch(Exception ex){
+            Logger log = new Logger();
+            LibraryException lEx = new LibraryException("Password hashing not working: " + ex.getMessage(), SeverityCodes.Severe);
+            log.LogException(lEx);
+        }
+
+        //refactor, add password, generate username
+        OperatorAccount operator = new OperatorAccount(username, hashedPass);
+
+        LibraryRepository lr = new LibraryRepository(new HibernateMain());
+        lr.AddObject(operator);
+
+        return true;
+    }
     public static boolean RegisterReader(String firstName, String lastName, String password){
         //pseudo username for now
         String username = firstName + lastName;
