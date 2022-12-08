@@ -42,9 +42,9 @@ public class Controller {
         lr.AddObject(book);*/
 
         AuthorRepository ar = new AuthorRepository(new HibernateMain());
-        Author grigor = ar.GetAuthor(QueryGenerator.AuthorGetById(1));
-        ar = new AuthorRepository(new HibernateMain());
-        ar.GetLazyDataAuthor(grigor);
+        Author grigor = ar.GetEagerAuthor(1);
+        //ar = new AuthorRepository(new HibernateMain());
+        //ar.GetLazyDataAuthor(grigor);
 
 
     }
