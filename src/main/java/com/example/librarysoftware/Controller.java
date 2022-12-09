@@ -1,12 +1,15 @@
 package com.example.librarysoftware;
 
 import ExceptionHandling.AlreadyLoggedException;
+import ExceptionHandling.LibraryException;
 import ExceptionHandling.NotExistException;
+import ExceptionHandling.SeverityCodes;
 import Hibernate.Control.Main.HibernateMain;
 import Hibernate.Control.Main.Repository.AuthorRepository;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOLibraryItems.Author;
+import Logger.Logger;
 import Utils.AccountHelper;
 import Utils.QueryGenerator;
 import javafx.event.ActionEvent;
@@ -31,11 +34,12 @@ public class Controller {
             AccountHelper.LogInUser(username, password);
         }
         catch(Exception ex){
+            Logger log = new Logger();
             if(ex instanceof NotExistException){
-                //logic
+                log.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Light));
             }
             if(ex instanceof AlreadyLoggedException){
-                //logic
+                log.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
             }
         }
     }
