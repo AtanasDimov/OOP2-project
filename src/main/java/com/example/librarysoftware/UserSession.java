@@ -2,6 +2,7 @@ package com.example.librarysoftware;
 
 import ExceptionHandling.NotLoggedException;
 import Library.Dto.java.DTOAccount.AccountBase;
+import Library.Dto.java.DTOAccount.Admin;
 
 public class UserSession {
     private static AccountBase user;
@@ -17,5 +18,11 @@ public class UserSession {
         this.user = user;
 
         return true;
+    }
+
+    public boolean isAdmin(){
+        if(user instanceof Admin)
+            return true;
+        else return false;
     }
 }
