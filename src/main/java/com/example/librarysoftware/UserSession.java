@@ -8,21 +8,27 @@ public class UserSession {
     private static AccountBase user;
 
 
-    public AccountBase getInstance() throws NotLoggedException{
+    public static AccountBase getInstance() throws NotLoggedException{
         if(user == null)
             throw new NotLoggedException("User not logged in!");
-        return this.user;
+        return user;
     }
 
-    public boolean logIn(AccountBase user){
-        this.user = user;
+    public static boolean logIn(AccountBase u){
+        user = u;
 
         return true;
     }
 
-    public boolean isAdmin(){
+    public static boolean isAdmin(){
         if(user instanceof Admin)
             return true;
         else return false;
+    }
+
+    public static boolean isLoggedIn(){
+        if(user == null)
+            return false;
+        else return true;
     }
 }
