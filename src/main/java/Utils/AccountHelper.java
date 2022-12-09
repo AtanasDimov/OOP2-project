@@ -13,7 +13,7 @@ import javax.jws.soap.SOAPBinding;
 import java.time.LocalDate;
 
 public class AccountHelper {
-    public static boolean CheckIfExists(String username, String password){
+    private static boolean CheckIfExists(String username, String password){
         String hashedPass = HashPassword(password);
 
         LibraryRepository lr = new LibraryRepository(new HibernateMain());

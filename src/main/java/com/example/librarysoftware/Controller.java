@@ -1,8 +1,11 @@
 package com.example.librarysoftware;
 
+import ExceptionHandling.AlreadyLoggedException;
+import ExceptionHandling.NotExistException;
 import Hibernate.Control.Main.HibernateMain;
 import Hibernate.Control.Main.Repository.AuthorRepository;
 import Hibernate.Control.Main.Repository.LibraryRepository;
+import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOLibraryItems.Author;
 import Utils.AccountHelper;
 import Utils.QueryGenerator;
@@ -24,13 +27,17 @@ public class Controller {
         String username = Login_Username.getText();
         String password = Login_Password.getText();
 
-        if(AccountHelper.CheckIfExists(username, password)){
-            //logic
+        try{
+            AccountHelper.LogInUser(username, password);
         }
-        else{
-            //logic
+        catch(Exception ex){
+            if(ex instanceof NotExistException){
+                //logic
+            }
+            if(ex instanceof AlreadyLoggedException){
+                //logic
+            }
         }
-
     }
 
     public void Clear(ActionEvent e) {
