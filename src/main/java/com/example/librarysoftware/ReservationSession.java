@@ -17,7 +17,7 @@ public class ReservationSession {
 
     public static void LoadReservations(){
         try{
-            ReservationHelper.LoadReservations();
+            reservations = ReservationHelper.LoadReservations();
         }
         catch(Exception ex){
 
