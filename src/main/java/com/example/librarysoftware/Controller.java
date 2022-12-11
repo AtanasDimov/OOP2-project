@@ -9,6 +9,7 @@ import Hibernate.Control.Main.Repository.AuthorRepository;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOLibraryItems.Author;
+import Library.Dto.java.DTOLibraryItems.Reservation;
 import Logger.Logger;
 import Utils.AccountHelper;
 import Utils.QueryGenerator;
@@ -17,8 +18,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Controller {

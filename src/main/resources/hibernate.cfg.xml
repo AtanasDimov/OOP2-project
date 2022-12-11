@@ -21,6 +21,7 @@
     <mapping class="Library.Dto.java.DTOLibraryItems.Author"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.BaseLibraryItem"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.PaperMediaItem"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.Reservation"/>
     <!--<mapping class="Library.Dto.java.DTOLibraryItems.ArchiveItem"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.AudioBook"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.AudioBookNarrator"/>

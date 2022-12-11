@@ -21,4 +21,10 @@ public class ReservationHelper {
         return  reservations;
 
     }
+
+    public static boolean AddReservation(Reservation res){
+        LibraryRepository lr = new LibraryRepository(new HibernateMain());
+        lr.AddObject(res);
+        return true;
+    }
 }
