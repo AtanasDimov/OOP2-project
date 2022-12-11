@@ -1,5 +1,6 @@
 package com.example.librarysoftware;
 
+import Utils.GUIUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,24 +13,25 @@ import java.util.ResourceBundle;
 
 public class LoggedController implements Initializable {
     @FXML
-    private Button btnLogout;
+    private Button AdminPanel_btnLogout;
     @FXML
-    private Button btnAdd;
+    private Button AdminPanel_btnAdd;
     @FXML
-    private Button btnRemove;
+    private Button AdminPanel_btnRemove;
     @FXML
-    private TableView tableview_operator;
+    private TableView AdminPanel_tableview;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        btnLogout.setOnAction(new EventHandler<ActionEvent>() {
+        AdminPanel_btnLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                GUIUtils.changeScene(event,"Login.fxml","Log in",null,null);
             }
+
         });
-        return;
+
 
     }
 }

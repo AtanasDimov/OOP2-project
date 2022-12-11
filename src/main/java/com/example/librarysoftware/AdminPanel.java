@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class AdminPanel extends Application {
+/*public class AdminPanel extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -22,4 +22,4 @@ public class AdminPanel extends Application {
     }
 
 
-}
+}*/

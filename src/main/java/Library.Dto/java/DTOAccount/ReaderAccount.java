@@ -14,13 +14,20 @@ import java.util.UUID;
 @DiscriminatorValue("3")
 
 public class ReaderAccount extends AccountBase implements BorrowItemInterface {
-    private  UUID id;
-    private final LocalDate firstRegistration;
+   // private final LocalDate firstRegistration;
     private String firstName;
     private String lastName;
     //list of borrowed books at the moment and in the past
     private List<BorrowItemInterface> borrowedItems;
     private double readerRating;
+
+    public ReaderAccount(String username, String password) {
+        super(username, password);
+    }
+
+    public ReaderAccount() {
+     //   firstRegistration = null;
+    }
 
     public List<BorrowItemInterface> getBorrowedItems() {
         return borrowedItems;
@@ -31,20 +38,16 @@ public class ReaderAccount extends AccountBase implements BorrowItemInterface {
     }
 
     public ReaderAccount(LocalDate firstRegistration, String firstName, String lastName) {
-        this.id = UUID.randomUUID();
-        this.firstRegistration = firstRegistration;
+       // this.firstRegistration = firstRegistration;
         this.firstName = firstName;
         this.lastName = lastName;
         this.borrowedItems = new ArrayList<>();
     }
 
-    public UUID getId() {
-        return id;
-    }
 
-    public LocalDate getFirstRegistration() {
-        return firstRegistration;
-    }
+    //public LocalDate getFirstRegistration() {
+      //  return firstRegistration;
+    //}
 
     public String getFirstName() {
         return firstName;
