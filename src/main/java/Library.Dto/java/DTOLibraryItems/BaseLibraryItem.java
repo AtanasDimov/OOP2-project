@@ -3,23 +3,37 @@ package Library.Dto.java.DTOLibraryItems;
 
 import Library.Dto.java.Contracts.LibraryItemInterface;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
-
-public abstract class BaseLibraryItem implements LibraryItemInterface {
-    private UUID id;
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+public class BaseLibraryItem implements LibraryItemInterface {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private UUID readerID = null;
     private String title;
     private String description;
     private String itemGenre;
     private LocalDate publishDate;
 
-    public BaseLibraryItem(String title, String description, LocalDate publishDate) {
-        this.id = UUID.randomUUID();
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Item_Author",
+            joinColumns = { @JoinColumn(name = "item_id") },
+            inverseJoinColumns = { @JoinColumn(name = "author_id") }
+    )
+    protected List<Author> author;
+    public BaseLibraryItem(){}
+    public BaseLibraryItem(String title, String description, LocalDate publishDate, List<Author> authors) {
         this.title = title;
         this.description = description;
-        this.itemGenre = itemGenre;
+        //this.itemGenre = itemGenre;
         this.publishDate = this.publishDate;
+        author.addAll(authors);
     }
 
     public String getItemGenre() {
@@ -38,7 +52,7 @@ public abstract class BaseLibraryItem implements LibraryItemInterface {
         this.publishDate = publishDate;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
@@ -56,5 +70,14 @@ public abstract class BaseLibraryItem implements LibraryItemInterface {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public List<Author> getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        if(this.author == null)
+            this.author = new ArrayList<>();
+        this.author.add(author);
     }
 }

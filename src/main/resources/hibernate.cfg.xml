@@ -9,13 +9,29 @@
     <property name="connection.username">postgres</property>
     <property name="connection.password">SYSTEM</property>
     <property name="hibernate.dialect"> org.hibernate.dialect.PostgreSQL82Dialect</property>
-    <property name="hbm2ddl.auto">update</property>
+    <property name="hbm2ddl.auto">create</property>
      
     <property name="show_sql">true</property>
 
     <mapping class="Library.Dto.java.DTOAccount.AccountBase"/>
     <mapping class="Library.Dto.java.DTOAccount.Admin"/>
     <mapping class="Library.Dto.java.DTOAccount.OperatorAccount"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.BookAuthor"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.BookItem"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.Author"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.BaseLibraryItem"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.PaperMediaItem"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.Reservation"/>
+    <!--<mapping class="Library.Dto.java.DTOLibraryItems.ArchiveItem"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.AudioBook"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.AudioBookNarrator"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.AudioMediaItem"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.MovieDirector"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.Movies"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.MusicArtist"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.MusicItem"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.ReferenceItem"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.VisualMediaItem"/>-->
 
       
   </session-factory>

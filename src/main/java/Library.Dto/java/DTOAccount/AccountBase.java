@@ -11,6 +11,7 @@ import javax.persistence.*;
 public class AccountBase implements AccountsInterface {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int accountId;
     private String username;
     private String password;

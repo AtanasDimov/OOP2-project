@@ -1,18 +1,26 @@
 package Library.Dto.java.DTOLibraryItems;
 
 
-
 import Library.Dto.java.Contracts.AuthorInterface;
-import Library.Dto.java.Contracts.LibraryItemInterface;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="autor_type",
+        discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Author implements AuthorInterface {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String[] name;
     private String description;
-    private List<LibraryItemInterface> work = new ArrayList<>();
+    @ManyToMany(mappedBy = "author")
+    private List<BaseLibraryItem> work;
 
+    public Author(){}
     public Author(String[] name) {
         this.name = name;
     }
@@ -33,16 +41,25 @@ public abstract class Author implements AuthorInterface {
         this.description = description;
     }
 
-    public void addWork(LibraryItemInterface w)
+    public void addWork(BaseLibraryItem w)
     {
+        if(this.work == null)
+            this.work = new ArrayList<>();
         this.work.add(w);
     }
 
-    public void addWork(List<LibraryItemInterface> w){
+    public void addWork(List<BaseLibraryItem> w){
         this.work.addAll(w);
     }
 
-    public List<LibraryItemInterface> getWork(){
+    public int getId(){
+        return this.id;
+    }
+    public void lazyLoad(List<BaseLibraryItem> w){
+        this.work = w;
+    }
+
+    public List<BaseLibraryItem> getWork(){
         return this.work;
     }
 }

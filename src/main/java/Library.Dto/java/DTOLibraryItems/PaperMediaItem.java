@@ -3,13 +3,18 @@ package Library.Dto.java.DTOLibraryItems;
 
 import Library.Dto.java.Contracts.LibraryItemInterface;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
+@Entity
 public class PaperMediaItem extends BaseLibraryItem implements LibraryItemInterface {
     private int pageCount;
 
-    public PaperMediaItem(String title, String description, LocalDate publishDate, int pageCount) {
-        super(title, description, publishDate);
+    public PaperMediaItem(){}
+
+    public PaperMediaItem(String title, String description, LocalDate publishDate, int pageCount, List<Author> author) {
+        super(title, description, publishDate, author);
         this.pageCount = pageCount;
     }
 

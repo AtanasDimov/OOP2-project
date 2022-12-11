@@ -27,7 +27,7 @@ public class LoggedController implements Initializable {
         AdminPanel_btnLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                GUIUtils.changeScene(event,"Login.fxml","Log in",null,null);
+                GUIUtils.changeScene(event,"/Login.fxml","Log in",null,null);
             }
 
         });

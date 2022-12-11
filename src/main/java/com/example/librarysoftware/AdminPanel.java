@@ -1,4 +1,4 @@
-package com.example.librarysoftware;
+/*package com.example.librarysoftware;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-/*public class AdminPanel extends Application {
+public class AdminPanel extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {

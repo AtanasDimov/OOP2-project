@@ -1,21 +1,22 @@
 package Library.Dto.java.DTOLibraryItems;
 
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@PrimaryKeyJoinColumn(name="PaperMediaItem_ID")
 public class BookItem extends PaperMediaItem {
-    private BookAuthor author;
 
-    public BookItem(String title, String description, LocalDate publishDate, int pageCount, BookAuthor аuthor) {
-        super(title, description, publishDate, pageCount);
-        this.author = аuthor;
+
+
+    public BookItem(){}
+
+    public BookItem(String title, String description, LocalDate publishDate, int pageCount, List<Author> аuthor) {
+        super(title, description, publishDate, pageCount, аuthor);
     }
 
-    public BookAuthor getАuthor() {
-        return author;
-    }
 
-    public void setАuthor(BookAuthor аuthor) {
-        this.author = аuthor;
-    }
 }

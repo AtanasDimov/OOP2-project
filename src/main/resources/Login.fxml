@@ -18,6 +18,6 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="Login_ErrorLabel" layoutX="60.0" layoutY="179.0" text="Label" />
+      <Label fx:id="Login_ErrorLabel" layoutX="60.0" layoutY="179.0" />
    </children>
 </AnchorPane>
