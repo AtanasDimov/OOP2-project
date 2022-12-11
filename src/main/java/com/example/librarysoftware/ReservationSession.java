@@ -35,7 +35,7 @@ public class ReservationSession {
         }
     }
 
-    public static void OnStartUp(){
+    public static void Configure(){
         if(reservations == null){
             LoadReservations();
         }
