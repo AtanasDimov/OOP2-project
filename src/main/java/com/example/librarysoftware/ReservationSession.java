@@ -37,10 +37,12 @@ public class ReservationSession {
 
     public static void AddReservation(Reservation res){
         reservations.add(res);
+        ReservationHelper.AddReservation(res);
     }
 
     public static void DeleteReservation(Reservation res){
         reservations.remove(res);
+        ReservationHelper.DeleteReservation(res);
     }
 
     public static void DeleteReservation(int id){
