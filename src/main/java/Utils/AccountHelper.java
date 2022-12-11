@@ -3,6 +3,7 @@ package Utils;
 import ExceptionHandling.*;
 import Hibernate.Control.Main.HibernateMain;
 import Hibernate.Control.Main.Repository.LibraryRepository;
+import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOAccount.OperatorAccount;
 import Library.Dto.java.DTOAccount.ReaderAccount;
@@ -16,7 +17,7 @@ public class AccountHelper {
     private static boolean CheckIfExists(String username, String password){
         String hashedPass = HashPassword(password);
 
-        LibraryRepository lr = new LibraryRepository(new HibernateMain());
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         AccountBase account = (AccountBase) lr.GetObject(QueryGenerator.GetLoginQuery(username, hashedPass));
 
         if(account == null){
@@ -32,7 +33,7 @@ public class AccountHelper {
             if(CheckIfExists(username, password)){
                 String hashedPass = HashPassword(password);
 
-                LibraryRepository lr = new LibraryRepository(new HibernateMain());
+                LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
                 AccountBase account = (AccountBase) lr.GetObject(QueryGenerator.GetLoginQuery(username, hashedPass));
 
                 return UserSession.logIn(account);
@@ -58,7 +59,7 @@ public class AccountHelper {
 
         OperatorAccount operator = new OperatorAccount(username, hashedPass);
 
-        LibraryRepository lr = new LibraryRepository(new HibernateMain());
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(operator);
 
         return true;
@@ -79,7 +80,7 @@ public class AccountHelper {
         //refactor, add password, generate username
         ReaderAccount reader = new ReaderAccount(LocalDate.now(), firstName, lastName);
 
-        LibraryRepository lr = new LibraryRepository(new HibernateMain());
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(reader);
 
         return true;

@@ -3,7 +3,7 @@ package Hibernate.Control.Main.Repository;
 import Hibernate.Control.Main.HibernateMain;
 
 public class RepositoryFactory {
-    public static LibraryRepositoryInterface CreateLibraryRepository(){
+    public static LibraryRepository CreateLibraryRepository(){
         return new LibraryRepository(new HibernateMain());
     }
 
