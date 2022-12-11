@@ -1,6 +1,10 @@
 package com.example.librarysoftware;
 
+import ExceptionHandling.LibraryException;
+import ExceptionHandling.MissingReservationsException;
+import ExceptionHandling.SeverityCodes;
 import Library.Dto.java.DTOLibraryItems.Reservation;
+import Logger.Logger;
 import Utils.ReservationHelper;
 
 import java.util.List;
@@ -20,7 +24,11 @@ public class ReservationSession {
             reservations = ReservationHelper.LoadReservations();
         }
         catch(Exception ex){
-
+            if(ex instanceof MissingReservationsException)
+            {
+                Logger log = new Logger();
+                log.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Severe));
+            }
         }
     }
 }
