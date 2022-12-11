@@ -40,11 +40,17 @@ public class ReservationSession {
             LoadReservations();
         }
         for(Reservation res : reservations){
-            timer.schedule(new ReservationOverdue(), res.getDueDate());
+            timer.schedule(new ReservationOverdue(res.getId()), res.getDueDate());
         }
     }
 
     public static class ReservationOverdue extends TimerTask {
+        private final int id;
+
+        ReservationOverdue(int id){
+            this.id = id;
+        }
+
         @Override
         public void run() {
 

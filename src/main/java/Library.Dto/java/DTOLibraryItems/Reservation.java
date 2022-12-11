@@ -21,4 +21,8 @@ public class Reservation {
     public Date getDueDate(){
         return this.DueDate;
     }
+
+    public int getId(){
+        return this.Id;
+    }
 }
