@@ -27,4 +27,10 @@ public class ReservationHelper {
         lr.AddObject(res);
         return true;
     }
+
+    public static void DeleteReservation(Reservation res){
+        LibraryRepository lr = new LibraryRepository(new HibernateMain());
+        lr.DeleteObject(res);
+    }
+
 }

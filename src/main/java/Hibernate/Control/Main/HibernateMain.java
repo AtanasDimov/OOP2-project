@@ -91,6 +91,22 @@ public class HibernateMain {
         }
     }
 
+    public void DeleteObject(Object object){
+        try{
+            factory = new MetadataSources(registry)
+                    .buildMetadata().buildSessionFactory();
+            session = factory.openSession();
+            Transaction transaction = session.beginTransaction();
+            session.delete(object);
+            transaction.commit();
+        }
+        catch (Exception ex){
+            LibraryException le = new LibraryException(ex.getMessage(), SeverityCodes.Medium);
+            Logger log = new Logger();
+            log.LogException(le);
+        }
+    }
+
     public void CloseSession()
     {
         session.close();
