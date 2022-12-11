@@ -26,4 +26,10 @@ public class LibraryRepository implements LibraryRepositoryInterface {
         hibernateManager.CloseSession();
         return result;
     }
+
+    public List<Object> GetListOfObject(String query){
+        List<Object> result = hibernateManager.GetListOfObject(query);
+        hibernateManager.CloseSession();
+        return result;
+    }
 }

@@ -23,4 +23,9 @@ public class QueryGenerator {
         String query = "FROM BookItem b left join fetch b.author WHERE b.id=" + id;
         return query;
     }
+
+    public static String GetListOfReservations(){
+        String query = "From Reservation";
+        return query;
+    }
 }
