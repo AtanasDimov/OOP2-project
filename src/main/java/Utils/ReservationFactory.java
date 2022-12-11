@@ -2,6 +2,7 @@ package Utils;
 
 import Library.Dto.java.DTOLibraryItems.Reservation;
 import Library.Dto.java.DTOLibraryItems.ReservationDueDates;
+import Logger.Logger;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,7 +37,8 @@ public class ReservationFactory {
             }
         }
         catch(Exception ex){
-
+            Logger log = new Logger();
+            log.LogException(ex);
         }
     }
 }
