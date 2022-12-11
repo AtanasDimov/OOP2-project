@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 
 public class Reservation {
@@ -13,6 +15,10 @@ public class Reservation {
     private int Id;
     private int ReaderId;
     private int ItemId;
-    private LocalDate BorrowDate;
-    private LocalDate DueDate;
+    private Date BorrowDate;
+    private Date DueDate;
+
+    public Date getDueDate(){
+        return this.DueDate;
+    }
 }

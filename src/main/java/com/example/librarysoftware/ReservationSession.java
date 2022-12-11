@@ -8,9 +8,12 @@ import Logger.Logger;
 import Utils.ReservationHelper;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ReservationSession {
     private static List<Reservation> reservations;
+    private static Timer timer = new Timer();
 
     public static List<Reservation> GetInstance(){
         if(reservations == null){
@@ -29,6 +32,22 @@ public class ReservationSession {
                 Logger log = new Logger();
                 log.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Severe));
             }
+        }
+    }
+
+    public static void OnStartUp(){
+        if(reservations == null){
+            LoadReservations();
+        }
+        for(Reservation res : reservations){
+            timer.schedule(new ReservationOverdue(), res.getDueDate());
+        }
+    }
+
+    public static class ReservationOverdue extends TimerTask {
+        @Override
+        public void run() {
+
         }
     }
 }
