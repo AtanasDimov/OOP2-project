@@ -40,5 +40,6 @@ public class ReservationFactory {
             Logger log = new Logger();
             log.LogException(ex);
         }
+        return res;
     }
 }
