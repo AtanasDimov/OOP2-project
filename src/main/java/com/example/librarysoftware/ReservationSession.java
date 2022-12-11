@@ -35,6 +35,22 @@ public class ReservationSession {
         }
     }
 
+    public static void AddReservation(Reservation res){
+        reservations.add(res);
+    }
+
+    public static void DeleteReservation(Reservation res){
+        reservations.remove(res);
+    }
+
+    public static void DeleteReservation(int id){
+        for(Reservation res : reservations){
+            if(res.getId() == id){
+                reservations.remove(res);
+            }
+        }
+    }
+
     public static void Configure(){
         if(reservations == null){
             LoadReservations();
