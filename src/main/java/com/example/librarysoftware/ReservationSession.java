@@ -49,6 +49,7 @@ public class ReservationSession {
         for(Reservation res : reservations){
             if(res.getId() == id){
                 reservations.remove(res);
+                ReservationHelper.DeleteReservation(res);
             }
         }
     }
