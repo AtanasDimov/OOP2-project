@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationHelper {
-    public static boolean LoadReservations(){
+    public static void LoadReservations(){
         List<Reservation> reservations = new ArrayList<>();
         LibraryRepository lr = new LibraryRepository(new HibernateMain());
         reservations = (List<Reservation>)(Object) lr.GetListOfObject(QueryGenerator.GetListOfReservations());
         if(reservations == null){
+            //throw exception
+        }
+        else{
 
         }
     }
