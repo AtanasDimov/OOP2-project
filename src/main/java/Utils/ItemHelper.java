@@ -40,4 +40,10 @@ public class ItemHelper {
         lr.UpdateObject(item);
     }
 
+    public static void RemoveItem(int id){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
+
+        lr.DeleteObject(item);
+    }
 }
