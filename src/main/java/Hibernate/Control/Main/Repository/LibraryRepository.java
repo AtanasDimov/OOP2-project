@@ -34,4 +34,9 @@ public class LibraryRepository implements LibraryRepositoryInterface {
         hibernateManager.DeleteObject(object);
         hibernateManager.CloseSession();
     }
+
+    public void UpdateObject(Object object){
+        hibernateManager.UpdateObject(object);
+        hibernateManager.CloseSession();
+    }
 }

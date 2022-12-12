@@ -23,10 +23,11 @@ public class FormHelper {
     public static void AcceptForm(int id){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         Form form = (Form)lr.GetObject(QueryGenerator.GetForm(id));
+        form.setAccepted(true);
 
         ReaderAccount reader = new ReaderAccount(form.getFirstName(), form.getLastName(), form.getUsername(), form.getPassword());
 
-        lr.DeleteObject(form);
+        lr.UpdateObject(form);
 
         AccountHelper.RegisterReader(reader);
     }
