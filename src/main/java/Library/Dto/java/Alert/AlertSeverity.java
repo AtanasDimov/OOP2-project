@@ -1,4 +1,4 @@
-package Library.Dto.java.DTOLibraryItems.Alert;
+package Library.Dto.java.Alert;
 
 public enum AlertSeverity {
     NewReader,

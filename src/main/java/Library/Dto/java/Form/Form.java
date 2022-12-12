@@ -1,10 +1,10 @@
-package Library.Dto.java.Formular;
+package Library.Dto.java.Form;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.time.LocalDate;
-import java.util.Date;
+
 @Entity
 public class Form {
     @javax.persistence.Id
