@@ -17,6 +17,18 @@ public class Reservation {
     private int ItemId;
     private Date BorrowDate;
     private Date DueDate;
+    private String Type;
+
+    public Reservation(int readerId, int itemId, Date borrowDate, ReservationTypes type) {
+        ReaderId = readerId;
+        ItemId = itemId;
+        BorrowDate = borrowDate;
+        Type = type.toString();
+    }
+
+    public Reservation(){
+
+    }
 
     public void setReaderId(int readerId) {
         ReaderId = readerId;
@@ -40,5 +52,9 @@ public class Reservation {
 
     public int getId(){
         return this.Id;
+    }
+
+    public String getType() {
+        return Type;
     }
 }
