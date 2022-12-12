@@ -96,6 +96,13 @@ public class AccountHelper {
         lr.AddObject(reader);
     }
 
+    private static void UnsignReader(int id){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        ReaderAccount reader = (ReaderAccount) lr.GetObject(QueryGenerator.GetReaderById(id));
+
+        lr.DeleteObject(reader);
+    }
+
     private static String HashPassword(String password){
         String hashedPass = "";
         try{
