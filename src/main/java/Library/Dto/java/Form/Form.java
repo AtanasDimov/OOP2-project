@@ -17,6 +17,8 @@ public class Form {
     private LocalDate DateOfRegistry;
     private boolean IsAccepted;
 
+    private boolean IsActive;
+
     public Form(String firstName, String lastName, String username, String password) {
         FirstName = firstName;
         LastName = lastName;
@@ -24,6 +26,7 @@ public class Form {
         Password = password;
         DateOfRegistry = LocalDate.now();
         IsAccepted = false;
+        IsActive = false;
     }
 
     public Form(){
@@ -76,5 +79,13 @@ public class Form {
 
     public void setAccepted(boolean accepted) {
         IsAccepted = accepted;
+    }
+
+    public boolean isActive() {
+        return IsActive;
+    }
+
+    public void setActive(boolean active) {
+        IsActive = active;
     }
 }
