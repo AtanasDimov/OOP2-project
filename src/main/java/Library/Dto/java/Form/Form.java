@@ -26,7 +26,7 @@ public class Form {
         Password = password;
         DateOfRegistry = LocalDate.now();
         IsAccepted = false;
-        IsActive = false;
+        IsActive = true;
     }
 
     public Form(){

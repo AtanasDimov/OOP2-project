@@ -24,6 +24,7 @@ public class FormHelper {
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         Form form = (Form)lr.GetObject(QueryGenerator.GetForm(id));
         form.setAccepted(true);
+        form.setActive(false);
 
         ReaderAccount reader = new ReaderAccount(form.getFirstName(), form.getLastName(), form.getUsername(), form.getPassword());
 
