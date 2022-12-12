@@ -20,6 +20,8 @@ public class BaseLibraryItem implements LibraryItemInterface {
     private String itemGenre;
     private LocalDate publishDate;
 
+    private int quantity;
+
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "Item_Author",
@@ -28,12 +30,13 @@ public class BaseLibraryItem implements LibraryItemInterface {
     )
     protected List<Author> author;
     public BaseLibraryItem(){}
-    public BaseLibraryItem(String title, String description, LocalDate publishDate, List<Author> authors) {
+    public BaseLibraryItem(String title, String description, LocalDate publishDate, List<Author> authors, int quantity) {
         this.title = title;
         this.description = description;
         //this.itemGenre = itemGenre;
         this.publishDate = this.publishDate;
         author.addAll(authors);
+        this.quantity = quantity;
     }
 
     public String getItemGenre() {
@@ -79,5 +82,13 @@ public class BaseLibraryItem implements LibraryItemInterface {
         if(this.author == null)
             this.author = new ArrayList<>();
         this.author.add(author);
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
