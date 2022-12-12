@@ -30,4 +30,8 @@ public class FormHelper {
 
         AccountHelper.RegisterReader(reader);
     }
+
+    public static void CreateForm(String firstName, String lastName, String username, String password){
+        AccountHelper.RegisterReaderForm(firstName, lastName, username, password);
+    }
 }
