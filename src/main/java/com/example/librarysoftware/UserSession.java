@@ -31,4 +31,10 @@ public class UserSession {
             return false;
         else return true;
     }
+
+    public static boolean LogOut(){
+        if(user != null)
+            user = null;
+        return true;
+    }
 }
