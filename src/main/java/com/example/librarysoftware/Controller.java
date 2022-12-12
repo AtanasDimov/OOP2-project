@@ -5,9 +5,14 @@ import ExceptionHandling.LibraryException;
 import ExceptionHandling.NotExistException;
 import ExceptionHandling.SeverityCodes;
 
+import Hibernate.Control.Main.HibernateMain;
+import Hibernate.Control.Main.Repository.LibraryRepository;
+import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.DTOAccount.Admin;
 import Logger.Logger;
 import Utils.AccountHelper;
 
+import Utils.PasswordHasher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -24,8 +29,6 @@ public class Controller {
     public void Submit(ActionEvent e) {
         String username = Login_Username.getText();
         String password = Login_Password.getText();
-
-
 
         try{
             AccountHelper.LogInUser(username, password);
