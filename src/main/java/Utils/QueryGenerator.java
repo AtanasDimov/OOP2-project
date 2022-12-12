@@ -28,4 +28,19 @@ public class QueryGenerator {
         String query = "From Reservation";
         return query;
     }
+
+    public static String GetActiveForms(){
+        String query = "From Form Where IsActive = true";
+        return query;
+    }
+
+    public static String GetNumberOfActiveForms(){
+        String query = "Select Count(Id) From Form Where IsActive = true";
+        return query;
+    }
+
+    public static String GetForm(int id){
+        String query = "From Form Where Id = " + id;
+        return query;
+    }
 }
