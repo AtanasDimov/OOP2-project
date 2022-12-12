@@ -15,14 +15,15 @@ public class Form {
     private String Username;
     private String Password;
     private LocalDate DateOfRegistry;
+    private boolean IsAccepted;
 
-    public Form(int id, String firstName, String lastName, String username, String password) {
-        Id = id;
+    public Form(String firstName, String lastName, String username, String password) {
         FirstName = firstName;
         LastName = lastName;
         Username = username;
         Password = password;
         DateOfRegistry = LocalDate.now();
+        IsAccepted = false;
     }
 
     public int getId() {
@@ -63,5 +64,13 @@ public class Form {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public boolean isAccepted() {
+        return IsAccepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        IsAccepted = accepted;
     }
 }

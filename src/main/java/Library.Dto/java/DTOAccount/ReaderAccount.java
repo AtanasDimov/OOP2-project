@@ -14,15 +14,18 @@ import java.util.UUID;
 @DiscriminatorValue("3")
 
 public class ReaderAccount extends AccountBase implements BorrowItemInterface {
-   // private final LocalDate firstRegistration;
+    private LocalDate firstRegistration;
     private String firstName;
     private String lastName;
     //list of borrowed books at the moment and in the past
     private List<BorrowItemInterface> borrowedItems;
     private double readerRating;
 
-    public ReaderAccount(String username, String password) {
+    public ReaderAccount(String firstName, String lastName, String username, String password) {
         super(username, password);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.firstRegistration = LocalDate.now();
     }
 
     public ReaderAccount() {

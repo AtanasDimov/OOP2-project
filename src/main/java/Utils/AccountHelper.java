@@ -6,9 +6,14 @@ import ExceptionHandling.NotExistException;
 import ExceptionHandling.SeverityCodes;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.Alert.Alert;
+import Library.Dto.java.Alert.AlertFactory;
+import Library.Dto.java.Alert.AlertSeverity;
 import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOAccount.OperatorAccount;
 import Library.Dto.java.DTOAccount.ReaderAccount;
+import Library.Dto.java.Form.Form;
+import Library.Dto.java.Form.FormFactory;
 import Logger.Logger;
 import com.example.librarysoftware.UserSession;
 
@@ -65,10 +70,7 @@ public class AccountHelper {
 
         return true;
     }
-    public static boolean RegisterReader(String firstName, String lastName, String password){
-        //pseudo username for now
-        String username = firstName + lastName;
-
+    public static boolean RegisterReaderForm(String firstName, String lastName, String username, String password){
         if(CheckIfExists(username, password)){
             Logger log = new Logger();
             LibraryException lEx = new LibraryException("User with these credentials already exists", SeverityCodes.Light);
@@ -78,13 +80,20 @@ public class AccountHelper {
 
         String hashedPass = HashPassword(password);
 
-        //refactor, add password, generate username
-        ReaderAccount reader = new ReaderAccount(LocalDate.now(), firstName, lastName);
+        Form form = FormFactory.CreateForm(firstName, lastName, username, hashedPass);
+        Alert alert = AlertFactory.CreateAlert("New user form for registry", AlertSeverity.NewReader);
 
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
-        lr.AddObject(reader);
+        lr.AddObject(form);
+        lr.AddObject(alert);
 
         return true;
+    }
+
+    //After the user registry form has been accepted
+    public static void RegisterReader(ReaderAccount reader){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        lr.AddObject(reader);
     }
 
     private static String HashPassword(String password){

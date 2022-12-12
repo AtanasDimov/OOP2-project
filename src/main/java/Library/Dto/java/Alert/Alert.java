@@ -14,8 +14,7 @@ public class Alert {
     private LocalDate DateOfAlert;
     private String Severity;
 
-    public Alert(int id, String message, AlertSeverity severity) {
-        Id = id;
+    public Alert(String message, AlertSeverity severity) {
         Message = message;
         DateOfAlert = LocalDate.now();
         Severity = severity.toString();
