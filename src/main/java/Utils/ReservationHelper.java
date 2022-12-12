@@ -22,12 +22,14 @@ public class ReservationHelper {
     }
 
     public static boolean AddReservation(Reservation res){
+        //to add - quantity update
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(res);
         return true;
     }
 
     public static void DeleteReservation(Reservation res){
+        //to add - quantity update
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.DeleteObject(res);
     }
