@@ -5,6 +5,8 @@ import ExceptionHandling.MissingReservationsException;
 import ExceptionHandling.SeverityCodes;
 import Library.Dto.java.DTOLibraryItems.Reservation;
 import Logger.Logger;
+import Utils.ItemHelper;
+import Utils.ReaderHelper;
 import Utils.ReservationHelper;
 
 import java.util.List;
@@ -35,14 +37,17 @@ public class ReservationSession {
         }
     }
 
-    public static void AddReservation(Reservation res){
+    public static void AddReservation(Reservation res, int itemId){
         reservations.add(res);
         ReservationHelper.AddReservation(res);
+        ItemHelper.GiveItem(itemId);
     }
 
-    public static void DeleteReservation(Reservation res){
+    public static void DeleteReservation(Reservation res, int itemId, int readerId){
         reservations.remove(res);
         ReservationHelper.DeleteReservation(res);
+        ItemHelper.ReturnItem(itemId);
+        ReaderHelper.ReturnItem(readerId, res.getId());
     }
 
     public static void DeleteReservation(int id){
