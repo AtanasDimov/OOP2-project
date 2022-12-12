@@ -43,4 +43,9 @@ public class QueryGenerator {
         String query = "From Form Where Id = " + id;
         return query;
     }
+
+    public static String GetItemById(int id){
+        String query = "From BaseLibraryItem Where id = " + id;
+        return query;
+    }
 }

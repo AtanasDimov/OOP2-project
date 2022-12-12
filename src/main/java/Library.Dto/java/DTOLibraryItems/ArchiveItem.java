@@ -12,4 +12,6 @@ public class ArchiveItem extends BaseLibraryItem implements LibraryItemInterface
     public ArchiveItem(String title, String description, String itemGenre, LocalDate publishDate, List<Author> authors) {
         super(title, description, publishDate, authors);
     }
+
+    public ArchiveItem(){}
 }
