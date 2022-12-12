@@ -5,6 +5,8 @@ import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOLibraryItems.ArchiveItem;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 
+import java.util.List;
+
 public class ItemHelper {
     public static void ArchiveItem(int id){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
@@ -12,5 +14,11 @@ public class ItemHelper {
         ArchiveItem archived = (ArchiveItem) item;
         lr.DeleteObject(item);
         lr.AddObject(archived);
+    }
+
+    public static List<BaseLibraryItem> GetItemsForArchive(){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        List<BaseLibraryItem> itemsForArchive = (List<BaseLibraryItem>)(Object)lr.GetListOfObject(QueryGenerator.GetItemsForArchive());
+        return itemsForArchive;
     }
 }

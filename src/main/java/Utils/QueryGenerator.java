@@ -3,6 +3,9 @@ package Utils;
 import Hibernate.Control.Main.HibernateMain;
 import Library.Dto.java.DTOLibraryItems.Author;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class QueryGenerator {
     public static String GetLoginQuery(String username, String password){
         String query = "from Accounts where username='" + username + "' AND password='" + password + "'";
@@ -46,6 +49,12 @@ public class QueryGenerator {
 
     public static String GetItemById(int id){
         String query = "From BaseLibraryItem Where id = " + id;
+        return query;
+    }
+
+    public static String GetItemsForArchive(){
+        LocalDate date = LocalDate.now();
+        String query = "From BaseLibraryItem Where PublishDate <= " + date.plus(-15, ChronoUnit.YEARS);
         return query;
     }
 }
