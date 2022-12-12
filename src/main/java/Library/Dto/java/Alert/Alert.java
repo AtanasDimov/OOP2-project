@@ -20,6 +20,10 @@ public class Alert {
         Severity = severity.toString();
     }
 
+    public Alert(){
+
+    }
+
     public int getId() {
         return Id;
     }

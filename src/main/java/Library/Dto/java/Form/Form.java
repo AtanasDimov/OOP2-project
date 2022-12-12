@@ -26,6 +26,10 @@ public class Form {
         IsAccepted = false;
     }
 
+    public Form(){
+
+    }
+
     public int getId() {
         return Id;
     }
