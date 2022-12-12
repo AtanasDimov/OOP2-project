@@ -85,6 +85,7 @@ public class AccountHelper {
 
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(form);
+        lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(alert);
 
         return true;

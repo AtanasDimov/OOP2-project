@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 @DiscriminatorValue("2")
 public class BookAuthor extends Author{
     public BookAuthor(){}
-    public BookAuthor(String[] name) {
-        super(name);
+
+    public BookAuthor(String name, String description) {
+        super(name, description);
     }
 }

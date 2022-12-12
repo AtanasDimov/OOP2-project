@@ -5,26 +5,25 @@ import ExceptionHandling.LibraryException;
 import ExceptionHandling.NotExistException;
 import ExceptionHandling.SeverityCodes;
 
-import Hibernate.Control.Main.HibernateMain;
-import Hibernate.Control.Main.Repository.LibraryRepository;
-import Hibernate.Control.Main.Repository.RepositoryFactory;
-import Library.Dto.java.DTOAccount.Admin;
 import Logger.Logger;
 import Utils.AccountHelper;
 
-import Utils.PasswordHasher;
+import Utils.GUIUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 
 
-public class Controller {
+public class LoginController {
     @FXML
     private TextField Login_Username;
     @FXML
     private PasswordField Login_Password;
+    @FXML
+    private Label Login_ErrorLabel;
 
     public void Submit(ActionEvent e) {
         String username = Login_Username.getText();
@@ -42,9 +41,20 @@ public class Controller {
                 log.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
             }
         }
+        //if(AccountHelper user = Admin){
+
+        //}
     }
 
-    public void Clear(ActionEvent e) {
+    public void Clear() {
+        Login_ErrorLabel.setText("");
+        Login_Password.clear();
+        Login_Username.clear();
 
     }
+
+    public void Register(ActionEvent e){
+        GUIUtils.changeScene(e, "/Register.fxml","Регистрация на читател:",null,null);
+    }
+
 }

@@ -11,23 +11,17 @@ import javafx.scene.control.TableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoggedController implements Initializable {
+public class IndexController implements Initializable {
     @FXML
-    private Button AdminPanel_btnLogout;
-    @FXML
-    private Button AdminPanel_btnAdd;
-    @FXML
-    private Button AdminPanel_btnRemove;
-    @FXML
-    private TableView AdminPanel_tableview;
+    private Button Index_btnLogout;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        AdminPanel_btnLogout.setOnAction(new EventHandler<ActionEvent>() {
+        Index_btnLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                GUIUtils.changeScene(event,"/Login.fxml","Log in",null,null);
+                GUIUtils.changeScene(event,"/Login.fxml","Вписване",null,null);
             }
 
         });

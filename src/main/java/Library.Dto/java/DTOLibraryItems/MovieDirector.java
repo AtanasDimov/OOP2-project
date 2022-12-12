@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("3")
 public class MovieDirector extends Author {
-    public MovieDirector(String[] name) {
-        super(name);
+    public MovieDirector(String name, String description) {
+        super(name, description);
     }
 }

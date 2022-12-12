@@ -11,8 +11,9 @@ import java.util.List;
 public class ReferenceItem extends ArchiveItem{
     private ReferenceEnum type;
 
-    public ReferenceItem(String title, String description, String itemGenre, LocalDate publishDate, List<Author> authors) {
-        super(title, description, itemGenre, publishDate, authors);
+    public ReferenceItem(String title, String description, LocalDate publishDate, List<Author> authors, int quantity, ReferenceEnum type) {
+        super(title, description, publishDate, authors, quantity);
+        this.type = type;
     }
 
     public ReferenceEnum getType() {

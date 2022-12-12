@@ -1,6 +1,6 @@
 package Utils;
 
-import com.example.librarysoftware.LoggedController;
+import com.example.librarysoftware.IndexController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,7 +17,7 @@ public class GUIUtils {
             try{
                 FXMLLoader loader = new FXMLLoader(GUIUtils.class.getResource(fxmlFile));
                 root = loader.load();
-                LoggedController lc = loader.getController();
+                IndexController lc = loader.getController();
 
             }catch(IOException e){
                 e.printStackTrace();

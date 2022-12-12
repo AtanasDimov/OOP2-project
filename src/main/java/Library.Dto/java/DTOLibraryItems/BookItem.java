@@ -14,9 +14,7 @@ public class BookItem extends PaperMediaItem {
 
     public BookItem(){}
 
-    public BookItem(String title, String description, LocalDate publishDate, int pageCount, List<Author> аuthor) {
-        super(title, description, publishDate, pageCount, аuthor);
+    public BookItem(String title, String description, LocalDate publishDate, List<Author> authors, int quantity, int pageCount) {
+        super(title, description, publishDate, authors, quantity, pageCount);
     }
-
-
 }

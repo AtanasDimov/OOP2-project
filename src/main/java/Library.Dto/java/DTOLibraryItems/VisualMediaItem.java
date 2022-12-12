@@ -11,10 +11,10 @@ public class VisualMediaItem extends BaseLibraryItem implements LibraryItemInter
     private int runtime;
     private String videoQuality;
 
-    public VisualMediaItem(String title, String description, LocalDate publishDate, List<Author> authors, int runtime, String videoQuality) {
-        super(title, description, publishDate, authors);
+    public VisualMediaItem(String title, String description, LocalDate publishDate, List<Author> authors, int quantity, int runtime, String videoQuality) {
+        super(title, description, publishDate, authors, quantity);
         this.runtime = runtime;
-        this.videoQuality=videoQuality;
+        this.videoQuality = videoQuality;
     }
 
     public int getRuntime() {

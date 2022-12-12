@@ -7,8 +7,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("1")
 public class AudioBookNarrator extends Author{
 
-    public AudioBookNarrator(String[] name) {
-        super(name);
+    public AudioBookNarrator(String name, String description) {
+        super(name, description);
     }
-
 }

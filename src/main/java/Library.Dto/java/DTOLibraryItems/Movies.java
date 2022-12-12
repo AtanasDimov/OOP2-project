@@ -11,8 +11,8 @@ import java.util.List;
 public class Movies extends VisualMediaItem{
     private MoviesAgeRating rating;
 
-    public Movies(String title, String description, LocalDate publishDate, List<Author> authors, int runtime, String videoQuality, MoviesAgeRating rating) {
-        super(title, description, publishDate, authors, runtime, videoQuality);
+    public Movies(String title, String description, LocalDate publishDate, List<Author> authors, int quantity, int runtime, String videoQuality, MoviesAgeRating rating) {
+        super(title, description, publishDate, authors, quantity, runtime, videoQuality);
         this.rating = rating;
     }
 

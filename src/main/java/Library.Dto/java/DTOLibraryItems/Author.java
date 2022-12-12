@@ -15,21 +15,23 @@ public abstract class Author implements AuthorInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String[] name;
+    private String name;
     private String description;
     @ManyToMany(mappedBy = "author")
     private List<BaseLibraryItem> work;
 
     public Author(){}
-    public Author(String[] name) {
+    public Author(String name, String description)
+    {
+        this.description=description;
         this.name = name;
     }
 
-    public String[] getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(String[] name) {
+    public void setName(String name) {
         this.name = name;
     }
 

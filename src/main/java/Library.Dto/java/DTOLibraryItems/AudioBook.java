@@ -10,9 +10,8 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name="AudioMediaItem_ID")
 public class AudioBook extends AudioMediaItem{
 
-    public AudioBook(String title, String description, LocalDate publishDate, int runtime, List<Author> authors) {
-        super(title, description, publishDate, runtime, authors);
+    public AudioBook(String title, String description, LocalDate publishDate, List<Author> authors, int quantity, int runtime) {
+        super(title, description, publishDate, authors, quantity, runtime);
     }
-
 }
 

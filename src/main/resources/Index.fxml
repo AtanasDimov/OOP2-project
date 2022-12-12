@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.IndexController">
+   <children>
+      <Label fx:id="Index_WelcomeUserLabel" layoutX="57.0" layoutY="43.0" />
+      <Button fx:id="Index_btnDynamic1" layoutX="255.0" layoutY="61.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnDynamic2" layoutX="255.0" layoutY="100.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnDynamic3" layoutX="255.0" layoutY="142.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnDynamic4" layoutX="255.0" layoutY="188.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnDynamic5" layoutX="255.0" layoutY="235.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnLogout" layoutX="238.0" layoutY="310.0" mnemonicParsing="false" text="Излизане" textFill="#000000fe">
+         <font>
+            <Font name="Agency FB" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

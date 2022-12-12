@@ -9,8 +9,8 @@ import java.util.List;
 
 @Entity
 public class ArchiveItem extends BaseLibraryItem implements LibraryItemInterface {
-    public ArchiveItem(String title, String description, String itemGenre, LocalDate publishDate, List<Author> authors) {
-        super(title, description, publishDate, authors);
+    public ArchiveItem(String title, String description, LocalDate publishDate, List<Author> authors, int quantity) {
+        super(title, description, publishDate, authors, quantity);
     }
 
     public ArchiveItem(){}
