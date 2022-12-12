@@ -22,5 +22,22 @@ public class ItemHelper {
         return itemsForArchive;
     }
 
+    public static void ReturnItem(int id){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
+
+        item.returnItem();
+
+        lr.UpdateObject(item);
+    }
+
+    public static void GiveItem(int id){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
+
+        item.giveItem();
+
+        lr.UpdateObject(item);
+    }
 
 }

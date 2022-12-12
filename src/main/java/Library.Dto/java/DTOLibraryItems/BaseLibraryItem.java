@@ -20,7 +20,7 @@ public class BaseLibraryItem implements LibraryItemInterface {
     private String itemGenre;
     private LocalDate publishDate;
 
-    private int quantity;
+    private int quantity = 0;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -90,5 +90,13 @@ public class BaseLibraryItem implements LibraryItemInterface {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void returnItem(){
+        this.quantity++;
+    }
+
+    public void giveItem(){
+        this.quantity--;
     }
 }
