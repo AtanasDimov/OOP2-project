@@ -67,4 +67,12 @@ public class ReaderAccount extends AccountBase implements BorrowItemInterface {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public double getReaderRating() {
+        return readerRating;
+    }
+
+    public void setReaderRating(double readerRating) {
+        this.readerRating = readerRating;
+    }
 }

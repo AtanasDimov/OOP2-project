@@ -32,6 +32,11 @@ public class QueryGenerator {
         return query;
     }
 
+    public static String GetReservationById(int id){
+        String query = "From Reservation Where Id = " + id;
+        return query;
+    }
+
     public static String GetActiveForms(){
         String query = "From Form Where IsActive = true";
         return query;
@@ -55,6 +60,11 @@ public class QueryGenerator {
     public static String GetItemsForArchive(){
         LocalDate date = LocalDate.now();
         String query = "From BaseLibraryItem Where PublishDate <= " + date.plus(-15, ChronoUnit.YEARS);
+        return query;
+    }
+
+    public static String GetReaderById(int id){
+        String query = "From ReaderAccount Where Id = " + id;
         return query;
     }
 }
