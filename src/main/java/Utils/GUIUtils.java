@@ -1,6 +1,7 @@
 package Utils;
 
 import com.example.librarysoftware.IndexController;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -33,6 +34,10 @@ public class GUIUtils {
         stage.setTitle(title);
         stage.setScene(new Scene(root));
         stage.show();
+    }
+    public static void OpenSecondStage(ActionEvent e,String fxmlFile,String title){
+
+
     }
 
 }

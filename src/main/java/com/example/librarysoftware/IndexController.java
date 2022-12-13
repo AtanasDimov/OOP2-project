@@ -20,7 +20,7 @@ public class IndexController implements Initializable {
         if(UserSession.isAdmin()){
 
         }
-        
+
 
         Index_btnLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override

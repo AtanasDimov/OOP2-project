@@ -67,4 +67,8 @@ public class QueryGenerator {
         String query = "From ReaderAccount Where Id = " + id;
         return query;
     }
+    public static String GetListOfAuthors(){
+        String query = "From Author";
+        return query;
+    }
 }

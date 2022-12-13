@@ -5,10 +5,14 @@ import ExceptionHandling.LibraryException;
 import ExceptionHandling.NotExistException;
 import ExceptionHandling.SeverityCodes;
 
+import Hibernate.Control.Main.HibernateMain;
+import Hibernate.Control.Main.Repository.LibraryRepository;
+import Library.Dto.java.DTOAccount.Admin;
 import Logger.Logger;
 import Utils.AccountHelper;
 
 import Utils.GUIUtils;
+import Utils.PasswordHasher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -31,7 +35,7 @@ public class LoginController {
 
         try{
             AccountHelper.LogInUser(username, password);
-            GUIUtils.changeScene(e,"Index.fxml","Добре дошли",null,null);
+            GUIUtils.changeScene(e,"/Index.fxml","Добре дошли",null,null);
         }
         catch(Exception ex){
             Logger log = new Logger();
