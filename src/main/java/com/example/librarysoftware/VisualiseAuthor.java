@@ -8,6 +8,8 @@ import Utils.QueryGenerator;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,6 +19,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,14 +42,26 @@ public class VisualiseAuthor extends Application {
             ButtonAdd.setOnAction(event -> AddToList(id));
             this.getChildren().addAll(AuthorName, AuthorDesc, ButtonAdd);
 
+
         }
         public void AddToList(int id){
             ids.add(id);
-            System.out.println(ids.get(0));
+            System.out.println(ids);
         }
     }
     public Parent createContent() {
         BorderPane layout = new BorderPane();
+        Button btnSubmit = new Button("Потвърди");
+        EventHandler<ActionEvent> event =  new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    GUIUtils.SubmitAuthor(event,"/CreateItem.fxml","Добави Артикул",ids);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
 
         List<Author> authors = new ArrayList<>();
         AuthorRepository ar = RepositoryFactory.CreateAuthorRepository();
@@ -58,9 +73,11 @@ public class VisualiseAuthor extends Application {
         }
         ListView<HBoxCell> listView = new ListView<HBoxCell>();
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);
+        btnSubmit.setOnAction(event);
+
+        layout.setBottom(btnSubmit);
         listView.setItems(myObservableList);
         layout.setCenter(listView);
-        Button btnSubmit = new Button();
 
         return layout;
     }
@@ -69,7 +86,7 @@ public class VisualiseAuthor extends Application {
     public void start(Stage stage) throws Exception {
         stage.setScene(new Scene(createContent()));
         stage.setWidth(300);
-        stage.setHeight(500);
+        stage.setHeight(400);
         stage.show();
     }
     public static void main(String args[]) {

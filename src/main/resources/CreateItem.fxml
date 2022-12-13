@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.CreateItemController">
    <children>
-      <Button fx:id="CreateItem_btnAuthor" layoutX="289.0" layoutY="210.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Добави нов автор" textFill="#18cbd1" underline="true">
+      <Button fx:id="CreateItem_btnAddAuthor" layoutX="289.0" layoutY="210.0" mnemonicParsing="false" onAction="#AddAuthor" style="-fx-background-color: transparent;" text="Добави нов автор" textFill="#19cccf" underline="true">
          <font>
             <Font size="15.0" />
          </font></Button>
@@ -20,7 +20,12 @@
       <Button fx:id="CreateItem_btnSubmit" layoutX="103.0" layoutY="305.0" mnemonicParsing="false" onAction="#Submit" text="Запази" />
       <Button fx:id="CreateItem_btnClear" layoutX="193.0" layoutY="305.0" mnemonicParsing="false" onAction="#Clear" text="Изчисти" />
       <Button fx:id="CreateItem_btnBack" layoutX="289.0" layoutY="305.0" mnemonicParsing="false" onAction="#Back" text="Назад" />
-      <ComboBox layoutX="79.0" layoutY="213.0" prefWidth="150.0" promptText="Автор артикул" />
       <ComboBox layoutX="82.0" layoutY="20.0" prefWidth="150.0" promptText="Вид на артикул" />
+      <Button fx:id="CreateItem_btnChooseAuthor" layoutX="300.0" layoutY="123.0" mnemonicParsing="false" onAction="#ChooseAuthor" prefHeight="30.0" prefWidth="146.0" style="-fx-background-color: transparent;" text="Избери Автор" textFill="#19cccf" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="Author_combobox" layoutX="82.0" layoutY="213.0" prefWidth="150.0" promptText="Избери Автор(и)" />
    </children>
 </AnchorPane>

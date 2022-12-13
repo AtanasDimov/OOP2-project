@@ -64,4 +64,9 @@ public abstract class Author implements AuthorInterface {
     public List<BaseLibraryItem> getWork(){
         return this.work;
     }
+
+    @Override
+    public String toString() {
+        return name +" "+  description;
+    }
 }
