@@ -31,6 +31,7 @@ public class LoginController {
 
         try{
             AccountHelper.LogInUser(username, password);
+            GUIUtils.changeScene(e,"Index.fxml","Добре дошли",null,null);
         }
         catch(Exception ex){
             Logger log = new Logger();
@@ -41,9 +42,7 @@ public class LoginController {
                 log.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
             }
         }
-        //if(AccountHelper user = Admin){
 
-        //}
     }
 
     public void Clear() {

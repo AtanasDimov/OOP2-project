@@ -17,6 +17,10 @@ public class IndexController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if(UserSession.isAdmin()){
+
+        }
+        
 
         Index_btnLogout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
