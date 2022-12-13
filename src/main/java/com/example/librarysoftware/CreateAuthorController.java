@@ -5,6 +5,7 @@ import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOLibraryItems.BookAuthor;
 import Library.Dto.java.DTOLibraryItems.MovieDirector;
+import Utils.AuthorFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -18,9 +19,9 @@ public class CreateAuthorController {
         String name = CreateAuthor_txtName.getText();
         String description = CreateAuthor_txtDescription.getText();
 
-        BookAuthor ba = new BookAuthor(name,description);
-        AuthorRepository lr = RepositoryFactory.CreateAuthorRepository();
-        lr.AddObject(ba);
+        BookAuthor bookAuthor = AuthorFactory.CreateBookAuthor(name, description);
+        AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
+        repository.AddObject(bookAuthor);
 
 
     }
