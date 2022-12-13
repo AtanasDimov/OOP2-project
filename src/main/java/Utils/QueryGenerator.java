@@ -71,4 +71,23 @@ public class QueryGenerator {
         String query = "From Author";
         return query;
     }
+
+    public static String GetNarrators(){
+        String query = "From Author Where discriminator = 1";
+        return query;
+    }
+    public static String GetBookAuthors(){
+        String query = "From Author Where discriminator = 2";
+        return query;
+    }
+
+    public static String GetMovieDirectors(){
+        String query = "From Author Where discriminator = 3";
+        return query;
+    }
+
+    public static String GetMusicArtists(){
+        String query = "From Author Where discriminator = 4";
+        return query;
+    }
 }

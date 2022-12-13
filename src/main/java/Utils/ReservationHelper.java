@@ -4,9 +4,12 @@ import ExceptionHandling.MissingReservationsException;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOLibraryItems.Reservation;
+import Library.Dto.java.DTOLibraryItems.ReservationDueDates;
+import Library.Dto.java.DTOLibraryItems.ReservationTypes;
 import com.example.librarysoftware.ReservationSession;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ReservationHelper {
@@ -22,8 +25,10 @@ public class ReservationHelper {
 
     }
 
-    public static boolean AddReservation(Reservation res, int itemId){
+    public static boolean AddReservation(int readerId, int itemId, String borrowDate, ReservationDueDates dueDate){
         //to add - quantity update
+        Reservation res = ReservationFactory.CreateReservation(itemId, readerId, borrowDate, dueDate);
+
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(res);
 
