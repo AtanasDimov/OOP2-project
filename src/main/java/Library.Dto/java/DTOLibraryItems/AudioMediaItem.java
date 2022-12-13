@@ -12,6 +12,12 @@ import java.util.List;
 public class AudioMediaItem extends BaseLibraryItem implements BorrowItemInterface {
     private int runtime;
 
+    public AudioMediaItem(){}
+    public AudioMediaItem(String title, String description, LocalDate publishDate, int quantity, int runtime) {
+        super(title, description, publishDate, quantity);
+        this.runtime = runtime;
+    }
+
     public AudioMediaItem(String title, String description, LocalDate publishDate, List<Author> authors, int quantity, int runtime) {
         super(title, description, publishDate, authors, quantity);
         this.runtime = runtime;

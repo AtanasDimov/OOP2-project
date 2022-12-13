@@ -11,6 +11,12 @@ import java.util.List;
 public class MusicItem extends AudioMediaItem{
     private String album;
 
+    public MusicItem(){}
+    public MusicItem(String title, String description, LocalDate publishDate, int quantity, int runtime, String album) {
+        super(title, description, publishDate, quantity, runtime);
+        this.album = album;
+    }
+
     public MusicItem(String title, String description, LocalDate publishDate, List<Author> authors, int quantity, int runtime, String album) {
         super(title, description, publishDate, authors, quantity, runtime);
         this.album = album;

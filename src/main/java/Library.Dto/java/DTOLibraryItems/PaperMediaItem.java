@@ -13,6 +13,11 @@ public class PaperMediaItem extends BaseLibraryItem implements LibraryItemInterf
 
     public PaperMediaItem(){}
 
+    public PaperMediaItem(String title, String description, LocalDate publishDate, int quantity, int pageCount) {
+        super(title, description, publishDate, quantity);
+        this.pageCount = pageCount;
+    }
+
     public PaperMediaItem(String title, String description, LocalDate publishDate, List<Author> authors, int quantity, int pageCount) {
         super(title, description, publishDate, authors, quantity);
         this.pageCount = pageCount;
