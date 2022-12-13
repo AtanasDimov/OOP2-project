@@ -26,6 +26,9 @@ public class AccountBase implements AccountsInterface {
 
     }
 
+    public int getAccountId(){
+        return accountId;
+    }
     public String getUsername() {
         return username;
     }

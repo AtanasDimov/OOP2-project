@@ -1,14 +1,20 @@
 package Utils;
 
+import ExceptionHandling.NotLoggedException;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.Alert.Alert;
+import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOAccount.ReaderAccount;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
+import Library.Dto.java.DTOLibraryItems.BorrowForm;
 import Library.Dto.java.DTOLibraryItems.Reservation;
+import com.example.librarysoftware.UserSession;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 
 public class ReaderHelper {
@@ -31,5 +37,30 @@ public class ReaderHelper {
 
         lr.UpdateObject(reader);
 
+    }
+
+    public static void BorrowItem(int itemId) throws NotLoggedException {
+        BorrowForm form = new BorrowForm();
+        AccountBase loggedInUser = new AccountBase();
+        try{
+            loggedInUser = UserSession.getInstance();
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+        int userId = loggedInUser.getAccountId();
+        LocalDate date = LocalDate.now();
+
+        form.setItemId(itemId);
+        form.setReaderId(userId);
+        form.setRequestDate(Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+
+        Alert alert = new Alert();
+        alert.setMessage("New borrow request!");
+
+        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
+        repository.AddObject(form);
+        repository = RepositoryFactory.CreateLibraryRepository();
+        repository.AddObject(alert);
     }
 }
