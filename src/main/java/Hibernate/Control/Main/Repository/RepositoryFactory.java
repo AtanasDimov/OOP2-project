@@ -7,8 +7,8 @@ public class RepositoryFactory {
         return new LibraryRepository(new HibernateMain());
     }
 
-    public static BookRepository CreateBookRepository(){
-        return new BookRepository(new HibernateMain());
+    public static ItemRepository CreateBookRepository(){
+        return new ItemRepository(new HibernateMain());
     }
 
     public static AuthorRepository CreateAuthorRepository(){

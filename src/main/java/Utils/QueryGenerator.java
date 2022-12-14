@@ -90,4 +90,29 @@ public class QueryGenerator {
         String query = "From Author Where discriminator = 4";
         return query;
     }
+
+    public static String GetBookItems(){
+        String query = "From BookItem";
+        return query;
+    }
+
+    public static String GetArchiveItems(){
+        String query = "From ArchiveItem";
+        return query;
+    }
+
+    public static String GetAudioBooks(){
+        String query = "From AudioBook";
+        return query;
+    }
+
+    public static String GetMovies(){
+        String query = "From Movies";
+        return query;
+    }
+
+    public static String GetMusicItems(){
+        String query = "From MusicItem";
+        return query;
+    }
 }
