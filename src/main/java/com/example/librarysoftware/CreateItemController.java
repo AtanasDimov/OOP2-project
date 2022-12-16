@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,7 +28,10 @@ import java.util.ResourceBundle;
 public class CreateItemController implements Initializable {
     private  List<Integer> ids= new ArrayList<>();
 
-
+    @FXML
+    private ComboBox<MoviesAgeRating> CreateItem_MovieRating;
+    @FXML
+    private DatePicker CreateItem_PublishDate;
     @FXML
     private ComboBox<String> CreateItem_Combobox;
     @FXML
@@ -64,28 +68,28 @@ public class CreateItemController implements Initializable {
         switch(CreateItem_Combobox.getValue()){
             case "Книга":{
 
-
                 String pageCount = CreateItem_DynamicText4.getText();
-
                 BookItem book = ItemFactory.CreateBookItem(title,description, LocalDate.now(),Integer.parseInt(quantity),Integer.parseInt(pageCount));
                 ItemHelper.CreateItem(book,ids);
-
-
 
             }break;
             case "Музикални дискове/плочи":{
                 String runtime = CreateItem_DynamicText4.getText();
                 String album = CreateItem_DynamicText5.getText();
                // MusicItem music = ItemFactory.CreateMusicItem(title,description, LocalDate.now())
-
+                MusicItem musicItem = ItemFactory.CreateMusicItem(title,description,LocalDate.now(),Integer.parseInt(quantity),Integer.parseInt(runtime),album);
+                ItemHelper.CreateItem(musicItem,ids);
             }break;
             case "Аудио Книга":{
                 String runtime = CreateItem_DynamicText4.getText();
-
+                AudioBook audioBook = ItemFactory.CreateAudioBook(title,description,LocalDate.now(),Integer.parseInt(quantity),Integer.parseInt(runtime));
+                ItemHelper.CreateItem(audioBook,ids);
             }break;
             case "Филми":{
                 String runtime = CreateItem_DynamicText4.getText();
                 String videoQuality = CreateItem_DynamicText5.getText();
+                String rating = CreateItem_MovieRating.getValue().toString();
+                Movies movie = ItemFactory.CreateMovie(title,description,LocalDate.now(),Integer.parseInt(quantity),Integer.parseInt(runtime),videoQuality,rating);
             }break;
 
 
@@ -108,28 +112,37 @@ public class CreateItemController implements Initializable {
         CreateItem_DynamicText1.setPromptText("Заглавие");
         CreateItem_DynamicText2.setPromptText("Описание");
         CreateItem_DynamicText3.setPromptText("Количество");
+        CreateItem_DynamicText4.setPromptText("Брой страници");
+        CreateItem_DynamicText5.setVisible(false);
+        CreateItem_MovieRating.setVisible(false);
+        CreateItem_PublishDate.setVisible(false);
         //CreateItem_DynamicText1.setPromptText("Дата на публикация");
 
         CreateItem_Combobox.setItems(options);
         CreateItem_Combobox.setValue("Книга");
         CreateItem_Combobox.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == "Книга"){
-
-                CreateItem_DynamicText4.setVisible(true);
+            switch(newValue){
+                case "Книга": {
                 CreateItem_DynamicText4.setPromptText("Брой страници");
                 CreateItem_DynamicText5.setVisible(false);
-
-            }else if (newValue == "Музикални дискове/плочи"){
-
+            }break;
+                case "Музикални дискове/плочи":{
+                CreateItem_DynamicText5.setVisible(true);
                 CreateItem_DynamicText4.setPromptText("Продължителност");
                 CreateItem_DynamicText5.setPromptText("Албум");
-            }else if (newValue == "Аудио Книга"){
+            }break;
+                case"Аудио Книга":{
                 CreateItem_DynamicText4.setPromptText("Продължителност");
                 CreateItem_DynamicText5.setVisible(false);
-            }else if  (newValue == "Филми"){
+            }break;
+                case "Филми": {
+                CreateItem_DynamicText5.setVisible(true);
+                CreateItem_MovieRating.setVisible(true);
+                CreateItem_MovieRating.getItems().setAll(MoviesAgeRating.values());
                 CreateItem_DynamicText4.setPromptText("Продължителност");
                 CreateItem_DynamicText5.setPromptText("Видео Качество");
-            }
+
+            }}
 
         });
 
