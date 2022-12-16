@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 public class CreateItemController implements Initializable {
     private  List<Integer> ids= new ArrayList<>();
 
+
     @FXML
     private ComboBox<String> CreateItem_Combobox;
     @FXML
@@ -62,6 +63,7 @@ public class CreateItemController implements Initializable {
 
         switch(CreateItem_Combobox.getValue()){
             case "Книга":{
+
 
                 String pageCount = CreateItem_DynamicText4.getText();
 
@@ -113,6 +115,7 @@ public class CreateItemController implements Initializable {
         CreateItem_Combobox.valueProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue == "Книга"){
 
+                CreateItem_DynamicText4.setVisible(true);
                 CreateItem_DynamicText4.setPromptText("Брой страници");
                 CreateItem_DynamicText5.setVisible(false);
 

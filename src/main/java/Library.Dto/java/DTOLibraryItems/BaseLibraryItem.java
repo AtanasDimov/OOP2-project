@@ -85,10 +85,17 @@ public class BaseLibraryItem implements LibraryItemInterface {
     }
 
     public void addAuthor(Author author){
+
+        if (this.author == null){
+            this.author = new ArrayList<>();
+        }
         this.author.add(author);
     }
 
     public void addAuthorRange(List<Author> authors){
+        if (this.author == null){
+            this.author = new ArrayList<>();
+        }
         this.author.addAll(authors);
     }
 
