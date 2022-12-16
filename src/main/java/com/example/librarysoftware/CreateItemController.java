@@ -28,6 +28,8 @@ import java.util.ResourceBundle;
 public class CreateItemController implements Initializable {
     private  List<Integer> ids= new ArrayList<>();
 
+    List<Author> authors = new ArrayList<>();
+
     @FXML
     private ComboBox<MoviesAgeRating> CreateItem_MovieRating;
     @FXML
@@ -120,35 +122,69 @@ public class CreateItemController implements Initializable {
 
         CreateItem_Combobox.setItems(options);
         CreateItem_Combobox.setValue("Книга");
+        changeAuthors("Книга");
         CreateItem_Combobox.valueProperty().addListener((observable, oldValue, newValue) -> {
             switch(newValue){
                 case "Книга": {
-                CreateItem_DynamicText4.setPromptText("Брой страници");
-                CreateItem_DynamicText5.setVisible(false);
-            }break;
+                    changeAuthors(newValue);
+                    CreateItem_DynamicText4.setPromptText("Брой страници");
+                    CreateItem_DynamicText5.setVisible(false);
+                }break;
                 case "Музикални дискове/плочи":{
-                CreateItem_DynamicText5.setVisible(true);
-                CreateItem_DynamicText4.setPromptText("Продължителност");
-                CreateItem_DynamicText5.setPromptText("Албум");
-            }break;
+                    changeAuthors(newValue);
+                    CreateItem_DynamicText5.setVisible(true);
+                    CreateItem_DynamicText4.setPromptText("Продължителност");
+                    CreateItem_DynamicText5.setPromptText("Албум");
+                }break;
                 case"Аудио Книга":{
-                CreateItem_DynamicText4.setPromptText("Продължителност");
-                CreateItem_DynamicText5.setVisible(false);
-            }break;
+                    changeAuthors(newValue);
+                    CreateItem_DynamicText4.setPromptText("Продължителност");
+                    CreateItem_DynamicText5.setVisible(false);
+                }break;
                 case "Филми": {
-                CreateItem_DynamicText5.setVisible(true);
-                CreateItem_MovieRating.setVisible(true);
-                CreateItem_MovieRating.getItems().setAll(MoviesAgeRating.values());
-                CreateItem_DynamicText4.setPromptText("Продължителност");
-                CreateItem_DynamicText5.setPromptText("Видео Качество");
-
-            }}
+                    changeAuthors(newValue);
+                    CreateItem_DynamicText5.setVisible(true);
+                    CreateItem_MovieRating.setVisible(true);
+                    CreateItem_MovieRating.getItems().setAll(MoviesAgeRating.values());
+                    CreateItem_DynamicText4.setPromptText("Продължителност");
+                    CreateItem_DynamicText5.setPromptText("Видео Качество");
+                }}
 
         });
 
-        List<Author> authors = new ArrayList<>();
-        AuthorRepository ar = RepositoryFactory.CreateAuthorRepository();
-        authors = (List<Author>)(Object) ar.GetListOfObject(QueryGenerator.GetListOfAuthors());
+        //AuthorRepository ar = RepositoryFactory.CreateAuthorRepository();
+        //authors = (List<Author>)(Object) ar.GetListOfObject(QueryGenerator.GetListOfAuthors());
+        /*Author_combobox.getItems().setAll(authors);
+        Author_combobox.setOnAction(event -> {
+            Author selecteditem = Author_combobox.getSelectionModel().getSelectedItem();
+            ids.add(selecteditem.getId());
+            System.out.println(ids.get(0));
+
+        });*/
+
+
+    }
+
+    private void changeAuthors(String item){
+        AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
+        switch(item){
+            case "Книга":{
+                authors = (List<Author>) (Object)repository.GetBookAuthors();
+            }
+            break;
+            case "Музикални дискове/плочи": {
+                authors = (List<Author>) (Object)repository.GetMusicArtists();
+            }
+            break;
+            case "Аудио Книга": {
+                authors = (List<Author>) (Object)repository.GetAudioBookNarrators();
+            }
+            break;
+            case "Филми": {
+                authors = (List<Author>) (Object)repository.GetMovieDirectors();
+            }
+        }
+
         Author_combobox.getItems().setAll(authors);
         Author_combobox.setOnAction(event -> {
             Author selecteditem = Author_combobox.getSelectionModel().getSelectedItem();
@@ -156,7 +192,5 @@ public class CreateItemController implements Initializable {
             System.out.println(ids.get(0));
 
         });
-
-
     }
 }
