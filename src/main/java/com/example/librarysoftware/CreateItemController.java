@@ -37,8 +37,6 @@ public class CreateItemController implements Initializable {
     @FXML
     private ComboBox<String> CreateItem_Combobox;
     @FXML
-    private Button CreateItem_btnAuthor;
-    @FXML
     private TextField CreateItem_DynamicText1;
     @FXML
     private TextField CreateItem_DynamicText2;
@@ -64,6 +62,7 @@ public class CreateItemController implements Initializable {
         String title = CreateItem_DynamicText1.getText();
         String description = CreateItem_DynamicText2.getText();
         String quantity = CreateItem_DynamicText3.getText();
+        LocalDate publishDate = CreateItem_PublishDate.getValue();
 
 
 
@@ -71,27 +70,26 @@ public class CreateItemController implements Initializable {
             case "Книга":{
 
                 String pageCount = CreateItem_DynamicText4.getText();
-                BookItem book = ItemFactory.CreateBookItem(title,description, LocalDate.now(),Integer.parseInt(quantity),Integer.parseInt(pageCount));
+                BookItem book = ItemFactory.CreateBookItem(title,description, publishDate,Integer.parseInt(quantity),Integer.parseInt(pageCount));
                 ItemHelper.CreateItem(book,ids);
 
             }break;
             case "Музикални дискове/плочи":{
                 String runtime = CreateItem_DynamicText4.getText();
                 String album = CreateItem_DynamicText5.getText();
-               // MusicItem music = ItemFactory.CreateMusicItem(title,description, LocalDate.now())
-                MusicItem musicItem = ItemFactory.CreateMusicItem(title,description,LocalDate.now(),Integer.parseInt(quantity),Integer.parseInt(runtime),album);
+                MusicItem musicItem = ItemFactory.CreateMusicItem(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime),album);
                 ItemHelper.CreateItem(musicItem,ids);
             }break;
             case "Аудио Книга":{
                 String runtime = CreateItem_DynamicText4.getText();
-                AudioBook audioBook = ItemFactory.CreateAudioBook(title,description,LocalDate.now(),Integer.parseInt(quantity),Integer.parseInt(runtime));
+                AudioBook audioBook = ItemFactory.CreateAudioBook(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime));
                 ItemHelper.CreateItem(audioBook,ids);
             }break;
             case "Филми":{
                 String runtime = CreateItem_DynamicText4.getText();
                 String videoQuality = CreateItem_DynamicText5.getText();
                 String rating = CreateItem_MovieRating.getValue().toString();
-                Movies movie = ItemFactory.CreateMovie(title,description,LocalDate.now(),Integer.parseInt(quantity),Integer.parseInt(runtime),videoQuality,rating);
+                Movies movie = ItemFactory.CreateMovie(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime),videoQuality,rating);
             }break;
 
 
@@ -105,16 +103,12 @@ public class CreateItemController implements Initializable {
         CreateItem_DynamicText4.clear();
         CreateItem_DynamicText5.clear();
         CreateItem_Combobox.setValue("Книга");
-        Author_combobox.setValue(null);
+        changeAuthors("Книга");
+        ids = new ArrayList<>();
 
     }
-    public void Back(){
-
-    }
-    public void ChooseAuthor(){
-      /*  Stage stage = new Stage();
-        VisualiseAuthor vs = new VisualiseAuthor();
-        try{vs.start(stage);}catch (Exception ex){}*/
+    public void Back(ActionEvent event){
+        GUIUtils.changeScene(event,"/Index.fxml","Индекс");
     }
     public void AddAuthor(ActionEvent event){
         GUIUtils.changeScene(event,"/CreateAuthor.fxml","Create");
@@ -128,8 +122,7 @@ public class CreateItemController implements Initializable {
         CreateItem_DynamicText4.setPromptText("Брой страници");
         CreateItem_DynamicText5.setVisible(false);
         CreateItem_MovieRating.setVisible(false);
-        CreateItem_PublishDate.setVisible(false);
-        //CreateItem_DynamicText1.setPromptText("Дата на публикация");
+        CreateItem_PublishDate.setPromptText("Дата на издаване");
 
         CreateItem_Combobox.setItems(options);
         CreateItem_Combobox.setValue("Книга");
@@ -163,21 +156,14 @@ public class CreateItemController implements Initializable {
 
         });
 
-        //AuthorRepository ar = RepositoryFactory.CreateAuthorRepository();
-        //authors = (List<Author>)(Object) ar.GetListOfObject(QueryGenerator.GetListOfAuthors());
-        /*Author_combobox.getItems().setAll(authors);
-        Author_combobox.setOnAction(event -> {
-            Author selecteditem = Author_combobox.getSelectionModel().getSelectedItem();
-            ids.add(selecteditem.getId());
-            System.out.println(ids.get(0));
-
-        });*/
 
 
     }
 
     private void changeAuthors(String item){
+        ids = new ArrayList<>();
         AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
+
         switch(item){
             case "Книга":{
                 authors = (List<Author>) (Object)repository.GetBookAuthors();

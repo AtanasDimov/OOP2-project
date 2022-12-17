@@ -22,13 +22,8 @@
       <Button fx:id="CreateItem_btnClear" layoutX="193.0" layoutY="305.0" mnemonicParsing="false" onAction="#Clear" text="Изчисти" />
       <Button fx:id="CreateItem_btnBack" layoutX="289.0" layoutY="305.0" mnemonicParsing="false" onAction="#Back" text="Назад" />
       <ComboBox fx:id="CreateItem_Combobox" layoutX="82.0" layoutY="20.0" prefWidth="150.0" promptText="Вид на артикул" />
-      <Button fx:id="CreateItem_btnChooseAuthor" layoutX="390.0" layoutY="43.0" mnemonicParsing="false" onAction="#ChooseAuthor" prefHeight="30.0" prefWidth="146.0" style="-fx-background-color: transparent;" text="Избери Автор" textFill="#19cccf" underline="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
       <ComboBox fx:id="Author_combobox" layoutX="82.0" layoutY="213.0" prefWidth="150.0" promptText="Избери Автор(и)" />
-      <DatePicker fx:id="CreateItem_PublishDate" layoutX="282.0" layoutY="96.0" promptText="Дата на публикация" />
-      <ComboBox fx:id="CreateItem_MovieRating" layoutX="275.0" layoutY="151.0" prefWidth="150.0" promptText="Родителски контрол " />
+      <DatePicker fx:id="CreateItem_PublishDate" layoutX="366.0" layoutY="83.0" promptText="Дата на публикация" />
+      <ComboBox fx:id="CreateItem_MovieRating" layoutX="318.0" layoutY="151.0" prefWidth="150.0" promptText="Родителски контрол " />
    </children>
 </AnchorPane>

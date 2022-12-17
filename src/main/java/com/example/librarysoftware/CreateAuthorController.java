@@ -27,8 +27,7 @@ public class CreateAuthorController {
             "Лит. Автор",
             "Муз. Изпълнител/ Композитор",
             "Озвуч. на Аудио Книга",
-            "Филмов Режисьор",
-            "Издателство"
+            "Филмов Режисьор"
     );
     @FXML
     public void initialize() {
@@ -60,7 +59,6 @@ public class CreateAuthorController {
                 AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
                 repository.AddObject(movieDirector);
             }break;
-            case"Издателство":{}break;
         }
 
 
@@ -73,8 +71,6 @@ public class CreateAuthorController {
     }
     public void Back(ActionEvent event){
         GUIUtils.changeScene(event,"/CreateItem.fxml","Добавяне на книга");
-
-
     }
 
 
