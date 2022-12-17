@@ -17,7 +17,7 @@ public class BaseLibraryItem implements LibraryItemInterface {
     private UUID readerID = null;
     private String title;
     private String description;
-    private String itemGenre;
+
     private LocalDate publishDate;
 
     private int quantity = 0;
@@ -43,14 +43,6 @@ public class BaseLibraryItem implements LibraryItemInterface {
         this.publishDate = publishDate;
         author.addAll(authors);
         this.quantity = quantity;
-    }
-
-    public String getItemGenre() {
-        return itemGenre;
-    }
-
-    public void setItemGenre(String itemGenre) {
-        this.itemGenre = itemGenre;
     }
 
     public LocalDate getPublishDate() {
