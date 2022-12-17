@@ -5,6 +5,7 @@ import Utils.GUIUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class RegistrationController {
@@ -15,7 +16,7 @@ public class RegistrationController {
     @FXML
     private TextField CreateReader_Username;
     @FXML
-    private TextField CreateReader_Password;
+    private PasswordField CreateReader_Password;
 
     @FXML
     private Button CreateReader_Submit;
@@ -34,7 +35,10 @@ public class RegistrationController {
 
     }
     public void Clear(){
-
+        CreateReader_FirstName.clear();
+        CreateReader_LastName.clear();
+        CreateReader_Username.clear();
+        CreateReader_Password.clear();
     }
     public void Login(ActionEvent e){
         GUIUtils.changeScene(e,"/Login.fxml","Вписване");

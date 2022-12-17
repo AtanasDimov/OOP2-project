@@ -9,4 +9,7 @@ public class MusicArtist extends Author{
     public MusicArtist(String name, String description) {
         super(name, description);
     }
+
+    public MusicArtist() {
+    }
 }

@@ -10,4 +10,7 @@ public class AudioBookNarrator extends Author{
     public AudioBookNarrator(String name, String description) {
         super(name, description);
     }
+
+    public AudioBookNarrator() {
+    }
 }
