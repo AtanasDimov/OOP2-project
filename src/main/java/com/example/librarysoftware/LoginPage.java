@@ -11,8 +11,8 @@ public class LoginPage extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
-        primaryStage.setTitle("УЙ");
+        Parent root = FXMLLoader.load(getClass().getResource("/CreateAuthor.fxml"));
+        primaryStage.setTitle("Вписване");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
