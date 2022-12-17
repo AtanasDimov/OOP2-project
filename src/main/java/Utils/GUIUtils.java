@@ -13,24 +13,14 @@ import java.io.IOException;
 import java.util.List;
 
 public class GUIUtils {
-    public static void changeScene(ActionEvent event,String fxmlFile,String title,String username,String password){
+    public static void changeScene(ActionEvent event, String fxmlFile, String title) {
         Parent root = null;
-        if (username !=null && password !=null){
-            try{
-                FXMLLoader loader = new FXMLLoader(GUIUtils.class.getResource(fxmlFile));
-                root = loader.load();
-                IndexController ic = loader.getController();
-
-            }catch(IOException e){
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                root = FXMLLoader.load(GUIUtils.class.getResource(fxmlFile));
-            }catch (IOException e) {
+        try {
+            root = FXMLLoader.load(GUIUtils.class.getResource(fxmlFile));
+        } catch (IOException e) {
             e.printStackTrace();
-            }
         }
+
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setTitle(title);
         stage.setScene(new Scene(root));

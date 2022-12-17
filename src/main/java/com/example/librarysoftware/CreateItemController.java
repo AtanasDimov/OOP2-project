@@ -96,15 +96,26 @@ public class CreateItemController implements Initializable {
         }
 
     }
-    public void Clear(){}
-    public void Back(){}
+    public void Clear(){
+        CreateItem_DynamicText1.clear();
+        CreateItem_DynamicText2.clear();
+        CreateItem_DynamicText3.clear();
+        CreateItem_DynamicText4.clear();
+        CreateItem_DynamicText5.clear();
+        CreateItem_Combobox.setValue("Книга");
+        Author_combobox.setValue(null);
+
+    }
+    public void Back(){
+
+    }
     public void ChooseAuthor(){
       /*  Stage stage = new Stage();
         VisualiseAuthor vs = new VisualiseAuthor();
         try{vs.start(stage);}catch (Exception ex){}*/
     }
     public void AddAuthor(ActionEvent event){
-        GUIUtils.changeScene(event,"/CreateAuthor.fxml","Create",null,null );
+        GUIUtils.changeScene(event,"/CreateAuthor.fxml","Create");
     }
 
     @Override

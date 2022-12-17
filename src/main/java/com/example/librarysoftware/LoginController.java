@@ -35,7 +35,7 @@ public class LoginController {
 
         try{
             AccountHelper.LogInUser(username, password);
-            GUIUtils.changeScene(e,"/Index.fxml","Добре дошли",null,null);
+            GUIUtils.changeScene(e,"/Index.fxml","Добре дошли");
         }
         catch(Exception ex){
             Logger log = new Logger();
@@ -57,7 +57,7 @@ public class LoginController {
     }
 
     public void Register(ActionEvent e){
-        GUIUtils.changeScene(e, "/Register.fxml","Регистрация на читател:",null,null);
+        GUIUtils.changeScene(e, "/Register.fxml","Регистрация на читател:");
     }
 
 }

@@ -37,7 +37,7 @@ public class RegistrationController {
 
     }
     public void Login(ActionEvent e){
-        GUIUtils.changeScene(e,"/Login.fxml","Вписване",null,null);
+        GUIUtils.changeScene(e,"/Login.fxml","Вписване");
     }
 
 }
