@@ -17,8 +17,6 @@ public class ReaderAccount extends AccountBase implements BorrowItemInterface {
     private LocalDate firstRegistration;
     private String firstName;
     private String lastName;
-    //list of borrowed books at the moment and in the past
-    //private List<BorrowItemInterface> borrowedItems;
     private double readerRating;
 
     public ReaderAccount(String firstName, String lastName, String username, String password) {
@@ -29,28 +27,13 @@ public class ReaderAccount extends AccountBase implements BorrowItemInterface {
     }
 
     public ReaderAccount() {
-     //   firstRegistration = null;
-    }
 
-    /*public List<BorrowItemInterface> getBorrowedItems() {
-        return borrowedItems;
-    }
-
-    public void setBorrowedItems(List<BorrowItemInterface> borrowedItems) {
-        this.borrowedItems = borrowedItems;
-    }*/
-
-    public ReaderAccount(LocalDate firstRegistration, String firstName, String lastName) {
-       // this.firstRegistration = firstRegistration;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        //this.borrowedItems = new ArrayList<>();
     }
 
 
-    //public LocalDate getFirstRegistration() {
-      //  return firstRegistration;
-    //}
+    public LocalDate getFirstRegistration() {
+        return firstRegistration;
+    }
 
     public String getFirstName() {
         return firstName;
