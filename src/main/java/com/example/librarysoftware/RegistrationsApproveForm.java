@@ -31,7 +31,7 @@ public class RegistrationsApproveForm extends Application {
         Button btnAdd = new Button();
         Button btnRemove = new Button();
 
-        HBoxCell(String firstName, String lastName,String username, String password, int formId) {
+        HBoxCell(String firstName, String lastName,String username, int formId) {
             super();
 
 
@@ -64,7 +64,7 @@ public class RegistrationsApproveForm extends Application {
         List<HBoxCell> list = new ArrayList<>();
 
         for(Form r: registerForms){
-            list.add(new HBoxCell(r.getFirstName(),r.getLastName(),r.getUsername(),r.getPassword(),r.getId()));
+            list.add(new HBoxCell(r.getFirstName(),r.getLastName(),r.getUsername(),r.getId()));
         }
         ListView<HBoxCell> listView = new ListView<HBoxCell>();
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);
