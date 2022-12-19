@@ -53,6 +53,7 @@ public class Reservation {
     public int getId(){
         return this.Id;
     }
+    public int getReaderId(){return this.ReaderId;}
 
     public String getType() {
         return Type;

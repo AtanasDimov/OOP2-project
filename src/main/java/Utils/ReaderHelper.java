@@ -4,6 +4,8 @@ import ExceptionHandling.NotLoggedException;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.Alert.Alert;
+import Library.Dto.java.Alert.AlertFactory;
+import Library.Dto.java.Alert.AlertSeverity;
 import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOAccount.ReaderAccount;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
@@ -55,8 +57,7 @@ public class ReaderHelper {
         form.setReaderId(userId);
         form.setRequestDate(Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
-        Alert alert = new Alert();
-        alert.setMessage("New borrow request!");
+        Alert alert = AlertFactory.CreateAlert("New borrow request!", AlertSeverity.NewReservation);
 
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         repository.AddObject(form);

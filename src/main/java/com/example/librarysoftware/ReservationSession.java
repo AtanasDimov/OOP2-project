@@ -3,9 +3,15 @@ package com.example.librarysoftware;
 import ExceptionHandling.LibraryException;
 import ExceptionHandling.MissingReservationsException;
 import ExceptionHandling.SeverityCodes;
+import Hibernate.Control.Main.Repository.LibraryRepository;
+import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.Alert.Alert;
+import Library.Dto.java.Alert.AlertFactory;
+import Library.Dto.java.Alert.AlertSeverity;
 import Library.Dto.java.DTOLibraryItems.Reservation;
 import Logger.Logger;
 import Utils.ItemHelper;
+import Utils.QueryGenerator;
 import Utils.ReaderHelper;
 import Utils.ReservationHelper;
 
@@ -75,7 +81,20 @@ public class ReservationSession {
 
         @Override
         public void run() {
+            Reservation reservation = reservations.stream().filter(res -> id == res.getId()).findFirst().orElse(null);
+            int readerId = reservation.getReaderId();
 
+            LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
+
+            String firstName = (String)repository.GetObject(QueryGenerator.GetReaderFirstNameById(readerId));
+            String lastName = (String)repository.GetObject(QueryGenerator.GetReaderLastNameById(readerId));
+
+            String message = "Reader" + firstName + " " + lastName + " has reservation " + id + " overdue!";
+
+            Alert alert = AlertFactory.CreateAlert(message, AlertSeverity.OverDue);
+            repository.AddObject(alert);
+
+            repository.CloseSession();
         }
     }
 }

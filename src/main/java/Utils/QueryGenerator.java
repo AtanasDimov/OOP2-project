@@ -124,4 +124,14 @@ public class QueryGenerator {
         String query = "From MusicItem";
         return query;
     }
+
+    public static String GetReaderFirstNameById(int id){
+        String query = "Select firstname FROM Accounts WHERE id = " + id;
+        return query;
+    }
+
+    public static String GetReaderLastNameById(int id){
+        String query = "SELECT lastname FROM Accounts WHERE id = " + id;
+        return query;
+    }
 }

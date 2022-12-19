@@ -3,6 +3,9 @@ package Utils;
 import Hibernate.Control.Main.Repository.AuthorRepository;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.Alert.Alert;
+import Library.Dto.java.Alert.AlertFactory;
+import Library.Dto.java.Alert.AlertSeverity;
 import Library.Dto.java.DTOLibraryItems.ArchiveItem;
 import Library.Dto.java.DTOLibraryItems.Author;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
@@ -26,6 +29,19 @@ public class ItemHelper {
         List<BaseLibraryItem> itemsForArchive = (List<BaseLibraryItem>)(Object)lr.GetListOfObject(QueryGenerator.GetItemsForArchive());
         lr.CloseSession();
         return itemsForArchive;
+    }
+
+    public static void AlertForArchive(){
+        List<BaseLibraryItem> itemsForArchive = GetItemsForArchive();
+        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
+
+        for(BaseLibraryItem item : itemsForArchive){
+            String message = "Item with id:" + item.getId() + " and name:" + item.getTitle() + " needs to be added for archive!";
+            Alert alert = AlertFactory.CreateAlert(message, AlertSeverity.ArchiveNeed);
+            repository.AddObject(alert);
+        }
+
+        repository.CloseSession();
     }
 
     public static void ReturnItem(int id){
