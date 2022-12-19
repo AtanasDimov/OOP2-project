@@ -36,6 +36,7 @@ public class ItemHelper {
 
         itemsForArchive.stream()
                 .filter(o -> o.getPublishDate().isBefore(thresholdDate))
+                .filter(o -> !(o instanceof ArchiveItem))
                 .collect(Collectors.toList());
 
         return itemsForArchive;
