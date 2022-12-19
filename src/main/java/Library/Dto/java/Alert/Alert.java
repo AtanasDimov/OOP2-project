@@ -14,6 +14,8 @@ public class Alert {
     private LocalDate DateOfAlert;
     private String Severity;
 
+
+
     public Alert(String message, AlertSeverity severity) {
         Message = message;
         DateOfAlert = LocalDate.now();
@@ -38,6 +40,21 @@ public class Alert {
 
     public void setMessage(String message) {
         Message = message;
+    }
+    public LocalDate getDateOfAlert() {
+        return DateOfAlert;
+    }
+
+    public void setDateOfAlert(LocalDate dateOfAlert) {
+        DateOfAlert = dateOfAlert;
+    }
+
+    public String getSeverity() {
+        return Severity;
+    }
+
+    public void setSeverity(String severity) {
+        Severity = severity;
     }
 
 }
