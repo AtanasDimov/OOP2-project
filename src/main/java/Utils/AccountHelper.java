@@ -67,6 +67,7 @@ public class AccountHelper {
 
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(operator);
+        lr.CloseSession();
 
         return true;
     }
@@ -85,8 +86,9 @@ public class AccountHelper {
 
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(form);
-        lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(alert);
+
+        lr.CloseSession();
 
         return true;
     }
@@ -100,8 +102,8 @@ public class AccountHelper {
     private static void UnsignReader(int id){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         ReaderAccount reader = (ReaderAccount) lr.GetObject(QueryGenerator.GetReaderById(id));
-
         lr.DeleteObject(reader);
+        lr.CloseSession();
     }
 
     private static String HashPassword(String password){
