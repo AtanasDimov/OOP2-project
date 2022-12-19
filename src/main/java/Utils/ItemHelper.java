@@ -11,8 +11,10 @@ import Library.Dto.java.DTOLibraryItems.Author;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 import com.sun.jmx.mbeanserver.Repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemHelper {
     public static void ArchiveItem(int id){
@@ -25,9 +27,17 @@ public class ItemHelper {
     }
 
     public static List<BaseLibraryItem> GetItemsForArchive(){
-        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
-        List<BaseLibraryItem> itemsForArchive = (List<BaseLibraryItem>)(Object)lr.GetListOfObject(QueryGenerator.GetItemsForArchive());
-        lr.CloseSession();
+        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
+        List<BaseLibraryItem> itemsForArchive = (List<BaseLibraryItem>)(Object)repository.GetListOfObject(QueryGenerator.GetItems());
+
+        LocalDate currentDate = LocalDate.now();
+
+        LocalDate thresholdDate = currentDate.minusYears(15);
+
+        itemsForArchive.stream()
+                .filter(o -> o.getPublishDate().isBefore(thresholdDate))
+                .collect(Collectors.toList());
+
         return itemsForArchive;
     }
 
@@ -74,9 +84,8 @@ public class ItemHelper {
 
     public static void CreateItem(BaseLibraryItem item, List<Integer> authorId){
         List<Author> authors = new ArrayList<>();
-        LibraryRepository repository;
+        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         for(int id : authorId){
-            repository = RepositoryFactory.CreateLibraryRepository();
             Author authorFromDb = (Author)repository.GetObject(QueryGenerator.AuthorGetById(id));
             authors.add(authorFromDb);
         }
