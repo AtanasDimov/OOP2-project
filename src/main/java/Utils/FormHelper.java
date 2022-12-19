@@ -11,12 +11,14 @@ public class FormHelper {
     public static List<Form> GetAllActiveForms(){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         List<Form> activeForms = (List<Form>)(Object)lr.GetListOfObject(QueryGenerator.GetActiveForms());
+        lr.CloseSession();
         return activeForms;
     }
 
     public static int GetNumberOfActiveForms(){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         int count = (int)lr.GetObject(QueryGenerator.GetNumberOfActiveForms());
+        lr.CloseSession();
         return count;
     }
 
@@ -31,6 +33,7 @@ public class FormHelper {
         lr = RepositoryFactory.CreateLibraryRepository();
         lr.UpdateObject(form);
 
+        lr.CloseSession();
         AccountHelper.RegisterReader(reader);
     }
 
@@ -42,6 +45,8 @@ public class FormHelper {
 
         lr = RepositoryFactory.CreateLibraryRepository();
         lr.UpdateObject(form);
+
+        lr.CloseSession();
     }
 
     public static void CreateForm(String firstName, String lastName, String username, String password){
