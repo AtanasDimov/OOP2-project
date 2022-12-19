@@ -3,10 +3,7 @@ package com.example.librarysoftware;
 import Hibernate.Control.Main.Repository.AuthorRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOLibraryItems.*;
-import Utils.GUIUtils;
-import Utils.ItemFactory;
-import Utils.ItemHelper;
-import Utils.QueryGenerator;
+import Utils.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -50,11 +47,11 @@ public class CreateItemController implements Initializable {
     private ComboBox<Author> Author_combobox;
 
     private ObservableList<String>options= FXCollections.observableArrayList(
-            "Книга",
-            "Музикални дискове/плочи",
-            "Аудио Книга",
-            "Филми",
-            "Речници,ръководства, методики и др."
+            LibraryDictionary.Book,
+            LibraryDictionary.MusicDisc,
+            LibraryDictionary.AudioBook,
+            LibraryDictionary.Movies,
+            LibraryDictionary.DictionariesAndOthers
     );
 
 
@@ -67,25 +64,25 @@ public class CreateItemController implements Initializable {
 
 
         switch(CreateItem_Combobox.getValue()){
-            case "Книга":{
+            case LibraryDictionary.Book:{
 
                 String pageCount = CreateItem_DynamicText4.getText();
                 BookItem book = ItemFactory.CreateBookItem(title,description, publishDate,Integer.parseInt(quantity),Integer.parseInt(pageCount));
                 ItemHelper.CreateItem(book,ids);
 
             }break;
-            case "Музикални дискове/плочи":{
+            case LibraryDictionary.MusicDisc:{
                 String runtime = CreateItem_DynamicText4.getText();
                 String album = CreateItem_DynamicText5.getText();
                 MusicItem musicItem = ItemFactory.CreateMusicItem(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime),album);
                 ItemHelper.CreateItem(musicItem,ids);
             }break;
-            case "Аудио Книга":{
+            case LibraryDictionary.AudioBook:{
                 String runtime = CreateItem_DynamicText4.getText();
                 AudioBook audioBook = ItemFactory.CreateAudioBook(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime));
                 ItemHelper.CreateItem(audioBook,ids);
             }break;
-            case "Филми":{
+            case LibraryDictionary.Movies:{
                 String runtime = CreateItem_DynamicText4.getText();
                 String videoQuality = CreateItem_DynamicText5.getText();
                 String rating = CreateItem_MovieRating.getValue().toString();
@@ -102,8 +99,8 @@ public class CreateItemController implements Initializable {
         CreateItem_DynamicText3.clear();
         CreateItem_DynamicText4.clear();
         CreateItem_DynamicText5.clear();
-        CreateItem_Combobox.setValue("Книга");
-        changeAuthors("Книга");
+        CreateItem_Combobox.setValue(LibraryDictionary.Book);
+        changeAuthors(LibraryDictionary.Book);
         ids = new ArrayList<>();
 
     }
@@ -125,27 +122,27 @@ public class CreateItemController implements Initializable {
         CreateItem_PublishDate.setPromptText("Дата на издаване");
 
         CreateItem_Combobox.setItems(options);
-        CreateItem_Combobox.setValue("Книга");
-        changeAuthors("Книга");
+        CreateItem_Combobox.setValue(LibraryDictionary.Book);
+        changeAuthors(LibraryDictionary.Book);
         CreateItem_Combobox.valueProperty().addListener((observable, oldValue, newValue) -> {
             switch(newValue){
-                case "Книга": {
+                case LibraryDictionary.Book: {
                     changeAuthors(newValue);
                     CreateItem_DynamicText4.setPromptText("Брой страници");
                     CreateItem_DynamicText5.setVisible(false);
                 }break;
-                case "Музикални дискове/плочи":{
+                case LibraryDictionary.MusicDisc:{
                     changeAuthors(newValue);
                     CreateItem_DynamicText5.setVisible(true);
                     CreateItem_DynamicText4.setPromptText("Продължителност");
                     CreateItem_DynamicText5.setPromptText("Албум");
                 }break;
-                case"Аудио Книга":{
+                case LibraryDictionary.AudioBook:{
                     changeAuthors(newValue);
                     CreateItem_DynamicText4.setPromptText("Продължителност");
                     CreateItem_DynamicText5.setVisible(false);
                 }break;
-                case "Филми": {
+                case LibraryDictionary.Movies: {
                     changeAuthors(newValue);
                     CreateItem_DynamicText5.setVisible(true);
                     CreateItem_MovieRating.setVisible(true);
@@ -170,28 +167,28 @@ public class CreateItemController implements Initializable {
         }
         List<Author> selected = new ArrayList<>();
         switch(item){
-            case "Книга":{
+            case LibraryDictionary.Book:{
                 for(Author a : authors){
                     if(a instanceof BookAuthor)
                         selected.add(a);
                 }
             }
             break;
-            case "Музикални дискове/плочи": {
+            case LibraryDictionary.MusicDisc: {
                 for(Author a : authors){
                     if(a instanceof MusicArtist)
                         selected.add(a);
                 }
             }
             break;
-            case "Аудио Книга": {
+            case LibraryDictionary.AudioBook: {
                 for(Author a : authors){
                     if(a instanceof AudioBookNarrator)
                         selected.add(a);
                 }
             }
             break;
-            case "Филми": {
+            case LibraryDictionary.Movies: {
                 for(Author a : authors){
                     if(a instanceof MovieDirector)
                         selected.add(a);
