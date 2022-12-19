@@ -182,6 +182,7 @@ public class CreateItemController implements Initializable {
             }
         }
 
+        repository.CloseSession();
         Author_combobox.getItems().setAll(authors);
         Author_combobox.setOnAction(event -> {
             Author selecteditem = Author_combobox.getSelectionModel().getSelectedItem();
