@@ -28,9 +28,20 @@ public class FormHelper {
 
         ReaderAccount reader = new ReaderAccount(form.getFirstName(), form.getLastName(), form.getUsername(), form.getPassword());
 
+        lr = RepositoryFactory.CreateLibraryRepository();
         lr.UpdateObject(form);
 
         AccountHelper.RegisterReader(reader);
+    }
+
+    public static void DeclineForm(int id){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        Form form = (Form)lr.GetObject(QueryGenerator.GetForm(id));
+        form.setAccepted(false);
+        form.setActive(false);
+
+        lr = RepositoryFactory.CreateLibraryRepository();
+        lr.UpdateObject(form);
     }
 
     public static void CreateForm(String firstName, String lastName, String username, String password){

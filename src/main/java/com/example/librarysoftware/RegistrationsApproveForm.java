@@ -3,6 +3,7 @@ package com.example.librarysoftware;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.Form.Form;
+import Utils.FormHelper;
 import Utils.QueryGenerator;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -40,17 +41,17 @@ public class RegistrationsApproveForm extends Application {
             btnAdd.setText("Одобри");
             btnRemove.setText("Отхвърли");
 
-            btnAdd.setOnAction(event -> AddForm(firstName,lastName,username,password,formId));
+            btnAdd.setOnAction(event -> AddForm(formId));
             btnRemove.setOnAction(event -> RemoveForm(formId));
             this.getChildren().addAll(readerFirstName,readerLastName,readerUsername,btnAdd,btnRemove);
 
 
         }
-        private void AddForm(String firstName, String lastName,String username, String password, int formId){
-
+        private void AddForm(int formId){
+            FormHelper.AcceptForm(formId);
         }
         private void RemoveForm(int formId){
-
+            FormHelper.DeclineForm(formId);
         }
 
 
@@ -59,8 +60,7 @@ public class RegistrationsApproveForm extends Application {
     public Parent createContent() {
         BorderPane layout = new BorderPane();
         List<Form> registerForms = new ArrayList<>();
-        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
-        registerForms = (List<Form>) (Object) repository.GetListOfObject(QueryGenerator.GetActiveForms());
+        registerForms = FormHelper.GetAllActiveForms();
         List<HBoxCell> list = new ArrayList<>();
 
         for(Form r: registerForms){
