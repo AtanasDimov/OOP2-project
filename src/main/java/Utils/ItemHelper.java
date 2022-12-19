@@ -18,11 +18,13 @@ public class ItemHelper {
         ArchiveItem archived = (ArchiveItem) item;
         lr.DeleteObject(item);
         lr.AddObject(archived);
+        lr.CloseSession();
     }
 
     public static List<BaseLibraryItem> GetItemsForArchive(){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         List<BaseLibraryItem> itemsForArchive = (List<BaseLibraryItem>)(Object)lr.GetListOfObject(QueryGenerator.GetItemsForArchive());
+        lr.CloseSession();
         return itemsForArchive;
     }
 
@@ -33,6 +35,7 @@ public class ItemHelper {
         item.returnItem();
 
         lr.UpdateObject(item);
+        lr.CloseSession();
     }
 
     public static void GiveItem(int id){
@@ -42,6 +45,7 @@ public class ItemHelper {
         item.giveItem();
 
         lr.UpdateObject(item);
+        lr.CloseSession();
     }
 
     public static void RemoveItem(int id){
@@ -49,6 +53,7 @@ public class ItemHelper {
         BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
 
         lr.DeleteObject(item);
+        lr.CloseSession();
     }
 
     public static void CreateItem(BaseLibraryItem item, List<Integer> authorId){
@@ -62,5 +67,6 @@ public class ItemHelper {
         repository = RepositoryFactory.CreateLibraryRepository();
         item.addAuthorRange(authors);
         repository.AddObject(item);
+        repository.CloseSession();
     }
 }

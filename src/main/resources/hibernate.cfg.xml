@@ -16,6 +16,7 @@
     <mapping class="Library.Dto.java.DTOAccount.AccountBase"/>
     <mapping class="Library.Dto.java.DTOAccount.Admin"/>
     <mapping class="Library.Dto.java.DTOAccount.OperatorAccount"/>
+    <mapping class="Library.Dto.java.DTOAccount.ReaderAccount"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.BookAuthor"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.BookItem"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.Author"/>

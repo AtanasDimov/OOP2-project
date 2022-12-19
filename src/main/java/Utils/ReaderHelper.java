@@ -36,7 +36,7 @@ public class ReaderHelper {
         else reader.setReaderRating(3);
 
         lr.UpdateObject(reader);
-
+        lr.CloseSession();
     }
 
     public static void BorrowItem(int itemId) throws NotLoggedException {
@@ -60,7 +60,7 @@ public class ReaderHelper {
 
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         repository.AddObject(form);
-        repository = RepositoryFactory.CreateLibraryRepository();
         repository.AddObject(alert);
+        repository.CloseSession();
     }
 }

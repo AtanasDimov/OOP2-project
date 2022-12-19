@@ -21,6 +21,7 @@ public class ReservationHelper {
             throw new MissingReservationsException();
         }
 
+        lr.CloseSession();
         return  reservations;
 
     }
@@ -36,6 +37,8 @@ public class ReservationHelper {
 
         ReservationSession.AddReservation(res);
 
+        lr.CloseSession();
+
         return true;
     }
 
@@ -43,6 +46,7 @@ public class ReservationHelper {
         //to add - quantity update
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.DeleteObject(res);
+        lr.CloseSession();
     }
 
 }

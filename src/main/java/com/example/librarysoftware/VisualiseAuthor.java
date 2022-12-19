@@ -67,6 +67,7 @@ public class VisualiseAuthor extends Application {
         AuthorRepository ar = RepositoryFactory.CreateAuthorRepository();
         authors = (List<Author>)(Object) ar.GetListOfObject(QueryGenerator.GetListOfAuthors());
         List<HBoxCell> list = new ArrayList<>();
+        ar.CloseSession();
 
         for (Author a:authors) {
             list.add(new HBoxCell( a.getName()+" ",a.getDescription()+" ",a.getId()));

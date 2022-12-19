@@ -26,6 +26,7 @@ public class AccountHelper {
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         AccountBase account = (AccountBase) lr.GetObject(QueryGenerator.GetLoginQuery(username, hashedPass));
 
+        lr.CloseSession();
         if(account == null){
             return false;
         }
@@ -42,6 +43,7 @@ public class AccountHelper {
                 LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
                 AccountBase account = (AccountBase) lr.GetObject(QueryGenerator.GetLoginQuery(username, hashedPass));
 
+                lr.CloseSession();
                 return UserSession.logIn(account);
             }
             else{
@@ -67,6 +69,7 @@ public class AccountHelper {
 
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(operator);
+        lr.CloseSession();
 
         return true;
     }
@@ -85,8 +88,9 @@ public class AccountHelper {
 
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(form);
-        lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(alert);
+
+        lr.CloseSession();
 
         return true;
     }
@@ -95,13 +99,14 @@ public class AccountHelper {
     public static void RegisterReader(ReaderAccount reader){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(reader);
+        lr.CloseSession();
     }
 
     private static void UnsignReader(int id){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         ReaderAccount reader = (ReaderAccount) lr.GetObject(QueryGenerator.GetReaderById(id));
-
         lr.DeleteObject(reader);
+        lr.CloseSession();
     }
 
     private static String HashPassword(String password){
