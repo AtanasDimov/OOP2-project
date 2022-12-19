@@ -97,6 +97,7 @@ public class AccountHelper {
     public static void RegisterReader(ReaderAccount reader){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(reader);
+        lr.CloseSession();
     }
 
     private static void UnsignReader(int id){
