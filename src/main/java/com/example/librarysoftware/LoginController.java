@@ -13,6 +13,7 @@ import Logger.Logger;
 import Utils.AccountHelper;
 
 import Utils.GUIUtils;
+import Utils.ItemHelper;
 import Utils.PasswordHasher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +37,9 @@ public class LoginController {
 
         try{
             AccountHelper.LogInUser(username, password);
+            if(UserSession.isAdmin() || UserSession.isOperator()){
+                ItemHelper.AlertForArchive();
+            }
             GUIUtils.changeScene(e,"/Index.fxml","Добре дошли");
         }
         catch(Exception ex){

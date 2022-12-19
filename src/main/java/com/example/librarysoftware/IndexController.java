@@ -5,6 +5,7 @@ import ExceptionHandling.NotLoggedException;
 import ExceptionHandling.SeverityCodes;
 import Logger.Logger;
 import Utils.GUIUtils;
+import Utils.ItemHelper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -81,9 +82,11 @@ public class IndexController implements Initializable {
 
 
 
-            } else if (UserSession.isOperator()) {
+            }
+            else if (UserSession.isOperator()) {
 
-            } else {
+            }
+            else {
 
             }
 
