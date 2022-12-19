@@ -14,13 +14,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class RegistrationForm extends Application {
+public class RegistrationsApproveForm extends Application {
 
     public static class HBoxCell extends HBox {
         Label readerFirstName = new Label();
@@ -77,9 +78,10 @@ public class RegistrationForm extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene((createContent())));
-        stage.setWidth(600);
-        stage.setHeight(500);
+        Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene((createContent()),600,500));
+
         stage.show();
     }
     public static void main(String args[]) {

@@ -13,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,6 +66,16 @@ public class IndexController implements Initializable {
                 Index_btnDynamic2.setText("Добавяне на артикул в библиотека");
                 Index_btnDynamic2.setOnAction(event -> {
                     GUIUtils.changeScene(event,"/CreateItem.fxml","Добавяне на артикул");
+                });
+                Index_btnDynamic3.setVisible(true);
+                Index_btnDynamic3.setText("Одобряване на читателски регистрации");
+                Index_btnDynamic3.setOnAction(event -> {
+                    RegistrationsApproveForm form = new RegistrationsApproveForm();
+                    try {
+                        form.start(new Stage());
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                 });
 
 

@@ -57,6 +57,11 @@ public class QueryGenerator {
         return query;
     }
 
+    public static String GetItems(){
+        String query = "From BaseLibraryItem";
+        return query;
+    }
+
     public static String GetItemsForArchive(){
         LocalDate date = LocalDate.now();
         String query = "From BaseLibraryItem Where PublishDate <= " + date.plus(-15, ChronoUnit.YEARS);
