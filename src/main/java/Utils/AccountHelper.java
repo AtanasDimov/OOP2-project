@@ -26,6 +26,7 @@ public class AccountHelper {
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         AccountBase account = (AccountBase) lr.GetObject(QueryGenerator.GetLoginQuery(username, hashedPass));
 
+        lr.CloseSession();
         if(account == null){
             return false;
         }
@@ -42,6 +43,7 @@ public class AccountHelper {
                 LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
                 AccountBase account = (AccountBase) lr.GetObject(QueryGenerator.GetLoginQuery(username, hashedPass));
 
+                lr.CloseSession();
                 return UserSession.logIn(account);
             }
             else{
