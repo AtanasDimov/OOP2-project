@@ -105,21 +105,21 @@ public class CreateItemController implements Initializable {
 
     }
     public void Back(ActionEvent event){
-        GUIUtils.changeScene(event,"/Index.fxml","Индекс");
+        GUIUtils.changeScene(event,"/Index.fxml",LibraryDictionary.IndexTitle);
     }
     public void AddAuthor(ActionEvent event){
-        GUIUtils.changeScene(event,"/CreateAuthor.fxml","Create");
+        GUIUtils.changeScene(event,"/CreateAuthor.fxml",LibraryDictionary.CreateTitle);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CreateItem_DynamicText1.setPromptText("Заглавие");
-        CreateItem_DynamicText2.setPromptText("Описание");
-        CreateItem_DynamicText3.setPromptText("Количество");
-        CreateItem_DynamicText4.setPromptText("Брой страници");
+        CreateItem_DynamicText1.setPromptText(LibraryDictionary.Title);
+        CreateItem_DynamicText2.setPromptText(LibraryDictionary.Description);
+        CreateItem_DynamicText3.setPromptText(LibraryDictionary.Quantity);
+        CreateItem_DynamicText4.setPromptText(LibraryDictionary.NumberOfPages);
         CreateItem_DynamicText5.setVisible(false);
         CreateItem_MovieRating.setVisible(false);
-        CreateItem_PublishDate.setPromptText("Дата на издаване");
+        CreateItem_PublishDate.setPromptText(LibraryDictionary.PublishDate);
 
         CreateItem_Combobox.setItems(options);
         CreateItem_Combobox.setValue(LibraryDictionary.Book);
@@ -128,18 +128,18 @@ public class CreateItemController implements Initializable {
             switch(newValue){
                 case LibraryDictionary.Book: {
                     changeAuthors(newValue);
-                    CreateItem_DynamicText4.setPromptText("Брой страници");
+                    CreateItem_DynamicText4.setPromptText(LibraryDictionary.NumberOfPages);
                     CreateItem_DynamicText5.setVisible(false);
                 }break;
                 case LibraryDictionary.MusicDisc:{
                     changeAuthors(newValue);
                     CreateItem_DynamicText5.setVisible(true);
-                    CreateItem_DynamicText4.setPromptText("Продължителност");
-                    CreateItem_DynamicText5.setPromptText("Албум");
+                    CreateItem_DynamicText4.setPromptText(LibraryDictionary.Runtime);
+                    CreateItem_DynamicText5.setPromptText(LibraryDictionary.Album);
                 }break;
                 case LibraryDictionary.AudioBook:{
                     changeAuthors(newValue);
-                    CreateItem_DynamicText4.setPromptText("Продължителност");
+                    CreateItem_DynamicText4.setPromptText(LibraryDictionary.Runtime);
                     CreateItem_DynamicText5.setVisible(false);
                 }break;
                 case LibraryDictionary.Movies: {
@@ -147,8 +147,8 @@ public class CreateItemController implements Initializable {
                     CreateItem_DynamicText5.setVisible(true);
                     CreateItem_MovieRating.setVisible(true);
                     CreateItem_MovieRating.getItems().setAll(MoviesAgeRating.values());
-                    CreateItem_DynamicText4.setPromptText("Продължителност");
-                    CreateItem_DynamicText5.setPromptText("Видео Качество");
+                    CreateItem_DynamicText4.setPromptText(LibraryDictionary.Runtime);
+                    CreateItem_DynamicText5.setPromptText(LibraryDictionary.VideoQuality);
                 }}
 
         });
