@@ -38,29 +38,26 @@ public class CreateAuthorController {
     public void Submit(){
         String name = CreateAuthor_txtName.getText();
         String description = CreateAuthor_txtDescription.getText();
+        AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
         switch(CreateAuthor_ComboBox.getValue()){
             case"Лит. Автор":{
                 BookAuthor bookAuthor = AuthorFactory.CreateBookAuthor(name,description);
-                AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
                 repository.AddObject(bookAuthor);
             }break;
             case"Муз. Изпълнител/ Композитор":{
                 MusicArtist musicArtist = AuthorFactory.CreateMusicArtist(name,description);
-                AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
                 repository.AddObject(musicArtist);
             }break;
             case"Озвуч. на Аудио Книга":{
                 AudioBookNarrator narrator = AuthorFactory.CreateAudioBookNarrator(name,description);
-                AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
                 repository.AddObject(narrator);
             }break;
             case"Филмов Режисьор":{
                 MovieDirector movieDirector = AuthorFactory.CreateMovieDirector(name,description);
-                AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
                 repository.AddObject(movieDirector);
             }break;
         }
-
+        repository.CloseSession();
 
     }
     public void Clear(){
