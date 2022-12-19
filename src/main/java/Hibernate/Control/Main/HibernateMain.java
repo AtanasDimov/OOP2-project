@@ -115,8 +115,12 @@ public class HibernateMain {
 
     public void CloseSession()
     {
-        session.close();
-        factory.close();
+        if(session != null && factory != null )
+        {
+            session.close();
+            factory.close();
+        }
+
     }
 }
 

@@ -164,26 +164,43 @@ public class CreateItemController implements Initializable {
         ids = new ArrayList<>();
         AuthorRepository repository = RepositoryFactory.CreateAuthorRepository();
 
+        if(authors.size() == 0)
+        {
+            authors = (List<Author>) (Object)repository.GetListOfObject(QueryGenerator.GetListOfAuthors());
+        }
+        List<Author> selected = new ArrayList<>();
         switch(item){
             case "Книга":{
-                authors = (List<Author>) (Object)repository.GetBookAuthors();
+                for(Author a : authors){
+                    if(a instanceof BookAuthor)
+                        selected.add(a);
+                }
             }
             break;
             case "Музикални дискове/плочи": {
-                authors = (List<Author>) (Object)repository.GetMusicArtists();
+                for(Author a : authors){
+                    if(a instanceof MusicArtist)
+                        selected.add(a);
+                }
             }
             break;
             case "Аудио Книга": {
-                authors = (List<Author>) (Object)repository.GetAudioBookNarrators();
+                for(Author a : authors){
+                    if(a instanceof AudioBookNarrator)
+                        selected.add(a);
+                }
             }
             break;
             case "Филми": {
-                authors = (List<Author>) (Object)repository.GetMovieDirectors();
+                for(Author a : authors){
+                    if(a instanceof MovieDirector)
+                        selected.add(a);
+                }
             }
         }
 
         repository.CloseSession();
-        Author_combobox.getItems().setAll(authors);
+        Author_combobox.getItems().setAll(selected);
         Author_combobox.setOnAction(event -> {
             Author selecteditem = Author_combobox.getSelectionModel().getSelectedItem();
             ids.add(selecteditem.getId());
