@@ -139,4 +139,16 @@ public class QueryGenerator {
         String query = "SELECT lastname FROM Accounts WHERE id = " + id;
         return query;
     }
+    public static String GetBorrowForms(){
+        String query = "From BorrowForm";
+        return query;
+    }
+    public static String GetUsernameById(int id) {
+        String query = "Select username FROM Accounts WHERE id =" +id;
+        return query;
+    }
+    public static String GetItemTitleById(int id){
+        String query = "Select title From BaseLibraryItem Where Id ="+id;
+        return query;
+    }
 }
