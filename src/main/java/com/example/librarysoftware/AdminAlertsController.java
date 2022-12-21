@@ -6,6 +6,7 @@ import Utils.GUIUtils;
 import Utils.QueryGenerator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -26,11 +27,14 @@ public class AdminAlertsController implements Initializable {
     @FXML
     private TableView<Alert> AdminAlerts_Tableview;
 
+    public void Back(ActionEvent event){
+        GUIUtils.changeScene(event,"/AdminPanel.fxml","Контролен панел/оператори");
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        AdminAlerts_btnBack.setOnAction(event -> {
-            GUIUtils.changeScene(event,"/AdminPanel.fxml","Контролен панел/оператори");
-        });
+
         List<Alert> alerts = new ArrayList<>();
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         alerts = (List<Alert>) (Object) repository.GetListOfObject(QueryGenerator.GetAlerts());
