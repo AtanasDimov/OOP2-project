@@ -94,7 +94,9 @@ public class ItemHelper {
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         for(int id : authorId){
             Author authorFromDb = (Author)repository.GetObject(QueryGenerator.AuthorGetById(id));
+            authorFromDb.addWork(item);
             authors.add(authorFromDb);
+            repository.CloseSession();
         }
         repository = RepositoryFactory.CreateLibraryRepository();
         item.addAuthorRange(authors);

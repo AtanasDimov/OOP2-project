@@ -1,8 +1,14 @@
 package com.example.librarysoftware;
 
+import Hibernate.Control.Main.Repository.AuthorRepository;
+import Hibernate.Control.Main.Repository.ItemRepository;
+import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.DTOLibraryItems.Author;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
+import Library.Dto.java.DTOLibraryItems.BookItem;
 import Utils.ItemHelper;
 import Utils.LibraryDictionary;
+import Utils.ReaderHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,6 +62,7 @@ public class BorrowItemController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         items = ItemHelper.GetItems();
+        //BookItem item = repository.GetEagerBook(items.get(0).getId());
         //TableColumn<>
         //columns = Name,Description,PublishDate,Author,
 

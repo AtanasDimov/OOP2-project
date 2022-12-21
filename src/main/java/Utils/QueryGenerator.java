@@ -28,7 +28,7 @@ public class QueryGenerator {
     }
 
     public static String GetLoadLazyDataBookItemsQuery() {
-        String query = "FROM BaseLibraryItem b LEFT JOIN FETCH b.author";
+        String query = "FROM BaseLibraryItem b LEFT OUTER JOIN FETCH b.author";
         return query;
     }
 
