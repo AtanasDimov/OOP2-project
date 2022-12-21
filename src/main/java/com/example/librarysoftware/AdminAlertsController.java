@@ -38,6 +38,7 @@ public class AdminAlertsController implements Initializable {
         List<Alert> alerts = new ArrayList<>();
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         alerts = (List<Alert>) (Object) repository.GetListOfObject(QueryGenerator.GetAlerts());
+
         TableColumn<Alert, String> column1 = new TableColumn<>("Id");
         column1.setCellValueFactory(new PropertyValueFactory<>("id"));
         AdminAlerts_Tableview.getColumns().add(column1);

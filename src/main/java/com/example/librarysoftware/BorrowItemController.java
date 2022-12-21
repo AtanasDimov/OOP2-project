@@ -1,5 +1,6 @@
 package com.example.librarysoftware;
 
+import Library.Dto.java.DTOLibraryItems.Author;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 import Utils.ItemHelper;
 import Utils.LibraryDictionary;
@@ -9,8 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -56,7 +59,20 @@ public class BorrowItemController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         items = ItemHelper.GetItems();
-        //TableColumn<>
+
+        TableColumn<BaseLibraryItem, String> column1 = new TableColumn<>("Заглавие");
+        column1.setCellValueFactory(new PropertyValueFactory<>("title"));
+        BorrowItem_Tableview.getColumns().add(column1);
+        TableColumn<BaseLibraryItem, String> column2 = new TableColumn<>("Описание");
+        column1.setCellValueFactory(new PropertyValueFactory<>("description"));
+        BorrowItem_Tableview.getColumns().add(column2);
+        TableColumn<BaseLibraryItem, LocalDate> column3 = new TableColumn<>("Дата на Публикация");
+        column1.setCellValueFactory(new PropertyValueFactory<>("publishDate"));
+        BorrowItem_Tableview.getColumns().add(column3);
+        TableColumn<BaseLibraryItem, Author> column4 = new TableColumn<>("Автор");
+        column1.setCellValueFactory(new PropertyValueFactory<>("author"));
+        BorrowItem_Tableview.getColumns().add(column4);
+        BorrowItem_Tableview.setItems(FXCollections.observableArrayList(items));
         //columns = Name,Description,PublishDate,Author,
 
         BorrowItem_FilterCombobox.setItems(options);

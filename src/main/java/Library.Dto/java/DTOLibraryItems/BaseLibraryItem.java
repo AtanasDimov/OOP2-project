@@ -112,4 +112,14 @@ public class BaseLibraryItem implements LibraryItemInterface {
     public void giveItem(){
         this.quantity--;
     }
+
+    @Override
+    public String toString() {
+        return "BaseLibraryItem{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", publishDate=" + publishDate +
+                ", author=" + author +
+                '}';
+    }
 }
