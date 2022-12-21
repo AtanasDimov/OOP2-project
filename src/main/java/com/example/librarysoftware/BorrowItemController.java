@@ -1,11 +1,13 @@
 package com.example.librarysoftware;
 
+import ExceptionHandling.LibraryException;
+import ExceptionHandling.NotLoggedException;
+import ExceptionHandling.SeverityCodes;
 import Hibernate.Control.Main.Repository.AuthorRepository;
 import Hibernate.Control.Main.Repository.ItemRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
-import Library.Dto.java.DTOLibraryItems.Author;
-import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
-import Library.Dto.java.DTOLibraryItems.BookItem;
+import Library.Dto.java.DTOLibraryItems.*;
+import Logger.Logger;
 import Utils.ItemHelper;
 import Utils.LibraryDictionary;
 import Utils.ReaderHelper;
@@ -15,15 +17,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class BorrowItemController implements Initializable {
 
-    List<BaseLibraryItem> items = new ArrayList<>();
+    private List<BaseLibraryItem> items = new ArrayList<>();
+    private int itemId = -1;
     @FXML
     private Button BorrowItem_btnBack;
     @FXML
@@ -46,10 +51,24 @@ public class BorrowItemController implements Initializable {
     );
 
     public void Borrow(ActionEvent event){
-
+        if(itemId == -1){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Трябва да изберете библ. артикул!?");
+            a.show();
+            return;
+        }
+        try {
+            ReaderHelper.BorrowItem(itemId);
+            BorrowItem_SelectedItemLabel.setText("Моля изчакайте одобрение на вашата заявка");
+        } catch (NotLoggedException e){
+            Logger log = new Logger();
+            log.LogException(new LibraryException(e.getMessage(), SeverityCodes.Severe));
+        }
     }
 
     public void Clear(){
+        itemId = -1;
+        BorrowItem_SelectedItemLabel.setText("");
 
     }
 
@@ -57,33 +76,83 @@ public class BorrowItemController implements Initializable {
 
     }
 
+    public void SetupTableview(List<BaseLibraryItem> displayItems){
+        TableColumn<BaseLibraryItem, String> column1 = new TableColumn<>("Заглавие");
+        column1.setCellValueFactory(new PropertyValueFactory<>("title"));
+        BorrowItem_Tableview.getColumns().add(column1);
+        TableColumn<BaseLibraryItem, String> column2 = new TableColumn<>("Описание");
+        column2.setCellValueFactory(new PropertyValueFactory<>("description"));
+        BorrowItem_Tableview.getColumns().add(column2);
+        TableColumn<BaseLibraryItem, LocalDate> column3 = new TableColumn<>("Дата на публикация");
+        column3.setCellValueFactory(new PropertyValueFactory<>("publishDate"));
+        BorrowItem_Tableview.getColumns().add(column3);
+        TableColumn<BaseLibraryItem, String> column4 = new TableColumn<>("Автор");
+        column4.setCellValueFactory(new PropertyValueFactory<>("author"));
+        BorrowItem_Tableview.getColumns().add(column4);
+
+        BorrowItem_Tableview.setItems(FXCollections.observableArrayList(displayItems));
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         items = ItemHelper.GetItems();
+
+
+
         //BookItem item = repository.GetEagerBook(items.get(0).getId());
         //TableColumn<>
         //columns = Name,Description,PublishDate,Author,
 
+        SetupTableview(items);
         BorrowItem_FilterCombobox.setItems(options);
-        /*BorrowItem_FilterCombobox.valueProperty().addListener((observable, oldValue, newValue) -> {
+        BorrowItem_FilterCombobox.valueProperty().addListener((observable, oldValue, newValue) -> {
+           List<BaseLibraryItem> selected= new ArrayList<>();
             switch(newValue){
                 case LibraryDictionary.Book:{
-
+                    for(BaseLibraryItem b : items){
+                        if(b instanceof BookItem)
+                            selected.add(b);
+                    }
+                    SetupTableview(selected);
                 }break;
                 case LibraryDictionary.MusicDisc:{
-
+                    for(BaseLibraryItem b : items){
+                        if(b instanceof MusicItem)
+                            selected.add(b);
+                    }
+                    SetupTableview(selected);
                 }break;
                 case LibraryDictionary.AudioBook:{
-
+                    for(BaseLibraryItem b : items){
+                        if(b instanceof AudioBook)
+                            selected.add(b);
+                    }
+                    SetupTableview(selected);
                 }break;
                 case LibraryDictionary.Movies:{
-
+                    for(BaseLibraryItem b : items){
+                        if(b instanceof Movies)
+                            selected.add(b);
+                    }
+                    SetupTableview(selected);
                 }break;
            }
 
-        });*/
+        });
+        BorrowItem_Tableview.setRowFactory(tv -> {
+            TableRow<BaseLibraryItem> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    BaseLibraryItem rowData = row.getItem();
+                    BorrowItem_SelectedItemLabel.setText(rowData.getTitle());
+                    itemId = rowData.getId();
+                }
+            });
+            return row ;
+        });
+
 
     }
 }

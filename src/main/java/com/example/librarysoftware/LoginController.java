@@ -59,6 +59,8 @@ public class LoginController {
         Login_Password.clear();
         Login_Username.clear();
 
+
+
     }
 
     public void Register(ActionEvent e){

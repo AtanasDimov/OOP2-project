@@ -40,12 +40,12 @@ public class ItemHelper {
 
         LocalDate thresholdDate = currentDate.minusYears(15);
 
-        itemsForArchive.stream()
+        List<BaseLibraryItem> i = itemsForArchive.stream()
                 .filter(o -> o.getPublishDate().isBefore(thresholdDate))
                 .filter(o -> !(o instanceof ArchiveItem))
                 .collect(Collectors.toList());
 
-        return itemsForArchive;
+        return i;
     }
 
     public static void AlertForArchive(){
@@ -91,8 +91,9 @@ public class ItemHelper {
 
     public static void CreateItem(BaseLibraryItem item, List<Integer> authorId){
         List<Author> authors = new ArrayList<>();
-        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
+        LibraryRepository repository;
         for(int id : authorId){
+            repository = RepositoryFactory.CreateLibraryRepository();
             Author authorFromDb = (Author)repository.GetObject(QueryGenerator.AuthorGetById(id));
             authorFromDb.addWork(item);
             authors.add(authorFromDb);
