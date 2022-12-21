@@ -27,6 +27,11 @@ public class QueryGenerator {
         return query;
     }
 
+    public static String GetLoadLazyDataBookItemsQuery() {
+        String query = "FROM BaseLibraryItem b LEFT JOIN FETCH b.author";
+        return query;
+    }
+
     public static String GetListOfReservations(){
         String query = "From Reservation";
         return query;

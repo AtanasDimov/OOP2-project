@@ -15,5 +15,5 @@ public class LibraryDictionary {
     public static final String Album = "Албум";
     public static final String VideoQuality = "Видео Качество";
     public static final String IndexTitle = "Индекс";
-    public static final String CreateTitle = "Create";
+    public static final String CreateTitle = "Добави Автор";
 }

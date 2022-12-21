@@ -12,6 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemHelper {
+    public static List<BaseLibraryItem> GetItems(){
+        List<BaseLibraryItem> items = new ArrayList<>();
+        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
+        items = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetLoadLazyDataBookItemsQuery());
+        return items;
+    }
     public static void ArchiveItem(int id){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
