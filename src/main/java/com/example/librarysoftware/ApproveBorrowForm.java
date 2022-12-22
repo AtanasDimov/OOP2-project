@@ -1,9 +1,12 @@
 package com.example.librarysoftware;
 
+import Library.Dto.java.DTOLibraryItems.Reservation;
 import Library.Dto.java.DTOLibraryItems.ReservationDueDates;
 import Library.Dto.java.DTOLibraryItems.ReservationTypes;
 import Library.Dto.java.Form.Form;
 import Utils.FormHelper;
+import Utils.QueryGenerator;
+import Utils.ReaderHelper;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,32 +31,38 @@ public class ApproveBorrowForm extends Application {
         Label readerUsername = new Label();
         Label ItemTitle = new Label();
         Button btnApprove = new Button();
-        Button btnDeny = new Button();
-        ComboBox<String> dueDate = new ComboBox<>();
-        ComboBox<String> reservationType = new ComboBox<>();
-        HBoxCell(String firstName, String lastName,String username, int formId) {
+        Button btnReject = new Button();
+        ComboBox<String> dueDates = new ComboBox<>();
+        ComboBox<String> reservationTypes = new ComboBox<>();
+        HBoxCell( int readerId, int itemId,LocalDate dueDate,ReservationTypes reservationType) {
             super();
-            ObservableList<String> dueDateList = FXCollections.observableArrayList();
-            ObservableList<String> reservationTypeList = FXCollections.observableArrayList();
-            Arrays.stream(ReservationDueDates.values()).forEach(d -> dueDateList.add(d.toString()));
-            Arrays.stream(ReservationTypes.values()).forEach(d -> reservationTypeList.add(d.toString()));
-            readerFirstName.setText(firstName + " ");
-            readerLastName.setText(lastName + " ");
-            readerUsername.setText(username + " ");
+            ObservableList<String> dueDatesList = FXCollections.observableArrayList();
+            ObservableList<String> reservationsTypeList = FXCollections.observableArrayList();
+            Arrays.stream(ReservationDueDates.values()).forEach(d -> dueDatesList.add(d.toString()));
+            Arrays.stream(ReservationTypes.values()).forEach(d -> reservationsTypeList.add(d.toString()));
+
+            dueDates.setItems(dueDatesList);
+            dueDates.setPromptText("Период на заемане");
+            reservationTypes.setItems(reservationsTypeList);
+            reservationTypes.setPromptText("Вид на заемане");
+
+            readerUsername.setText(QueryGenerator.GetReaderById(readerId) + " ");
+            ItemTitle.setText(QueryGenerator.GetItemById(itemId) + " ");
+
             btnApprove.setText("Одобри");
-            btnDeny.setText("Отхвърли");
+            btnReject.setText("Отхвърли");
 
-            btnApprove.setOnAction(event -> AddForm(formId));
-            btnRemove.setOnAction(event -> RemoveForm(formId));
-            this.getChildren().addAll(readerFirstName,readerLastName,readerUsername,btnAdd,btnRemove);
+            btnApprove.setOnAction(event -> ApproveReservation());
+            btnReject.setOnAction(event -> RejectReservation());
+            this.getChildren().addAll(readerUsername,ItemTitle,dueDates,reservationTypes,btnApprove,btnReject);
 
 
         }
-        private void ApproveReservation(int formId,int borrowId){
-            FormHelper.AcceptForm(formId);
+        private void ApproveReservation(int borrowId, int readerId, int itemId, LocalDate dueBy, String reservationType){
+
         }
-        private void DenyReservation(int formId,int borrowId){
-            FormHelper.DeclineForm(formId);
+        private void RejectReservation(int borrowId){
+
         }
 
 
@@ -60,12 +70,12 @@ public class ApproveBorrowForm extends Application {
     }
     public Parent createContent() {
         BorderPane layout = new BorderPane();
-        List<Form> registerForms = new ArrayList<>();
-        registerForms = FormHelper.GetAllActiveForms();
-        List<RegistrationsApproveForm.HBoxCell> list = new ArrayList<>();
+        List<Reservation> reservationsList = new ArrayList<>()
 
-        for(Form r: registerForms){
-            list.add(new RegistrationsApproveForm.HBoxCell(r.getFirstName(),r.getLastName(),r.getUsername(),r.getId()));
+        List<HBoxCell> list = new ArrayList<>();
+
+        for(Reservation r: reservationsList){
+            list.add(new HBoxCell(r.getReaderId(),r.getId(),r.getDueDate(),r.getType()));
         }
         ListView<RegistrationsApproveForm.HBoxCell> listView = new ListView<RegistrationsApproveForm.HBoxCell>();
         ObservableList<RegistrationsApproveForm.HBoxCell> myObservableList = FXCollections.observableList(list);
