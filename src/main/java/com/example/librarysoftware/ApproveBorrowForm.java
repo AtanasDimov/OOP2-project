@@ -7,6 +7,7 @@ import Library.Dto.java.Form.Form;
 import Utils.FormHelper;
 import Utils.QueryGenerator;
 import Utils.ReaderHelper;
+import Utils.ReservationHelper;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,11 +59,11 @@ public class ApproveBorrowForm extends Application {
 
 
         }
-        private void ApproveReservation(int borrowId, int readerId, int itemId, LocalDate dueBy, String reservationType){
-
+        private void ApproveReservation(int borrowFormId, int readerId, int itemId, String reservationDueDate, String reservationType){
+            ReservationHelper.AddReservation(borrowFormId, readerId, itemId, reservationDueDate, reservationType);
         }
-        private void RejectReservation(int borrowId){
-
+        private void RejectReservation(int borrowFormId){
+            ReservationHelper.CancelReservation(borrowFormId);
         }
 
 
@@ -70,7 +71,7 @@ public class ApproveBorrowForm extends Application {
     }
     public Parent createContent() {
         BorderPane layout = new BorderPane();
-        List<Reservation> reservationsList = new ArrayList<>()
+        List<Reservation> reservationsList = new ArrayList<>();
 
         List<HBoxCell> list = new ArrayList<>();
 

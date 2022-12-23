@@ -148,6 +148,12 @@ public class QueryGenerator {
         String query = "From BorrowForm";
         return query;
     }
+
+    public static String GetBorrowFormById(int id){
+        String query = "From BorrowForm Where id = " + id;
+        return query;
+    }
+
     public static String GetUsernameById(int id) {
         String query = "Select username FROM Accounts WHERE id =" +id;
         return query;

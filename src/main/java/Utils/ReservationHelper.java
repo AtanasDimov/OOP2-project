@@ -3,6 +3,7 @@ package Utils;
 import ExceptionHandling.MissingReservationsException;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.DTOLibraryItems.BorrowForm;
 import Library.Dto.java.DTOLibraryItems.Reservation;
 import Library.Dto.java.DTOLibraryItems.ReservationDueDates;
 import Library.Dto.java.DTOLibraryItems.ReservationTypes;
@@ -26,20 +27,36 @@ public class ReservationHelper {
 
     }
 
-    public static boolean AddReservation(int readerId, int itemId, ReservationDueDates dueDate, String typeOfReservation){
+    public static boolean AddReservation(int borrowId, int readerId, int itemId, String dueDate, String typeOfReservation){
         //to add - quantity update
         Reservation res = ReservationFactory.CreateReservation(itemId, readerId, dueDate, typeOfReservation);
 
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        BorrowForm form = (BorrowForm) lr.GetObject(QueryGenerator.GetBorrowFormById(borrowId));
+        //Delete the borrow form
+        lr.DeleteObject(form);
+        //Add the new reservation
         lr.AddObject(res);
-
-        ItemHelper.GiveItem(itemId);
-
-        ReservationSession.AddReservation(res);
-
         lr.CloseSession();
 
+        //Update the item's count
+        ItemHelper.GiveItem(itemId);
+
+        //Add the new reservation to the session
+        ReservationSession.AddReservation(res);
+
+
+
         return true;
+    }
+
+    public static void CancelReservation(int borrowFormId){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        BorrowForm form = (BorrowForm) lr.GetObject(QueryGenerator.GetBorrowFormById(borrowFormId));
+
+        lr.DeleteObject(form);
+
+        lr.CloseSession();
     }
 
     public static void DeleteReservation(Reservation res){

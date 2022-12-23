@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ReservationFactory {
-    public static Reservation CreateReservation(int itemId, int readerId, ReservationDueDates dueDate, String typeOfReservation){
+    public static Reservation CreateReservation(int itemId, int readerId, String dueDate, String typeOfReservation){
         Reservation res = new Reservation();
         res.setItemId(itemId);
         res.setReaderId(readerId);
@@ -21,14 +21,14 @@ public class ReservationFactory {
             res.setBorrowDate(borrowDate);
 
             switch (dueDate){
-                case Long:{
+                case "Long":{
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(borrowDate);
                     cal.add(Calendar.DATE, 3);
                     res.setDueDate(cal.getTime());
                 }break;
 
-                case Short:{
+                case "Short":{
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(borrowDate);
                     cal.add(Calendar.DATE, 5);
