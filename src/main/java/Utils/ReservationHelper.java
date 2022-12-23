@@ -26,9 +26,9 @@ public class ReservationHelper {
 
     }
 
-    public static boolean AddReservation(int readerId, int itemId, String borrowDate, ReservationDueDates dueDate){
+    public static boolean AddReservation(int readerId, int itemId, ReservationDueDates dueDate, String typeOfReservation){
         //to add - quantity update
-        Reservation res = ReservationFactory.CreateReservation(itemId, readerId, borrowDate, dueDate);
+        Reservation res = ReservationFactory.CreateReservation(itemId, readerId, dueDate, typeOfReservation);
 
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.AddObject(res);

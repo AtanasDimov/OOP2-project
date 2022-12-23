@@ -58,4 +58,9 @@ public class Reservation {
     public String getType() {
         return Type;
     }
+
+    public void setType(String type){
+        this.Type = type;
+    }
+
 }
