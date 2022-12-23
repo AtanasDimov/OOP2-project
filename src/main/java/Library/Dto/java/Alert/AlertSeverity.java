@@ -4,5 +4,6 @@ public enum AlertSeverity {
     NewReader,
     ArchiveNeed,
     OverDue,
-    NewReservation
+    NewReservation,
+    FinishedReservation
 }

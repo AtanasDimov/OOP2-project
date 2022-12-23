@@ -47,18 +47,10 @@ public class ReservationSession {
         reservations.add(res);
     }
 
-    public static void DeleteReservation(Reservation res, int itemId, int readerId){
-        reservations.remove(res);
-        ReservationHelper.DeleteReservation(res);
-        ItemHelper.ReturnItem(itemId);
-        ReaderHelper.ReturnItem(readerId, res.getId());
-    }
-
     public static void DeleteReservation(int id){
         for(Reservation res : reservations){
             if(res.getId() == id){
                 reservations.remove(res);
-                ReservationHelper.DeleteReservation(res);
             }
         }
     }

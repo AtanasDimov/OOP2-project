@@ -47,6 +47,7 @@ public class ReservationHelper {
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         lr.DeleteObject(res);
         lr.CloseSession();
+        ItemHelper.ReturnItem(res.getItemId());
     }
 
 }

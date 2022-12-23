@@ -42,6 +42,11 @@ public class QueryGenerator {
         return query;
     }
 
+    public static String GetReservationByReaderId(int id){
+        String query = "From Reservation Where ReaderId = " + id;
+        return query;
+    }
+
     public static String GetActiveForms(){
         String query = "From Form Where IsActive = true";
         return query;

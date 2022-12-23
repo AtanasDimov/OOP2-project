@@ -65,6 +65,7 @@ public class ItemHelper {
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
 
+        //increments the quantity
         item.returnItem();
 
         lr.UpdateObject(item);

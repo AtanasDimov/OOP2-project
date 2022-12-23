@@ -63,4 +63,7 @@ public class Reservation {
         this.Type = type;
     }
 
+    public int getItemId(){
+        return this.ItemId;
+    }
 }
