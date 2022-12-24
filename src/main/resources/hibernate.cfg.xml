@@ -36,6 +36,7 @@
     <mapping class="Library.Dto.java.Form.Form"/>
     <mapping class="Library.Dto.java.Alert.Alert"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.BorrowForm"/>
+    <mapping class="Library.Dto.java.DTOLibraryItems.ScrappedItem"/>
       
   </session-factory>
 </hibernate-configuration>
