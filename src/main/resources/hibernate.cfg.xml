@@ -31,7 +31,6 @@
     <mapping class="Library.Dto.java.DTOLibraryItems.Movies"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.MusicArtist"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.MusicItem"/>
-    <mapping class="Library.Dto.java.DTOLibraryItems.ReferenceItem"/>
     <mapping class="Library.Dto.java.DTOLibraryItems.VisualMediaItem"/>
     <mapping class="Library.Dto.java.Form.Form"/>
     <mapping class="Library.Dto.java.Alert.Alert"/>
