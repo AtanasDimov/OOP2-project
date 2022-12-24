@@ -38,6 +38,7 @@ public class ReferenceHelper {
             readerVisualizeList.add(new ReaderVisualize(r, readerItems));
         }
 
+        repository.CloseSession();
         return readerVisualizeList;
     }
 
@@ -48,6 +49,7 @@ public class ReferenceHelper {
                 .filter(a -> a.getReaderRating() == rating)
                 .collect(Collectors.toList());
 
+        repository.CloseSession();
         return loyalReaders;
     }
 }
