@@ -166,4 +166,12 @@ public class QueryGenerator {
         String query = "From BaseLibraryItem b INNER JOIN Reservation r ON r.itemId = b.id WHERE r.ReaderId = " + id;
         return query;
     }
+    public static String GetAllForms(){
+        String query = "From Form";
+        return query;
+    }
+    public static String GetAllReaders(){
+        String query = "From Accounts Where account_type = 3";
+        return query;
+    }
 }
