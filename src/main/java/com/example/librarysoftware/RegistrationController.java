@@ -1,5 +1,6 @@
 package com.example.librarysoftware;
 
+import SqlFilter.SqlFilter;
 import Utils.AccountHelper;
 import Utils.GUIUtils;
 import javafx.event.ActionEvent;
@@ -29,6 +30,11 @@ public class RegistrationController {
         String username  = CreateReader_Username.getText();
         String password  = CreateReader_Password.getText();
 
+        if(!SqlFilter.Validate(firstName) || !SqlFilter.Validate(lastName) || !SqlFilter.Validate(username)
+                || !SqlFilter.Validate(password)){
+            //sql injection detected
+            return;
+        }
 
         AccountHelper.RegisterReaderForm(firstName,lastName,username,password);
 

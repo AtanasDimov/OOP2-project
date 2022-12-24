@@ -10,6 +10,7 @@ import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOAccount.Admin;
 import Logger.Logger;
+import SqlFilter.SqlFilter;
 import Utils.AccountHelper;
 
 import Utils.GUIUtils;
@@ -34,6 +35,11 @@ public class LoginController {
     public void Submit(ActionEvent e) {
         String username = Login_Username.getText();
         String password = Login_Password.getText();
+
+        if(!SqlFilter.Validate(username) || !SqlFilter.Validate(password)){
+            //sql injection detected
+            return;
+        }
 
         try{
             AccountHelper.LogInUser(username, password);
