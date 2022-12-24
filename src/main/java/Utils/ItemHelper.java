@@ -22,7 +22,7 @@ public class ItemHelper {
     public static List<BaseLibraryItem> GetItems(){
         List<BaseLibraryItem> items = new ArrayList<>();
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
-        items = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetLoadLazyDataBookItemsQuery());
+        items = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetLoadLazyDataItemsQuery());
         return items;
     }
     public static void ArchiveItem(int id){
@@ -35,8 +35,16 @@ public class ItemHelper {
     }
     public static void ScrapItem(int id){
         ItemRepository repository = RepositoryFactory.CreateItemRepository();
-        BaseLibraryItem item = repository.GetEagerItem(id);
-        ScrappedItem scrappedItem = new ScrappedItem(item.getTitle(), item.getDescription(), item.getPublishDate(), item.getAuthor(),1);
+        BaseLibraryItem item = (BaseLibraryItem) repository.GetEagerItem(id);
+        ScrappedItem scrappedItem;
+        if((int)repository.GetObject(QueryGenerator.CheckScrappedItem(id)) == 0)
+            scrappedItem = new ScrappedItem(item.getTitle(), item.getDescription(), item.getPublishDate(), item.getAuthor(),1, item.getId());
+        else{
+            scrappedItem = (ScrappedItem) repository.GetObject(QueryGenerator.CheckScrappedItem(id));
+            repository.GetLazyDataItem(scrappedItem);
+            scrappedItem.setQuantity(scrappedItem.getQuantity() + 1);
+        }
+
         int quantity = item.getQuantity();
         item.setQuantity(--quantity);
         repository.UpdateObject(item);

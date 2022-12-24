@@ -1,6 +1,7 @@
 package Hibernate.Control.Main.Repository;
 
 import Hibernate.Control.Main.HibernateMain;
+import Library.Dto.java.Contracts.LibraryItemInterface;
 import Library.Dto.java.DTOLibraryItems.*;
 import Utils.QueryGenerator;
 
@@ -12,17 +13,16 @@ public class ItemRepository extends LibraryRepository{
         super(hibernateManager);
     }
 
-    public BaseLibraryItem GetEagerItem(int id){
-        BookItem result = (BookItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataBookItemQuery(id));
+    public LibraryItemInterface GetEagerItem(int id){
+        BookItem result = (BookItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(id));
         hibernateManager.CloseSession();
         return result;
     }
 
-    public BaseLibraryItem GetLazyDataItem(BookItem b){
-        BookItem result = (BookItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataBookItemQuery(b.getId()));
+    public void GetLazyDataItem(LibraryItemInterface b){
+        BookItem result = (BookItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(b.getId()));
         b = result;
         hibernateManager.CloseSession();
-        return result;
     }
 
     public List<BookItem> GetBookItems(){

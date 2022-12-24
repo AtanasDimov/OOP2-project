@@ -22,12 +22,12 @@ public class QueryGenerator {
         return query;
     }
 
-    public static String GetLoadLazyDataBookItemQuery(int id) {
+    public static String GetLoadLazyDataItemQuery(int id) {
         String query = "FROM BookItem b left join fetch b.author WHERE b.id=" + id;
         return query;
     }
 
-    public static String GetLoadLazyDataBookItemsQuery() {
+    public static String GetLoadLazyDataItemsQuery() {
         String query = "FROM BaseLibraryItem b LEFT OUTER JOIN FETCH b.author";
         return query;
     }
@@ -172,6 +172,14 @@ public class QueryGenerator {
     }
     public static String GetAllReaders(){
         String query = "From Accounts Where account_type = 3";
+        return query;
+    }
+    public static String CheckScrappedItem(int id){
+        String query = "Select Count(id) From ScrappedItem Where itemId = " + id;
+        return query;
+    }
+    public static String GetScrappedItem(int id){
+        String query = "From ScrappedItem Where itemId = " + id;
         return query;
     }
 }
