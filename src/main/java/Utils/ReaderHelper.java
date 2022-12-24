@@ -2,7 +2,9 @@ package Utils;
 
 import ExceptionHandling.LibraryException;
 import ExceptionHandling.NotLoggedException;
+import ExceptionHandling.NotReaderException;
 import ExceptionHandling.SeverityCodes;
+import Hibernate.Control.Main.Repository.ItemRepository;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.Alert.Alert;
@@ -10,22 +12,46 @@ import Library.Dto.java.Alert.AlertFactory;
 import Library.Dto.java.Alert.AlertSeverity;
 import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOAccount.ReaderAccount;
+import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 import Library.Dto.java.DTOLibraryItems.BorrowForm;
 import Library.Dto.java.DTOLibraryItems.Reservation;
 import Logger.Logger;
 import com.example.librarysoftware.UserSession;
+import org.hibernate.annotations.common.util.impl.Log;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.List;
 
 
 public class ReaderHelper {
+    public static List<BaseLibraryItem> GetReaderItems() throws NotReaderException {
+        if(!UserSession.isReader()){
+            throw new NotReaderException();
+        }
+        ItemRepository repository = RepositoryFactory.CreateItemRepository();
+        int readerId = 0;
+        try{
+            readerId = UserSession.getInstance().getAccountId();
+        }
+        catch(Exception ex){
+            Logger logger = new Logger();
+            logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Severe));
+        }
+        List<BaseLibraryItem> readerItems = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetReaderItems(readerId));
+
+        return readerItems;
+    }
+
     //Method that updates the reader rating, deletes reservation and makes an alert
-    public static void ReturnItem(int itemId){
+    public static void ReturnItem(int itemId) throws NotReaderException {
 
         ReaderAccount reader = new ReaderAccount();
+        if(!UserSession.isReader()){
+            throw new NotReaderException();
+        }
         try{
             reader = (ReaderAccount) UserSession.getInstance();
         }

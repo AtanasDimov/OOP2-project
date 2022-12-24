@@ -24,15 +24,17 @@ public class ReservationHelper {
 
         lr.CloseSession();
         return  reservations;
-
     }
 
-    public static boolean AddReservation(int borrowId, int readerId, int itemId, String dueDate, String typeOfReservation){
+    public static boolean AddReservation(int borrowId, String dueDate, String typeOfReservation){
         //to add - quantity update
-        Reservation res = ReservationFactory.CreateReservation(itemId, readerId, dueDate, typeOfReservation);
-
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         BorrowForm form = (BorrowForm) lr.GetObject(QueryGenerator.GetBorrowFormById(borrowId));
+
+        int itemId = form.getItemId();
+        int readerId = form.getReaderId();
+        Reservation res = ReservationFactory.CreateReservation(itemId, readerId, dueDate, typeOfReservation);
+
         //Delete the borrow form
         lr.DeleteObject(form);
         //Add the new reservation

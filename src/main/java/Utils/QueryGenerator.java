@@ -162,4 +162,8 @@ public class QueryGenerator {
         String query = "Select title From BaseLibraryItem Where Id ="+id;
         return query;
     }
+    public static String GetReaderItems(int id){
+        String query = "From BaseLibraryItem b INNER JOIN Reservation r ON r.itemId = b.id WHERE r.ReaderId = " + id;
+        return query;
+    }
 }
