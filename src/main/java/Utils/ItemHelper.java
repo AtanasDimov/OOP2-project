@@ -1,6 +1,7 @@
 package Utils;
 
 import Hibernate.Control.Main.Repository.AuthorRepository;
+import Hibernate.Control.Main.Repository.ItemRepository;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.Alert.Alert;
@@ -9,6 +10,7 @@ import Library.Dto.java.Alert.AlertSeverity;
 import Library.Dto.java.DTOLibraryItems.ArchiveItem;
 import Library.Dto.java.DTOLibraryItems.Author;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
+import Library.Dto.java.DTOLibraryItems.ScrappedItem;
 import com.sun.jmx.mbeanserver.Repository;
 
 import java.time.LocalDate;
@@ -32,7 +34,14 @@ public class ItemHelper {
         lr.CloseSession();
     }
     public static void ScrapItem(int id){
-
+        ItemRepository repository = RepositoryFactory.CreateItemRepository();
+        BaseLibraryItem item = repository.GetEagerItem(id);
+        ScrappedItem scrappedItem = new ScrappedItem(item.getTitle(), item.getDescription(), item.getPublishDate(), item.getAuthor(),1);
+        int quantity = item.getQuantity();
+        item.setQuantity(--quantity);
+        repository.UpdateObject(item);
+        repository.AddObject(scrappedItem);
+        repository.CloseSession();
     }
     public static List<BaseLibraryItem> GetItemsForArchive(){
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();

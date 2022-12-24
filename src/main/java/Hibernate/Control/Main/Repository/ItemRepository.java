@@ -12,13 +12,13 @@ public class ItemRepository extends LibraryRepository{
         super(hibernateManager);
     }
 
-    public BookItem GetEagerBook(int id){
+    public BaseLibraryItem GetEagerItem(int id){
         BookItem result = (BookItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataBookItemQuery(id));
         hibernateManager.CloseSession();
         return result;
     }
 
-    public BookItem GetLazyDataBook(BookItem b){
+    public BaseLibraryItem GetLazyDataItem(BookItem b){
         BookItem result = (BookItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataBookItemQuery(b.getId()));
         b = result;
         hibernateManager.CloseSession();
