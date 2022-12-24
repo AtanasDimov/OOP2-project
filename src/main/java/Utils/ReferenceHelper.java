@@ -34,7 +34,7 @@ public class ReferenceHelper {
         List<ReaderVisualize> readerVisualizeList = new ArrayList<>();
 
         for(ReaderAccount r : accounts){
-            List<BaseLibraryItem> readerItems = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetReaderItems());
+            List<BaseLibraryItem> readerItems = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetReaderItems(r.getAccountId()));
             readerVisualizeList.add(new ReaderVisualize(r, readerItems));
         }
 
