@@ -1,5 +1,9 @@
 package com.example.librarysoftware;
 
+import ExceptionHandling.MissingReservationsException;
+import Hibernate.Control.Main.Repository.LibraryRepository;
+import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.DTOLibraryItems.BorrowForm;
 import Library.Dto.java.DTOLibraryItems.Reservation;
 import Library.Dto.java.DTOLibraryItems.ReservationDueDates;
 import Library.Dto.java.DTOLibraryItems.ReservationTypes;
@@ -9,6 +13,7 @@ import Utils.QueryGenerator;
 import Utils.ReaderHelper;
 import Utils.ReservationHelper;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
@@ -25,6 +30,7 @@ import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class ApproveBorrowForm extends Application {
@@ -33,34 +39,55 @@ public class ApproveBorrowForm extends Application {
         Label ItemTitle = new Label();
         Button btnApprove = new Button();
         Button btnReject = new Button();
-        ComboBox<String> dueDates = new ComboBox<>();
-        ComboBox<String> reservationTypes = new ComboBox<>();
-        HBoxCell( int readerId, int itemId,LocalDate dueDate,ReservationTypes reservationType) {
+        ComboBox<String> dueDates_Combobox = new ComboBox<>();
+        ComboBox<String> reservationTypes_Combobox = new ComboBox<>();
+
+        HBoxCell(int borrowFormId,int readerId, int itemId) {
             super();
+            String dueDate = "";
+            String reservationType = "";
             ObservableList<String> dueDatesList = FXCollections.observableArrayList();
             ObservableList<String> reservationsTypeList = FXCollections.observableArrayList();
+
             Arrays.stream(ReservationDueDates.values()).forEach(d -> dueDatesList.add(d.toString()));
             Arrays.stream(ReservationTypes.values()).forEach(d -> reservationsTypeList.add(d.toString()));
 
-            dueDates.setItems(dueDatesList);
-            dueDates.setPromptText("Период на заемане");
-            reservationTypes.setItems(reservationsTypeList);
-            reservationTypes.setPromptText("Вид на заемане");
+            dueDates_Combobox.setItems(dueDatesList);
+            dueDates_Combobox.setPromptText("Период на заемане");
+            reservationTypes_Combobox.setItems(reservationsTypeList);
+            reservationTypes_Combobox.setPromptText("Вид на заемане");
 
-            readerUsername.setText(QueryGenerator.GetReaderById(readerId) + " ");
-            ItemTitle.setText(QueryGenerator.GetItemById(itemId) + " ");
+            dueDates_Combobox.setValue("Изберете период за отдаване");
+            dueDates_Combobox.setOnAction(event -> { ChooseDueDate(dueDate);});
+
+
+            reservationTypes_Combobox.setValue("Изберете вид отдаване:");
+            reservationTypes_Combobox.setOnAction(event -> { });
+
+
+
+            readerUsername.setText(readerId + " ");
+            ItemTitle.setText(itemId+ " ");
 
             btnApprove.setText("Одобри");
             btnReject.setText("Отхвърли");
 
-            btnApprove.setOnAction(event -> ApproveReservation());
-            btnReject.setOnAction(event -> RejectReservation());
-            this.getChildren().addAll(readerUsername,ItemTitle,dueDates,reservationTypes,btnApprove,btnReject);
+            btnApprove.setOnAction(event -> ApproveReservation(borrowFormId,dueDate,reservationType));
+            btnReject.setOnAction(event -> RejectReservation(borrowFormId));
+            this.getChildren().addAll(readerUsername,ItemTitle,dueDates_Combobox,reservationTypes_Combobox,btnApprove,btnReject);
 
 
         }
-        private void ApproveReservation(int borrowFormId, int readerId, int itemId, String reservationDueDate, String reservationType){
-            ReservationHelper.AddReservation(borrowFormId, readerId, itemId, reservationDueDate, reservationType);
+
+        private void ChooseDueDate(String date) {
+            date =dueDates_Combobox.getValue();
+        }
+        private void ChooseReservationType(String type){
+            type =reservationTypes_Combobox.getValue();
+        }
+
+        private void ApproveReservation(int borrowFormId,  String reservationDueDate, String reservationType){
+            ReservationHelper.AddReservation(borrowFormId, reservationDueDate, reservationType);
         }
         private void RejectReservation(int borrowFormId){
             ReservationHelper.CancelReservation(borrowFormId);
@@ -71,15 +98,16 @@ public class ApproveBorrowForm extends Application {
     }
     public Parent createContent() {
         BorderPane layout = new BorderPane();
-        List<Reservation> reservationsList = new ArrayList<>();
-
+        List<BorrowForm> borrowFormList = new ArrayList<>();
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        borrowFormList = (List<BorrowForm>)(Object)lr.GetListOfObject(QueryGenerator.GetBorrowForms());
+        lr.CloseSession();
         List<HBoxCell> list = new ArrayList<>();
-
-        for(Reservation r: reservationsList){
-            list.add(new HBoxCell(r.getReaderId(),r.getId(),r.getDueDate(),r.getType()));
+        for(BorrowForm b: borrowFormList){
+            list.add(new HBoxCell(b.getId(), b.getReaderId(),b.getItemId()));
         }
-        ListView<RegistrationsApproveForm.HBoxCell> listView = new ListView<RegistrationsApproveForm.HBoxCell>();
-        ObservableList<RegistrationsApproveForm.HBoxCell> myObservableList = FXCollections.observableList(list);
+        ListView<HBoxCell> listView = new ListView<HBoxCell>();
+        ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);
 
         listView.setItems(myObservableList);
         layout.setCenter(listView);
@@ -92,7 +120,7 @@ public class ApproveBorrowForm extends Application {
     public void start(Stage stage) throws Exception {
         Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(new Scene((createContent()),600,500));
+        stage.setScene(new Scene((createContent()),900,500));
 
         stage.show();
     }

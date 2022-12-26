@@ -78,10 +78,16 @@ public class IndexController implements Initializable {
                         throw new RuntimeException(e);
                     }
                 });
-
-
-
-
+                Index_btnDynamic4.setVisible(true);
+                Index_btnDynamic4.setText("Одобряване на читателски заемания");
+                Index_btnDynamic4.setOnAction(event -> {
+                    ApproveBorrowForm form = new ApproveBorrowForm();
+                    try {
+                        form.start(new Stage());
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                });
             }
             else if (UserSession.isOperator()) {
 

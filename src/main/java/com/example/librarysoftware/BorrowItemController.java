@@ -8,6 +8,7 @@ import Hibernate.Control.Main.Repository.ItemRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOLibraryItems.*;
 import Logger.Logger;
+import Utils.GUIUtils;
 import Utils.ItemHelper;
 import Utils.LibraryDictionary;
 import Utils.ReaderHelper;
@@ -72,7 +73,8 @@ public class BorrowItemController implements Initializable {
 
     }
 
-    public void Back(){
+    public void Back(ActionEvent event){
+        GUIUtils.changeScene(event, "/Index.fxml", "Индекс");
 
     }
 

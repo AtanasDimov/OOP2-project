@@ -39,4 +39,8 @@ public class BorrowForm {
     public void setRequestDate(Date requestDate) {
         this.requestDate = requestDate;
     }
+
+    public int getId() {return Id;}
+
+    public void setId(int id) {Id = id;}
 }

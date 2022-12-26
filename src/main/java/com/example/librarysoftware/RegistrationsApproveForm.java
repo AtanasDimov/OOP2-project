@@ -59,12 +59,12 @@ public class RegistrationsApproveForm extends Application {
     }
     public Parent createContent() {
         BorderPane layout = new BorderPane();
-        List<Form> registerForms = new ArrayList<>();
-        registerForms = FormHelper.GetAllActiveForms();
+        List<Form> registrationForms = new ArrayList<>();
+        registrationForms = FormHelper.GetAllActiveForms();
         List<HBoxCell> list = new ArrayList<>();
 
-        for(Form r: registerForms){
-            list.add(new HBoxCell(r.getFirstName(),r.getLastName(),r.getUsername(),r.getId()));
+        for(Form b: registrationForms){
+            list.add(new HBoxCell(b.getFirstName(),b.getLastName(),b.getUsername(),b.getId()));
         }
         ListView<HBoxCell> listView = new ListView<HBoxCell>();
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);

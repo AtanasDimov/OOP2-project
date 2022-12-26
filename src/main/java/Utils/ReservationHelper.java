@@ -30,13 +30,17 @@ public class ReservationHelper {
         //to add - quantity update
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         BorrowForm form = (BorrowForm) lr.GetObject(QueryGenerator.GetBorrowFormById(borrowId));
+        lr.CloseSession();
 
         int itemId = form.getItemId();
         int readerId = form.getReaderId();
         Reservation res = ReservationFactory.CreateReservation(itemId, readerId, dueDate, typeOfReservation);
+        lr = RepositoryFactory.CreateLibraryRepository();
 
         //Delete the borrow form
         lr.DeleteObject(form);
+        lr.CloseSession();
+        lr = RepositoryFactory.CreateLibraryRepository();
         //Add the new reservation
         lr.AddObject(res);
         lr.CloseSession();

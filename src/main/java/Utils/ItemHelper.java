@@ -94,9 +94,9 @@ public class ItemHelper {
     public static void GiveItem(int id){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
-
+        lr.CloseSession();
         item.giveItem();
-
+        lr = RepositoryFactory.CreateLibraryRepository();
         lr.UpdateObject(item);
         lr.CloseSession();
     }
