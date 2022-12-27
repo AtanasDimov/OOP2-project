@@ -15,9 +15,7 @@ import Library.Dto.java.DTOAccount.ReaderAccount;
 import Library.Dto.java.Form.Form;
 import Library.Dto.java.Form.FormFactory;
 import Logger.Logger;
-import com.example.librarysoftware.UserSession;
-
-import java.time.LocalDate;
+import Sessions.UserSession;
 
 public class AccountHelper {
     private static boolean CheckIfExists(String username, String password){

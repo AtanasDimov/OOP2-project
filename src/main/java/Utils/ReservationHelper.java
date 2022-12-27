@@ -5,12 +5,9 @@ import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOLibraryItems.BorrowForm;
 import Library.Dto.java.DTOLibraryItems.Reservation;
-import Library.Dto.java.DTOLibraryItems.ReservationDueDates;
-import Library.Dto.java.DTOLibraryItems.ReservationTypes;
-import com.example.librarysoftware.ReservationSession;
+import Sessions.ReservationSession;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ReservationHelper {

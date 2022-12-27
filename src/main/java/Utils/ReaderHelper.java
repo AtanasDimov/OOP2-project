@@ -16,8 +16,7 @@ import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 import Library.Dto.java.DTOLibraryItems.BorrowForm;
 import Library.Dto.java.DTOLibraryItems.Reservation;
 import Logger.Logger;
-import com.example.librarysoftware.UserSession;
-import org.hibernate.annotations.common.util.impl.Log;
+import Sessions.UserSession;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
