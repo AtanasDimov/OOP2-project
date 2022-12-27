@@ -99,6 +99,11 @@ public class IndexController implements Initializable {
                 Index_btnDynamic1.setOnAction(event -> {
                     GUIUtils.changeScene(event,"/BorrowItem.fxml","Заемане на книга");
                 });
+                Index_btnDynamic2.setVisible(true);
+                Index_btnDynamic2.setText("Читателски панел");
+                Index_btnDynamic2.setOnAction(event -> {
+                    GUIUtils.changeScene(event,"/ReaderPanel.fxml","Заемане на книга");
+                });
             }
 
 
