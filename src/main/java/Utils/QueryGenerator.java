@@ -136,12 +136,12 @@ public class QueryGenerator {
     }
 
     public static String GetReaderFirstNameById(int id){
-        String query = "Select firstname FROM Accounts WHERE id = " + id;
+        String query = "Select firstName FROM Accounts WHERE accountId = " + id;
         return query;
     }
 
     public static String GetReaderLastNameById(int id){
-        String query = "SELECT lastname FROM Accounts WHERE id = " + id;
+        String query = "SELECT lastName FROM Accounts WHERE accountId = " + id;
         return query;
     }
     public static String GetBorrowForms(){
@@ -163,7 +163,7 @@ public class QueryGenerator {
         return query;
     }
     public static String GetReaderItems(int id){
-        String query = "From BaseLibraryItem b INNER JOIN Reservation r ON r.itemId = b.id WHERE r.ReaderId = " + id;
+        String query = "From BaseLibraryItem b INNER JOIN Reservation r ON r.ItemId = b.id WHERE r.ReaderId = " + id;
         return query;
     }
     public static String GetAllForms(){

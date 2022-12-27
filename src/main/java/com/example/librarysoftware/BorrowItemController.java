@@ -25,17 +25,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class BorrowItemController implements Initializable {
 
     private List<BaseLibraryItem> items = new ArrayList<>();
     private int itemId = -1;
-    @FXML
-    private Button BorrowItem_btnBack;
-    @FXML
-    private Button BorrowItem_btnClear;
-    @FXML
-    private Button BorrowItem_btnBorrow;
     @FXML
     private ComboBox<String> BorrowItem_FilterCombobox;
     @FXML
@@ -51,7 +46,7 @@ public class BorrowItemController implements Initializable {
             LibraryDictionary.DictionariesAndOthers
     );
 
-    public void Borrow(ActionEvent event){
+    public void Borrow(){
         if(itemId == -1){
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("Трябва да изберете библ. артикул!?");
@@ -107,7 +102,7 @@ public class BorrowItemController implements Initializable {
         //TableColumn<>
         //columns = Name,Description,PublishDate,Author,
 
-        SetupTableview(items);
+        SetupTableview(items.stream().filter(i->i.getQuantity()>0).collect(Collectors.toList()));
         BorrowItem_FilterCombobox.setItems(options);
         BorrowItem_FilterCombobox.valueProperty().addListener((observable, oldValue, newValue) -> {
            List<BaseLibraryItem> selected= new ArrayList<>();
@@ -117,30 +112,29 @@ public class BorrowItemController implements Initializable {
                         if(b instanceof BookItem)
                             selected.add(b);
                     }
-                    SetupTableview(selected);
                 }break;
                 case LibraryDictionary.MusicDisc:{
                     for(BaseLibraryItem b : items){
                         if(b instanceof MusicItem)
                             selected.add(b);
                     }
-                    SetupTableview(selected);
                 }break;
                 case LibraryDictionary.AudioBook:{
                     for(BaseLibraryItem b : items){
                         if(b instanceof AudioBook)
                             selected.add(b);
                     }
-                    SetupTableview(selected);
                 }break;
                 case LibraryDictionary.Movies:{
                     for(BaseLibraryItem b : items){
                         if(b instanceof Movies)
                             selected.add(b);
                     }
-                    SetupTableview(selected);
                 }break;
+
            }
+
+           SetupTableview(selected.stream().filter(i->i.getQuantity()>0).collect(Collectors.toList()));
 
         });
         BorrowItem_Tableview.setRowFactory(tv -> {

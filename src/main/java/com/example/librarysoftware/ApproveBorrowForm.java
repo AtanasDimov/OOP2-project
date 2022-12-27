@@ -3,10 +3,7 @@ package com.example.librarysoftware;
 import ExceptionHandling.MissingReservationsException;
 import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
-import Library.Dto.java.DTOLibraryItems.BorrowForm;
-import Library.Dto.java.DTOLibraryItems.Reservation;
-import Library.Dto.java.DTOLibraryItems.ReservationDueDates;
-import Library.Dto.java.DTOLibraryItems.ReservationTypes;
+import Library.Dto.java.DTOLibraryItems.*;
 import Library.Dto.java.Form.Form;
 import Utils.FormHelper;
 import Utils.QueryGenerator;
@@ -35,6 +32,8 @@ import java.util.List;
 
 public class ApproveBorrowForm extends Application {
     public static class HBoxCell extends HBox {
+        String dueDate = "";
+        String reservationType = "";
         Label readerUsername = new Label();
         Label ItemTitle = new Label();
         Button btnApprove = new Button();
@@ -42,10 +41,10 @@ public class ApproveBorrowForm extends Application {
         ComboBox<String> dueDates_Combobox = new ComboBox<>();
         ComboBox<String> reservationTypes_Combobox = new ComboBox<>();
 
-        HBoxCell(int borrowFormId,int readerId, int itemId) {
+        HBoxCell(int borrowFormId,int readerId, int itemId,String readerName,String itemName) {
             super();
-            String dueDate = "";
-            String reservationType = "";
+
+
             ObservableList<String> dueDatesList = FXCollections.observableArrayList();
             ObservableList<String> reservationsTypeList = FXCollections.observableArrayList();
 
@@ -58,16 +57,16 @@ public class ApproveBorrowForm extends Application {
             reservationTypes_Combobox.setPromptText("Вид на заемане");
 
             dueDates_Combobox.setValue("Изберете период за отдаване");
-            dueDates_Combobox.setOnAction(event -> { ChooseDueDate(dueDate);});
+            dueDates_Combobox.setOnAction(event -> { ChooseDueDate();});
 
 
             reservationTypes_Combobox.setValue("Изберете вид отдаване:");
-            reservationTypes_Combobox.setOnAction(event -> { });
+            reservationTypes_Combobox.setOnAction(event -> { ChooseReservationType();});
 
 
 
-            readerUsername.setText(readerId + " ");
-            ItemTitle.setText(itemId+ " ");
+            readerUsername.setText(readerName + " ");
+            ItemTitle.setText("иска да заеме "+ itemName+ " ");
 
             btnApprove.setText("Одобри");
             btnReject.setText("Отхвърли");
@@ -79,11 +78,11 @@ public class ApproveBorrowForm extends Application {
 
         }
 
-        private void ChooseDueDate(String date) {
-            date =dueDates_Combobox.getValue();
+        private void ChooseDueDate() {
+            dueDate =dueDates_Combobox.getValue();
         }
-        private void ChooseReservationType(String type){
-            type =reservationTypes_Combobox.getValue();
+        private void ChooseReservationType(){
+            reservationType =reservationTypes_Combobox.getValue();
         }
 
         private void ApproveReservation(int borrowFormId,  String reservationDueDate, String reservationType){
@@ -97,6 +96,7 @@ public class ApproveBorrowForm extends Application {
 
     }
     public Parent createContent() {
+
         BorderPane layout = new BorderPane();
         List<BorrowForm> borrowFormList = new ArrayList<>();
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
@@ -104,7 +104,10 @@ public class ApproveBorrowForm extends Application {
         lr.CloseSession();
         List<HBoxCell> list = new ArrayList<>();
         for(BorrowForm b: borrowFormList){
-            list.add(new HBoxCell(b.getId(), b.getReaderId(),b.getItemId()));
+            lr = RepositoryFactory.CreateLibraryRepository();
+            String readerName =(String) lr.GetObject(QueryGenerator.GetReaderFirstNameById(b.getReaderId()))+" "+lr.GetObject(QueryGenerator.GetReaderLastNameById(b.getReaderId()));
+            BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(b.getItemId()));
+            list.add(new HBoxCell(b.getId(), b.getReaderId(),b.getItemId(),readerName,item.getTitle()));
         }
         ListView<HBoxCell> listView = new ListView<HBoxCell>();
         ObservableList<HBoxCell> myObservableList = FXCollections.observableList(list);
@@ -119,6 +122,7 @@ public class ApproveBorrowForm extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Stage dialog = new Stage();
+        stage.setTitle("Заявки за заемане:");
         dialog.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene((createContent()),900,500));
 

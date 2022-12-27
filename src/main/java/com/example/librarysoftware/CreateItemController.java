@@ -58,7 +58,9 @@ public class CreateItemController implements Initializable {
     public void Submit(ActionEvent event){
         String title = CreateItem_DynamicText1.getText();
         String description = CreateItem_DynamicText2.getText();
+
         String quantity = CreateItem_DynamicText3.getText();
+        //napravi logika za nevalidni danni --><T_T><--
         LocalDate publishDate = CreateItem_PublishDate.getValue();
 
 
@@ -201,7 +203,6 @@ public class CreateItemController implements Initializable {
         Author_combobox.setOnAction(event -> {
             Author selecteditem = Author_combobox.getSelectionModel().getSelectedItem();
             ids.add(selecteditem.getId());
-            System.out.println(ids.get(0));
 
         });
     }
