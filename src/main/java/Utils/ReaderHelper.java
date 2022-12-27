@@ -45,10 +45,10 @@ public class ReaderHelper {
 
         List<BorrowedItemsVisualize> itemsVizualize = new ArrayList<>();
 
-        for(BaseLibraryItem i : readerItems){
-            Date borrowedDate = (Date) repository.GetObject(QueryGenerator.GetBorrowedDateForItem(i.getId(), readerId));
-            Date dueDate = (Date) repository.GetObject(QueryGenerator.GetDueDateForItem(i.getId(), readerId));
-            itemsVizualize.add(new BorrowedItemsVisualize(i.getTitle(), borrowedDate, dueDate));
+        for(int i =0; i<readerItems.size();i++){
+            Date borrowedDate = (Date) repository.GetObject(QueryGenerator.GetBorrowedDateForItem(readerItems.get(i).getId(), readerId));
+            Date dueDate = (Date) repository.GetObject(QueryGenerator.GetDueDateForItem(readerItems.get(i).getId(), readerId));
+            itemsVizualize.add(new BorrowedItemsVisualize(readerItems.get(i).getId(),readerItems.get(i).getTitle(), borrowedDate, dueDate));
         }
         return itemsVizualize;
     }

@@ -3,6 +3,8 @@ package com.example.librarysoftware;
 import ExceptionHandling.LibraryException;
 import ExceptionHandling.SeverityCodes;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
+import Library.Dto.java.DTOLibraryItems.BorrowItem;
+import Library.Dto.java.VisualizeItems.BorrowedItemsVisualize;
 import Logger.Logger;
 import Utils.GUIUtils;
 import Utils.LibraryDictionary;
@@ -22,11 +24,11 @@ import java.util.ResourceBundle;
 
 public class ReaderPanelController implements Initializable {
     private int itemId = -1;
-    private List<BaseLibraryItem> reservations = new ArrayList<>();
+    private List<BorrowedItemsVisualize> reservations = new ArrayList<>();
     @FXML
     private Label ReaderPanel_labelReturn;
     @FXML
-    private TableView<BaseLibraryItem> ReaderPanel_tableview;
+    private TableView<BorrowedItemsVisualize> ReaderPanel_tableview;
 
     public void Logout(ActionEvent event){
         GUIUtils.changeScene(event,"/Index.fxml", LibraryDictionary.IndexTitle);
@@ -46,19 +48,19 @@ public class ReaderPanelController implements Initializable {
             log.LogException(new LibraryException(e.getMessage(), SeverityCodes.Severe));
         }
     }
-    public void SetupTableview(List<BaseLibraryItem> displayBorrowed){
-        TableColumn<BaseLibraryItem,String>column1 = new TableColumn<>("Заглавие");
+    public void SetupTableview(List<BorrowedItemsVisualize> displayBorrowed){
+        TableColumn<BorrowedItemsVisualize,String>column1 = new TableColumn<>("Заглавие");
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
         ReaderPanel_tableview.getColumns().add(column1);
 
-     /*   TableColumn<BaseLibraryItem, Date>column2 = new TableColumn<>("Заето на:");
-        column2.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
+        TableColumn<BorrowedItemsVisualize, Date>column2 = new TableColumn<>("Заето на:");
+        column2.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
         ReaderPanel_tableview.getColumns().add(column2);
 
-        TableColumn<BaseLibraryItem,Date>column3 = new TableColumn<>("Дата на връщане:");
+        TableColumn<BorrowedItemsVisualize,Date>column3 = new TableColumn<>("Дата на връщане:");
         column3.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         ReaderPanel_tableview.getColumns().add(column3);
-*/
+
         ReaderPanel_tableview.setItems(FXCollections.observableArrayList(displayBorrowed));
 
     }
@@ -74,10 +76,10 @@ public class ReaderPanelController implements Initializable {
 
         SetupTableview(reservations);
         ReaderPanel_tableview.setRowFactory(tv -> {
-            TableRow<BaseLibraryItem> row = new TableRow<>();
+            TableRow<BorrowedItemsVisualize> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if(event.getClickCount() == 2 && (!row.isEmpty()) ){
-                    BaseLibraryItem rowData = row.getItem();
+                    BorrowedItemsVisualize rowData = row.getItem();
                     ReaderPanel_labelReturn.setText(rowData.getTitle());
                     itemId = rowData.getId();
                 }

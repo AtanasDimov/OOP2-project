@@ -3,11 +3,13 @@ package Library.Dto.java.VisualizeItems;
 import java.util.Date;
 
 public class BorrowedItemsVisualize {
+    private int id;
     private String title;
     private Date BorrowDate;
     private Date DueDate;
 
-    public BorrowedItemsVisualize(String title, Date borrowDate, Date dueDate) {
+    public BorrowedItemsVisualize(int id,String title, Date borrowDate, Date dueDate) {
+        this.id = id;
         this.title = title;
         BorrowDate = borrowDate;
         DueDate = dueDate;
@@ -35,5 +37,13 @@ public class BorrowedItemsVisualize {
 
     public void setDueDate(Date dueDate) {
         DueDate = dueDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
