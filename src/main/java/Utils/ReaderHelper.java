@@ -10,6 +10,7 @@ import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.Alert.Alert;
 import Library.Dto.java.Alert.AlertFactory;
 import Library.Dto.java.Alert.AlertSeverity;
+import Library.Dto.java.Contracts.LibraryItemInterface;
 import Library.Dto.java.DTOAccount.AccountBase;
 import Library.Dto.java.DTOAccount.ReaderAccount;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
@@ -24,6 +25,7 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -41,15 +43,23 @@ public class ReaderHelper {
             Logger logger = new Logger();
             logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Severe));
         }
-        List<BaseLibraryItem> readerItems = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetReaderItems(readerId));
+        List<Object> readerItems = (List<Object>) repository.GetListOfObject(QueryGenerator.GetReaderItems(readerId));
 
         List<BorrowedItemsVisualize> itemsVizualize = new ArrayList<>();
 
-        for(int i =0; i<readerItems.size();i++){
-            Date borrowedDate = (Date) repository.GetObject(QueryGenerator.GetBorrowedDateForItem(readerItems.get(i).getId(), readerId));
-            Date dueDate = (Date) repository.GetObject(QueryGenerator.GetDueDateForItem(readerItems.get(i).getId(), readerId));
-            itemsVizualize.add(new BorrowedItemsVisualize(readerItems.get(i).getId(),readerItems.get(i).getTitle(), borrowedDate, dueDate));
+        repository.CloseSession();
+
+        Iterator itr = readerItems.iterator();
+        while(itr.hasNext()){
+            Object[] obj = (Object[]) itr.next();
+            repository = RepositoryFactory.CreateItemRepository();
+            BaseLibraryItem item = (BaseLibraryItem) obj[0];
+            Date borrowedDate = (Date) repository.GetObject(QueryGenerator.GetBorrowedDateForItem(item.getId(), readerId));
+            Date dueDate = (Date) repository.GetObject(QueryGenerator.GetDueDateForItem(item.getId(), readerId));
+            itemsVizualize.add(new BorrowedItemsVisualize(item.getId(),item.getTitle(), borrowedDate, dueDate));
+            repository.CloseSession();
         }
+
         return itemsVizualize;
     }
 
