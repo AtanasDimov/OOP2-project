@@ -87,6 +87,9 @@ public class ItemHelper {
         //increments the quantity
         item.returnItem();
 
+        lr.CloseSession();
+        lr = RepositoryFactory.CreateLibraryRepository();
+
         lr.UpdateObject(item);
         lr.CloseSession();
     }
