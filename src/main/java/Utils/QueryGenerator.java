@@ -182,4 +182,14 @@ public class QueryGenerator {
         String query = "From ScrappedItem Where itemId = " + id;
         return query;
     }
+
+    public static String GetBorrowedDateForItem(int id, int readerId){
+        String query = "SELECT BorrowDate FROM Reservation WHERE ItemId = " + id + "AND ReaderId = " + readerId;
+        return query;
+    }
+
+    public static String GetDueDateForItem(int id, int readerId){
+        String query = "SELECT DueDate FROM Reservation WHERE ItemId = " + id + "AND ReaderId = " + readerId;
+        return query;
+    }
 }
