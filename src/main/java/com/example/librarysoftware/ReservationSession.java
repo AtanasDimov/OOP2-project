@@ -15,6 +15,7 @@ import Utils.QueryGenerator;
 import Utils.ReaderHelper;
 import Utils.ReservationHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -39,6 +40,7 @@ public class ReservationSession {
             {
                 Logger log = new Logger();
                 log.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Severe));
+                reservations = new ArrayList<>();
             }
         }
     }

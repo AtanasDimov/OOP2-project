@@ -45,6 +45,7 @@ public class LoginController {
             AccountHelper.LogInUser(username, password);
             if(UserSession.isAdmin() || UserSession.isOperator()){
                 ItemHelper.AlertForArchive();
+                ReservationSession.Configure();
             }
             GUIUtils.changeScene(e,"/Index.fxml","Добре дошли");
         }
