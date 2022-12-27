@@ -1,4 +1,4 @@
-package com.example.librarysoftware;
+package Sessions;
 
 import ExceptionHandling.LibraryException;
 import ExceptionHandling.MissingReservationsException;

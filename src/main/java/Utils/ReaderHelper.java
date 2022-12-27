@@ -15,19 +15,20 @@ import Library.Dto.java.DTOAccount.ReaderAccount;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 import Library.Dto.java.DTOLibraryItems.BorrowForm;
 import Library.Dto.java.DTOLibraryItems.Reservation;
+import Library.Dto.java.VisualizeItems.BorrowedItemsVisualize;
 import Logger.Logger;
-import com.example.librarysoftware.UserSession;
-import org.hibernate.annotations.common.util.impl.Log;
+import Sessions.UserSession;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
 public class ReaderHelper {
-    public static List<BaseLibraryItem> GetReaderItems() throws NotReaderException {
+    public static List<BorrowedItemsVisualize> GetReaderItems() throws NotReaderException {
         if(!UserSession.isReader()){
             throw new NotReaderException();
         }
@@ -42,7 +43,14 @@ public class ReaderHelper {
         }
         List<BaseLibraryItem> readerItems = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetReaderItems(readerId));
 
-        return readerItems;
+        List<BorrowedItemsVisualize> itemsVizualize = new ArrayList<>();
+
+        for(BaseLibraryItem i : readerItems){
+            Date borrowedDate = (Date) repository.GetObject(QueryGenerator.GetBorrowedDateForItem(i.getId(), readerId));
+            Date dueDate = (Date) repository.GetObject(QueryGenerator.GetDueDateForItem(i.getId(), readerId));
+            itemsVizualize.add(new BorrowedItemsVisualize(i.getTitle(), borrowedDate, dueDate));
+        }
+        return itemsVizualize;
     }
 
     //Method that updates the reader rating, deletes reservation and makes an alert

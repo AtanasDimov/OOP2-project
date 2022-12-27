@@ -1,4 +1,4 @@
-package com.example.librarysoftware;
+package Sessions;
 
 import ExceptionHandling.NotLoggedException;
 import Library.Dto.java.DTOAccount.AccountBase;
