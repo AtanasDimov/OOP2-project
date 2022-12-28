@@ -13,7 +13,7 @@
       <Button fx:id="LibraryOverview_btnScrap" layoutX="46.0" layoutY="169.0" onAction="#Scrap" mnemonicParsing="false" text="Бракувай" />
       <Button fx:id="LibraryOverview_btnBack" layoutX="46.0" layoutY="296.0" onAction="#Back" mnemonicParsing="false" text="Назад" />
       <Label layoutX="188.0" layoutY="27.0" text="Библиотечен фонд:" />
-      <TableView fx:id="LibraryOverview_Itemstableview" layoutX="195.0" layoutY="62.0" prefHeight="255.0" prefWidth="341.0">
+      <TableView fx:id="LibraryOverview_Tableview" layoutX="195.0" layoutY="62.0" prefHeight="255.0" prefWidth="341.0">
       </TableView>
    </children>
 </AnchorPane>

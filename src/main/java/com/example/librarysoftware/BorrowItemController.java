@@ -48,9 +48,7 @@ public class BorrowItemController implements Initializable {
 
     public void Borrow(){
         if(itemId == -1){
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setContentText("Трябва да изберете библ. артикул!?");
-            a.show();
+            GUIUtils.SetupAlert("Трябва да изберете артикул!");
             return;
         }
         try {
@@ -151,4 +149,6 @@ public class BorrowItemController implements Initializable {
 
 
     }
+
+
 }

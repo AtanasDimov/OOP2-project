@@ -24,49 +24,25 @@ public class LibraryOverviewController implements Initializable {
     private List<BaseLibraryItem> items = new ArrayList<>();
 
     @FXML
-    private TableView<BaseLibraryItem>LibraryOverview_Itemstableview;
+    private TableView<BaseLibraryItem>LibraryOverview_Tableview;
 
 
 
     public void Back(ActionEvent e){
         GUIUtils.changeScene(e,"/OperatorPanel.fxml", LibraryDictionary.IndexTitle);
     }
-    public void Scrap(){
-        //GUIUtils.changeScene();
+    public void Scrap(ActionEvent e){
+        GUIUtils.changeScene(e,"/ScrapItems.fxml",LibraryDictionary.ScrapTitle);
     }
-    public void Archive(){
-
-    }
-
-    public void SetupTableview(List<BaseLibraryItem> displayItems){
-        TableColumn<BaseLibraryItem, String> column1 = new TableColumn<>(LibraryDictionary.ItemTitle);
-        column1.setCellValueFactory(new PropertyValueFactory<>("title"));
-        LibraryOverview_Itemstableview.getColumns().add(column1);
-        TableColumn<BaseLibraryItem, String> column2 = new TableColumn<>(LibraryDictionary.ItemDesc);
-        column2.setCellValueFactory(new PropertyValueFactory<>("description"));
-        LibraryOverview_Itemstableview.getColumns().add(column2);
-        TableColumn<BaseLibraryItem, LocalDate> column3 = new TableColumn<>(LibraryDictionary.ItemPublishDate);
-        column3.setCellValueFactory(new PropertyValueFactory<>("publishDate"));
-        LibraryOverview_Itemstableview.getColumns().add(column3);
-        TableColumn<BaseLibraryItem, String> column4 = new TableColumn<>(LibraryDictionary.ItemAuthor);
-        column4.setCellValueFactory(new PropertyValueFactory<>("author"));
-        LibraryOverview_Itemstableview.getColumns().add(column4);
-        TableColumn<BaseLibraryItem, Integer> column5 = new TableColumn<>(LibraryDictionary.ItemQuantity);
-        column5.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        LibraryOverview_Itemstableview.getColumns().add(column5);
-
-
-
-        LibraryOverview_Itemstableview.setItems(FXCollections.observableArrayList(displayItems));
+    public void Archive(ActionEvent e){
+        GUIUtils.changeScene(e,"/ArchiveItems.fxml",LibraryDictionary.ArchiveTitle);
 
     }
-
 
         @Override
         public void initialize(URL location, ResourceBundle resources) {
             items = ItemHelper.GetItems();
-
-            SetupTableview(items);
+            GUIUtils.SetupItemsTableview(items,LibraryOverview_Tableview);
 
 
         }

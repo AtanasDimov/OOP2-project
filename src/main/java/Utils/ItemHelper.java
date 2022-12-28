@@ -26,9 +26,9 @@ public class ItemHelper {
         return items.stream().filter(i -> !(i instanceof ScrappedItem)).collect(Collectors.toList());
     }
     public static void ArchiveItem(int id){
-        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
-        BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
-        ArchiveItem archived = (ArchiveItem) item;
+        ItemRepository lr = RepositoryFactory.CreateItemRepository();
+        BaseLibraryItem item = (BaseLibraryItem) lr.GetEagerItem(id);
+        ArchiveItem archived = new ArchiveItem(item.getTitle(), item.getDescription(),item.getPublishDate(),item.getAuthor(), item.getQuantity());
         lr.DeleteObject(item);
         lr.AddObject(archived);
         lr.CloseSession();
