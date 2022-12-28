@@ -16,4 +16,15 @@ public class LibraryDictionary {
     public static final String VideoQuality = "Видео Качество";
     public static final String IndexTitle = "Индекс";
     public static final String CreateTitle = "Добави Автор";
+    public static final String ScrapTitle = "Бракуване на Артикули";
+    public static final String ArchiveTitle = "Архивиране на артикули";
+    public static final String ItemTitle = "Заглавие";
+    public static final String ItemDesc = "Описание";
+    public static final String ItemPublishDate = "Дата на публикация";
+    public static final String ItemAuthor = "Автор";
+    public static final String ItemQuantity = "Количество";
+    public static final String BorrowConfirmation = "Моля изчакайте одобрение на вашата заявка";
+    public static final String OperatorPanel = "Контролен панел на Оператора";
+    public static final String LoginAsOperator = "Операторски изглед";
+    public static final String LibraryOverview = "Библиотечен изглед";
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.LibraryOverviewController">
+   <children>
+      <Button fx:id="LibraryOverview_btnArchive" layoutX="46.0" layoutY="126.0" onAction="#Archive" mnemonicParsing="false" text="Архивирай" />
+      <Button fx:id="LibraryOverview_btnScrap" layoutX="46.0" layoutY="169.0" onAction="#Scrap" mnemonicParsing="false" text="Бракувай" />
+      <Button fx:id="LibraryOverview_btnBack" layoutX="46.0" layoutY="296.0" onAction="#Back" mnemonicParsing="false" text="Назад" />
+      <Label layoutX="188.0" layoutY="27.0" text="Библиотечен фонд:" />
+      <TableView fx:id="LibraryOverview_Tableview" layoutX="195.0" layoutY="62.0" prefHeight="255.0" prefWidth="341.0">
+      </TableView>
+   </children>
+</AnchorPane>

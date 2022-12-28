@@ -41,6 +41,9 @@ public class BaseLibraryItem implements LibraryItemInterface {
         this.title = title;
         this.description = description;
         this.publishDate = publishDate;
+        if (author == null){
+            author = new ArrayList<>();
+        }
         author.addAll(authors);
         this.quantity = quantity;
     }

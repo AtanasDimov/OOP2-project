@@ -1,5 +1,6 @@
 package com.example.librarysoftware;
 
+import Library.Dto.java.DTOAccount.OperatorAccount;
 import Utils.GUIUtils;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ public class AdminPanelController implements Initializable {
     @FXML
     private Button AdminPanel_btnOpenAlerts;
     @FXML
-    private TableView AdminPanel_TableView;
+    private TableView<OperatorAccount> AdminPanel_TableView;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
