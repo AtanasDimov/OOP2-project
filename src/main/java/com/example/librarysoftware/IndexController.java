@@ -6,6 +6,7 @@ import ExceptionHandling.SeverityCodes;
 import Logger.Logger;
 import Sessions.UserSession;
 import Utils.GUIUtils;
+import Utils.LibraryDictionary;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -85,6 +86,11 @@ public class IndexController implements Initializable {
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
+                });
+                Index_btnDynamic5.setVisible(true);
+                Index_btnDynamic5.setText(LibraryDictionary.LoginAsOperator);
+                Index_btnDynamic5.setOnAction(event -> {
+                    GUIUtils.changeScene(event,"/OperatorPanel.fxml",LibraryDictionary.OperatorPanel);
                 });
             }
             else if (UserSession.isOperator()) {

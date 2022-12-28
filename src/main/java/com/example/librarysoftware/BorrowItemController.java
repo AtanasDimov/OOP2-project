@@ -55,7 +55,7 @@ public class BorrowItemController implements Initializable {
         }
         try {
             ReaderHelper.BorrowItem(itemId);
-            BorrowItem_SelectedItemLabel.setText("Моля изчакайте одобрение на вашата заявка");
+            BorrowItem_SelectedItemLabel.setText(LibraryDictionary.BorrowConfirmation);
         } catch (NotLoggedException e){
             Logger log = new Logger();
             log.LogException(new LibraryException(e.getMessage(), SeverityCodes.Severe));
@@ -69,21 +69,21 @@ public class BorrowItemController implements Initializable {
     }
 
     public void Back(ActionEvent event){
-        GUIUtils.changeScene(event, "/Index.fxml", "Индекс");
+        GUIUtils.changeScene(event, "/Index.fxml", LibraryDictionary.IndexTitle);
 
     }
 
     public void SetupTableview(List<BaseLibraryItem> displayItems){
-        TableColumn<BaseLibraryItem, String> column1 = new TableColumn<>("Заглавие");
+        TableColumn<BaseLibraryItem, String> column1 = new TableColumn<>(LibraryDictionary.ItemTitle);
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
         BorrowItem_Tableview.getColumns().add(column1);
-        TableColumn<BaseLibraryItem, String> column2 = new TableColumn<>("Описание");
+        TableColumn<BaseLibraryItem, String> column2 = new TableColumn<>(LibraryDictionary.ItemDesc);
         column2.setCellValueFactory(new PropertyValueFactory<>("description"));
         BorrowItem_Tableview.getColumns().add(column2);
-        TableColumn<BaseLibraryItem, LocalDate> column3 = new TableColumn<>("Дата на публикация");
+        TableColumn<BaseLibraryItem, LocalDate> column3 = new TableColumn<>(LibraryDictionary.ItemPublishDate);
         column3.setCellValueFactory(new PropertyValueFactory<>("publishDate"));
         BorrowItem_Tableview.getColumns().add(column3);
-        TableColumn<BaseLibraryItem, String> column4 = new TableColumn<>("Автор");
+        TableColumn<BaseLibraryItem, String> column4 = new TableColumn<>(LibraryDictionary.ItemAuthor);
         column4.setCellValueFactory(new PropertyValueFactory<>("author"));
         BorrowItem_Tableview.getColumns().add(column4);
 

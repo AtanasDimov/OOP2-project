@@ -6,17 +6,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.OperatorPanelController">
    <children>
       <Button fx:id="OperatorPanel_btnCreateReader" layoutX="29.0" layoutY="81.0" mnemonicParsing="false" text="Добави" />
-      <Button fx:id="OperatorPanel_btnLogout" layoutX="34.0" layoutY="174.0" mnemonicParsing="false" text="Назад" />
+      <Button fx:id="OperatorPanel_btnBack" layoutX="34.0" layoutY="174.0" mnemonicParsing="false" onAction="#Back" text="Назад" />
       <TableView layoutX="245.0" layoutY="55.0" prefHeight="200.0" prefWidth="254.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Button fx:id="OperatorPanel_btnViewItems" layoutX="31.0" layoutY="278.0" mnemonicParsing="false" text="&gt;&gt; към Библиотека" />
+      <Button fx:id="OperatorPanel_btnOverview" layoutX="31.0" layoutY="278.0" mnemonicParsing="false" onAction="#LibraryOverview" text="към Библиотека" />
       <Button fx:id="OperatorPanel_btnRemoveReader" layoutX="29.0" layoutY="120.0" mnemonicParsing="false" text="Премахни" />
       <Label layoutX="253.0" layoutY="21.0" text="Читатели:" />
    </children>
