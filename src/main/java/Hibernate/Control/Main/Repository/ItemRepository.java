@@ -14,7 +14,7 @@ public class ItemRepository extends LibraryRepository{
     }
 
     public LibraryItemInterface GetEagerItem(int id){
-        BookItem result = (BookItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(id));
+        LibraryItemInterface result = (LibraryItemInterface) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(id));
         hibernateManager.CloseSession();
         return result;
     }

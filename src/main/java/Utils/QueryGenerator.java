@@ -23,7 +23,7 @@ public class QueryGenerator {
     }
 
     public static String GetLoadLazyDataItemQuery(int id) {
-        String query = "FROM BookItem b left join fetch b.author WHERE b.id=" + id;
+        String query = "FROM BaseLibraryItem b left join fetch b.author WHERE b.id=" + id;
         return query;
     }
 
@@ -175,7 +175,7 @@ public class QueryGenerator {
         return query;
     }
     public static String CheckScrappedItem(int id){
-        String query = "Select Count(id) From ScrappedItem Where itemId = " + id;
+        String query = "Select Count(*) From ScrappedItem Where itemId = " + id;
         return query;
     }
     public static String GetScrappedItem(int id){

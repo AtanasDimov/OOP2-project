@@ -38,7 +38,9 @@ public class ItemHelper {
         ItemRepository repository = RepositoryFactory.CreateItemRepository();
         BaseLibraryItem item = (BaseLibraryItem) repository.GetEagerItem(id);
         ScrappedItem scrappedItem;
-        if((int)repository.GetObject(QueryGenerator.CheckScrappedItem(id)) == 0)
+        repository = RepositoryFactory.CreateItemRepository();
+        Long objectCheck = (Long) repository.GetObject(QueryGenerator.CheckScrappedItem(id));
+        if(objectCheck == 0)
             scrappedItem = new ScrappedItem(item.getTitle(), item.getDescription(), item.getPublishDate(), item.getAuthor(),1, item.getId());
         else{
             scrappedItem = (ScrappedItem) repository.GetObject(QueryGenerator.CheckScrappedItem(id));
@@ -46,6 +48,7 @@ public class ItemHelper {
             scrappedItem.setQuantity(scrappedItem.getQuantity() + 1);
         }
 
+        repository = RepositoryFactory.CreateItemRepository();
         int quantity = item.getQuantity();
         item.setQuantity(--quantity);
         repository.UpdateObject(item);
