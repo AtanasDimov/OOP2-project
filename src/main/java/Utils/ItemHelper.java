@@ -29,6 +29,7 @@ public class ItemHelper {
         ItemRepository lr = RepositoryFactory.CreateItemRepository();
         BaseLibraryItem item = (BaseLibraryItem) lr.GetEagerItem(id);
         ArchiveItem archived = new ArchiveItem(item.getTitle(), item.getDescription(),item.getPublishDate(),item.getAuthor(), item.getQuantity());
+        lr = RepositoryFactory.CreateItemRepository();
         lr.DeleteObject(item);
         lr.AddObject(archived);
         lr.CloseSession();
