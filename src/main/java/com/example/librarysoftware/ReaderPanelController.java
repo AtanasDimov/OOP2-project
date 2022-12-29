@@ -30,7 +30,7 @@ public class ReaderPanelController implements Initializable {
     @FXML
     private TableView<BorrowedItemsVisualize> ReaderPanel_tableview;
 
-    public void Logout(ActionEvent event){
+    public void Back(ActionEvent event){
         GUIUtils.changeScene(event,"/Index.fxml", LibraryDictionary.IndexTitle);
     }
     public void ReturnBook(){

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.ReaderPanelController">
-      <Button fx:id="ReaderPanel_btnLogOut" layoutX="38.0" layoutY="228.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
+      <Button fx:id="ReaderPanel_btnBack" layoutX="38.0" layoutY="228.0" mnemonicParsing="false" onAction="#Back" text="Logout" />
       <Button fx:id="ReaderPanel_btnReturnBook" layoutX="39.0" layoutY="69.0" mnemonicParsing="false" onAction="#ReturnBook" text="Return" />
       <TableView layoutX="185.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" fx:id="ReaderPanel_tableview">
       </TableView>

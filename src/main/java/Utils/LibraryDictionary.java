@@ -27,4 +27,8 @@ public class LibraryDictionary {
     public static final String OperatorPanel = "Контролен панел на Оператора";
     public static final String LoginAsOperator = "Операторски изглед";
     public static final String LibraryOverview = "Библиотечен изглед";
+    public static final String ApproveReaderForm = "Одобряване на читателски регистрации";
+    public static final String ApproveBorrowForm = "Одобряване на читателски заемания";
+    public static final String SelectionTitle = "Одобряване на заявки";
+
 }
