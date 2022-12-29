@@ -29,6 +29,38 @@ public class ReaderVisualize {
         this.readerItems = readerItems;
     }
 
+    public LocalDate getFirstRegistration() {
+        return firstRegistration;
+    }
+
+    public void setFirstRegistration(LocalDate firstRegistration) {
+        this.firstRegistration = firstRegistration;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public List<BaseLibraryItem> getReaderItems() {
+        return readerItems;
+    }
+
+    public void setReaderItems(List<BaseLibraryItem> readerItems) {
+        this.readerItems = readerItems;
+    }
+
     @Override
     public String toString() {
         return "ReaderVisualize{" +

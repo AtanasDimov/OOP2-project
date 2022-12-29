@@ -73,7 +73,7 @@ public class Form {
         Password = password;
     }
 
-    public boolean isAccepted() {
+    public boolean getIsAccepted() {
         return IsAccepted;
     }
 
@@ -87,5 +87,13 @@ public class Form {
 
     public void setActive(boolean active) {
         IsActive = active;
+    }
+
+    public LocalDate getDateOfRegistry() {
+        return DateOfRegistry;
+    }
+
+    public void setDateOfRegistry(LocalDate dateOfRegistry) {
+        DateOfRegistry = dateOfRegistry;
     }
 }

@@ -72,6 +72,12 @@ public class IndexController implements Initializable {
                 Index_btnDynamic3.setOnAction(event -> {
                     GUIUtils.changeScene(event,"/OperatorPanel.fxml",LibraryDictionary.OperatorPanel);
                 });
+                Index_btnDynamic4.setVisible(true);
+                Index_btnDynamic4.setText(LibraryDictionary.ReferenceTab);
+                Index_btnDynamic4.setOnAction(event -> {
+                    GUIUtils.changeScene(event,"/ReferenceTab.fxml",LibraryDictionary.OperatorPanel);
+                });
+
             }
             else if (UserSession.isOperator()) {
 
