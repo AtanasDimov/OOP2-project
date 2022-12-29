@@ -43,6 +43,10 @@ public class GUIUtils {
 
     }
     public static void SetupItemsTableview(List<BaseLibraryItem> displayItems, TableView tableViewName){
+        tableViewName.getItems().clear();
+        tableViewName.getColumns().clear();
+        tableViewName.refresh();
+
         TableColumn<BaseLibraryItem, String> column1 = new TableColumn<>(LibraryDictionary.ItemTitle);
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
         tableViewName.getColumns().add(column1);
@@ -60,7 +64,6 @@ public class GUIUtils {
         tableViewName.getColumns().add(column5);
 
 
-
         tableViewName.setItems(FXCollections.observableArrayList(displayItems));
 
     }
@@ -68,9 +71,6 @@ public class GUIUtils {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(message);
         a.show();
-    }
-    public static void ListenerSwitch(){
-
     }
 
 }
