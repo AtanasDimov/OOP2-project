@@ -53,8 +53,14 @@ public class ReaderVisualize {
         this.lastName = lastName;
     }
 
-    public List<BaseLibraryItem> getReaderItems() {
-        return readerItems;
+    public String getReaderItems() {
+        StringBuilder sb = new StringBuilder();
+
+        for(BaseLibraryItem i : readerItems){
+            sb.append(i.getTitle() + " ").append(i.getDescription());
+        }
+
+        return sb.toString();
     }
 
     public void setReaderItems(List<BaseLibraryItem> readerItems) {
@@ -68,7 +74,7 @@ public class ReaderVisualize {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", readerRating=" + readerRating +
-                ", readerItems=" + readerItems +
+                ", readerItems=" + readerItems.toString() +
                 '}';
     }
 }

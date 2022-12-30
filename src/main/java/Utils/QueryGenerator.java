@@ -163,7 +163,7 @@ public class QueryGenerator {
         return query;
     }
     public static String GetReaderItems(int id){
-        String query = "From BaseLibraryItem b INNER JOIN Reservation r ON r.ItemId = b.id WHERE r.ReaderId = " + id;
+        String query = "Select b From BaseLibraryItem b INNER JOIN Reservation r ON r.ItemId = b.id WHERE r.ReaderId = " + id;
         return query;
     }
     public static String GetAllForms(){

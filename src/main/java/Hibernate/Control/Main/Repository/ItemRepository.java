@@ -20,7 +20,7 @@ public class ItemRepository extends LibraryRepository{
     }
 
     public void GetLazyDataItem(LibraryItemInterface b){
-        BookItem result = (BookItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(b.getId()));
+        LibraryItemInterface result = (LibraryItemInterface) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(b.getId()));
         b = result;
         hibernateManager.CloseSession();
     }

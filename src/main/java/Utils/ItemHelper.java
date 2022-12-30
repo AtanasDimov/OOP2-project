@@ -43,7 +43,9 @@ public class ItemHelper {
         if(objectCheck == 0)
             scrappedItem = new ScrappedItem(item.getTitle(), item.getDescription(), item.getPublishDate(), item.getAuthor(),1, item.getId());
         else{
-            scrappedItem = (ScrappedItem) repository.GetObject(QueryGenerator.CheckScrappedItem(id));
+            scrappedItem = (ScrappedItem) repository.GetObject(QueryGenerator.GetScrappedItem(id));
+            repository.CloseSession();
+            repository = RepositoryFactory.CreateItemRepository();
             repository.GetLazyDataItem(scrappedItem);
             scrappedItem.setQuantity(scrappedItem.getQuantity() + 1);
         }
