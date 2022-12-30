@@ -57,7 +57,7 @@ public class ReaderVisualize {
         StringBuilder sb = new StringBuilder();
 
         for(BaseLibraryItem i : readerItems){
-            sb.append(i.getTitle() + " ").append(i.getDescription());
+            sb.append(i.getTitle() + " - ").append(i.getDescription()+ ",\n");
         }
 
         return sb.toString();

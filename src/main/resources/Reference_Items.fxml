@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="517.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.Reference_ItemController">
+   <children>
+      <Button fx:id="ReferenceItem_btnBack" layoutX="61.0" layoutY="382.0" mnemonicParsing="false" onAction="#RefItemBack" text="Назад" />
+      <TableView fx:id="ReferenceItem_Tableview" layoutX="251.0" layoutY="67.0" prefHeight="340.0" prefWidth="446.0" />
+      <ComboBox fx:id="ReferenceItem_Combobox" layoutX="38.0" layoutY="212.0" prefWidth="150.0" promptText="Активни/ Бракувани" />
+      <Label layoutX="237.0" layoutY="40.0" text="Артикули:" />
+   </children>
+</AnchorPane>

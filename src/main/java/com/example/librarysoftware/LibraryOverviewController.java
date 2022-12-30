@@ -42,6 +42,7 @@ public class LibraryOverviewController implements Initializable {
         @Override
         public void initialize(URL location, ResourceBundle resources) {
             items = ItemHelper.GetItems();
+
             GUIUtils.SetupItemsTableview(items,LibraryOverview_Tableview);
 
 

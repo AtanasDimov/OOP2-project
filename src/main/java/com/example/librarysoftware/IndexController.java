@@ -85,14 +85,14 @@ public class IndexController implements Initializable {
             else {
                 Index_WelcomeUserLabel.setVisible(true);
                 Index_btnDynamic1.setVisible(true);
-                Index_btnDynamic1.setText("Заеми Книга");
+                Index_btnDynamic1.setText(LibraryDictionary.BorrowItem);
                 Index_btnDynamic1.setOnAction(event -> {
-                    GUIUtils.changeScene(event,"/BorrowItem.fxml","Заемане на книга");
+                    GUIUtils.changeScene(event,"/BorrowItem.fxml",LibraryDictionary.BorrowItem);
                 });
                 Index_btnDynamic2.setVisible(true);
-                Index_btnDynamic2.setText("Читателски панел");
+                Index_btnDynamic2.setText(LibraryDictionary.ReaderPanelTitle);
                 Index_btnDynamic2.setOnAction(event -> {
-                    GUIUtils.changeScene(event,"/ReaderPanel.fxml","Заемане на книга");
+                    GUIUtils.changeScene(event,"/ReaderPanel.fxml",LibraryDictionary.ReaderPanelTitle);
                 });
             }
 

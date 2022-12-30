@@ -44,4 +44,8 @@ public class LibraryDictionary {
     public static final String ReaderDate = "Дата на одобрение:";
     public static final String ReaderItems = "Заети: ";
     public static final String ReaderInformation = "Потребителска информация:";
+    public static final String ReaderPanelTitle = "Читателски панел";
+    public static final String BorrowItem = "Заеми";
+    public static final String DisplayActive = "Извеждане на  Активни артикули";
+    public static final String DisplayScrapped = "Извеждане на Бракувани артикули";
 }

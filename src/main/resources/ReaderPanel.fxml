@@ -2,14 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.ReaderPanelController">
-      <Button fx:id="ReaderPanel_btnBack" layoutX="38.0" layoutY="228.0" mnemonicParsing="false" onAction="#Back" text="Назад" />
+      <Button fx:id="ReaderPanel_btnBack" layoutX="40.0" layoutY="228.0" mnemonicParsing="false" onAction="#Back" text="Назад" />
       <Button fx:id="ReaderPanel_btnReturnBook" layoutX="39.0" layoutY="69.0" mnemonicParsing="false" onAction="#ReturnBook" text="Върни" />
-      <TableView layoutX="185.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" fx:id="ReaderPanel_tableview">
+      <TableView fx:id="ReaderPanel_tableview" layoutX="152.0" layoutY="61.0" prefHeight="220.0" prefWidth="381.0">
       </TableView>
       <Label layoutX="175.0" layoutY="32.0" text="Заети:" />
    <Label fx:id="ReaderPanel_labelReturn" layoutX="51.0" layoutY="129.0" />

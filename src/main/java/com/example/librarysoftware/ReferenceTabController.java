@@ -13,7 +13,7 @@ public class ReferenceTabController {
         GUIUtils.changeScene(e,"/Reference_Forms.fxml", LibraryDictionary.ReferenceFormsTitle);
     }
     public void AllItems(ActionEvent e){
-
+        GUIUtils.changeScene(e,"/Reference_Items.fxml", LibraryDictionary.ReferenceItemsTitle);
     }
     public void AllReaders(ActionEvent e){
         GUIUtils.changeScene(e,"/Reference_Readers.fxml",LibraryDictionary.ReferenceReadersTitle);

@@ -1,3 +1,5 @@
+/*package Tests;
+
 import Library.Dto.java.DTOLibraryItems.Author;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
 import Library.Dto.java.DTOLibraryItems.BookItem;
@@ -70,4 +72,4 @@ class ItemHelperTest {
     @Test
     void getItemsForArchive() {
     }
-}
+}*/
