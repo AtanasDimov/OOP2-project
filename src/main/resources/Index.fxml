@@ -8,12 +8,11 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.IndexController">
    <children>
       <Label fx:id="Index_WelcomeUserLabel" layoutX="56.0" layoutY="14.0" />
-      <Button fx:id="Index_btnDynamic1" layoutX="255.0" layoutY="63.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="Index_btnDynamic2" layoutX="255.0" layoutY="100.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="Index_btnDynamic3" layoutX="255.0" layoutY="142.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="Index_btnDynamic4" layoutX="255.0" layoutY="188.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="Index_btnDynamic5" layoutX="255.0" layoutY="235.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="Index_btnLogout" layoutX="238.0" layoutY="310.0" mnemonicParsing="false" text="Излизане" textFill="#000000fe">
+      <Button fx:id="Index_btnDynamic1" layoutX="255.0" layoutY="78.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnDynamic2" layoutX="256.0" layoutY="119.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnDynamic3" layoutX="255.0" layoutY="155.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnDynamic4" layoutX="255.0" layoutY="200.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="Index_btnLogout" layoutX="239.0" layoutY="272.0" mnemonicParsing="false" text="Излизане" textFill="#000000fe">
          <font>
             <Font name="Agency FB" size="15.0" />
          </font>

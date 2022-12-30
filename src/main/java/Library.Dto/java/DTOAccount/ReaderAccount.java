@@ -17,7 +17,7 @@ public class ReaderAccount extends AccountBase implements BorrowItemInterface {
     private LocalDate firstRegistration;
     private String firstName;
     private String lastName;
-    private double readerRating;
+    private int readerRating;
 
     public ReaderAccount(String firstName, String lastName, String username, String password) {
         super(username, password);
@@ -55,7 +55,7 @@ public class ReaderAccount extends AccountBase implements BorrowItemInterface {
         return readerRating;
     }
 
-    public void setReaderRating(double readerRating) {
+    public void setReaderRating(int readerRating) {
         this.readerRating = readerRating;
     }
 }

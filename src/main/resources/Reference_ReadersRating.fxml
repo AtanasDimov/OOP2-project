@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="541.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.Reference_ReaderByRating">
+   <children>
+      <TableView fx:id="ReferenceReadersRating_Tableview" layoutX="246.0" layoutY="80.0" prefHeight="310.0" prefWidth="442.0" />
+      <Button fx:id="ReferenceReadersRating_btnBack" layoutX="64.0" layoutY="449.0" mnemonicParsing="false" onAction="#RefRatingBack" text="Назад" />
+      <ComboBox fx:id="ReferenceReadersRating_Combobox" layoutX="41.0" layoutY="210.0" prefWidth="150.0" promptText="Стойност" />
+      <Label layoutX="218.0" layoutY="56.0" text="Читатели по рейтинг" />
+      <Label layoutX="32.0" layoutY="179.0" text="Изберете стойност на рейтинг:" />
+      <Label layoutX="25.0" layoutY="262.0" text="1- Нелоялен" />
+      <Label layoutX="26.0" layoutY="288.0" text="2- Неутрално" />
+      <Label layoutX="25.0" layoutY="318.0" text="3- Лоялен Читател" />
+   </children>
+</AnchorPane>

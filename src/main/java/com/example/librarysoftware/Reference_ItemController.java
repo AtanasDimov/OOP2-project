@@ -4,6 +4,7 @@ import Library.Dto.java.DTOLibraryItems.*;
 import Utils.GUIUtils;
 import Utils.ItemHelper;
 import Utils.LibraryDictionary;
+import Utils.ReferenceHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,7 +39,7 @@ public class Reference_ItemController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        activeItems = ItemHelper.GetItems();
+        activeItems = ReferenceHelper.GetAllReferenceItems();
         //scrappedItems = ItemHelper.GetScrappedItems();
 
 

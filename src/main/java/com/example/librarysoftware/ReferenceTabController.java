@@ -19,7 +19,7 @@ public class ReferenceTabController {
         GUIUtils.changeScene(e,"/Reference_Readers.fxml",LibraryDictionary.ReferenceReadersTitle);
     }
     public void ReadersByRating(ActionEvent e){
-
+        GUIUtils.changeScene(e,"/Reference_ReadersRating.fxml",LibraryDictionary.ReferenceRatingTitle);
     }
 
 
