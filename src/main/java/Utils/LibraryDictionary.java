@@ -27,4 +27,21 @@ public class LibraryDictionary {
     public static final String OperatorPanel = "Контролен панел на Оператора";
     public static final String LoginAsOperator = "Операторски изглед";
     public static final String LibraryOverview = "Библиотечен изглед";
+    public static final String ApproveReaderForm = "Одобряване на читателски регистрации";
+    public static final String ApproveBorrowForm = "Одобряване на читателски заемания";
+    public static final String SelectionTitle = "Одобряване на заявки";
+    public static final String ReferenceTab = "Извеждане на справки";
+    public static final String ReferenceTitle = "Видове справки";
+    public static final String ReferenceFormsTitle = "Справка подадени формуляри";
+    public static final String ReferenceItemsTitle = "Справка библиотечен фонд";
+    public static final String ReferenceReadersTitle = "Справка Потребители";
+    public static final String ReferenceRatingTitle = "Справка рейтинг на потребители";
+    public static final String ReaderUsername = "Потребителско име";
+    public static final String ReaderFirstName = "Име на потребителя";
+    public static final String ReaderLastname = "Фамилия";
+    public static final String DateOfRegistry = "Първа регистрация";
+    public static final String Status = "Статус";
+    public static final String ReaderDate = "Дата на одобрение:";
+    public static final String ReaderItems = "Заети: ";
+    public static final String ReaderInformation = "Потребителска информация:";
 }

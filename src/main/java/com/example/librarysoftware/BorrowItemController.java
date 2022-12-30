@@ -72,6 +72,10 @@ public class BorrowItemController implements Initializable {
     }
 
     public void SetupTableview(List<BaseLibraryItem> displayItems){
+        BorrowItem_Tableview.getItems().clear();
+        BorrowItem_Tableview.getColumns().clear();
+        BorrowItem_Tableview.refresh();
+
         TableColumn<BaseLibraryItem, String> column1 = new TableColumn<>(LibraryDictionary.ItemTitle);
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
         BorrowItem_Tableview.getColumns().add(column1);

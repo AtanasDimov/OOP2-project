@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.FormsSelectionController">
+   <children>
+      <Button fx:id="Selection_btnRegistration" layoutX="189.0" layoutY="156.0" mnemonicParsing="false" onAction="#ReaderForm" text="Одобряване читателски регистрации" />
+      <Button fx:id="Selection_btnBorrow" layoutX="198.0" layoutY="215.0" mnemonicParsing="false" onAction="#BorrowForm" text="Одобряване читателски заемания" />
+      <Button fx:id="Selection_btnBack" layoutX="60.0" layoutY="322.0" mnemonicParsing="false" onAction="#SelectionBack" text="Назад" />
+      <Label layoutX="86.0" layoutY="70.0" text="Изберете действие(отваря се изкачащ прозорец):" />
+   </children>
+</AnchorPane>

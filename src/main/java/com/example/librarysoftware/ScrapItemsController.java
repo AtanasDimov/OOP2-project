@@ -82,9 +82,9 @@ public class ScrapItemsController implements Initializable {
                             selected.add(b);
                     }
                 }break;
-
             }
-
+            ScrapItems_Tableview.getItems().clear();
+            GUIUtils.SetupItemsTableview(selected,ScrapItems_Tableview);
         });
 
 

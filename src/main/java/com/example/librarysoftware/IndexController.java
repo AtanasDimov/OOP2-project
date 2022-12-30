@@ -68,30 +68,16 @@ public class IndexController implements Initializable {
                     GUIUtils.changeScene(event,"/CreateItem.fxml","Добавяне на артикул");
                 });
                 Index_btnDynamic3.setVisible(true);
-                Index_btnDynamic3.setText("Одобряване на читателски регистрации");
+                Index_btnDynamic3.setText(LibraryDictionary.LoginAsOperator);
                 Index_btnDynamic3.setOnAction(event -> {
-                    RegistrationsApproveForm form = new RegistrationsApproveForm();
-                    try {
-                        form.start(new Stage());
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                });
-                Index_btnDynamic4.setVisible(true);
-                Index_btnDynamic4.setText("Одобряване на читателски заемания");
-                Index_btnDynamic4.setOnAction(event -> {
-                    ApproveBorrowForm form = new ApproveBorrowForm();
-                    try {
-                        form.start(new Stage());
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                });
-                Index_btnDynamic5.setVisible(true);
-                Index_btnDynamic5.setText(LibraryDictionary.LoginAsOperator);
-                Index_btnDynamic5.setOnAction(event -> {
                     GUIUtils.changeScene(event,"/OperatorPanel.fxml",LibraryDictionary.OperatorPanel);
                 });
+                Index_btnDynamic4.setVisible(true);
+                Index_btnDynamic4.setText(LibraryDictionary.ReferenceTab);
+                Index_btnDynamic4.setOnAction(event -> {
+                    GUIUtils.changeScene(event,"/ReferenceTab.fxml",LibraryDictionary.OperatorPanel);
+                });
+
             }
             else if (UserSession.isOperator()) {
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="508.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarysoftware.Reference_FormsController">
+   <children>
+      <TableView fx:id="Forms_Tableview" layoutX="170.0" layoutY="62.0" prefHeight="297.0" prefWidth="421.0">
+      </TableView>
+      <Button fx:id="Forms_btnBack" layoutX="68.0" layoutY="420.0" mnemonicParsing="false" onAction="#FormsBack" text="Назад" />
+   </children>
+</AnchorPane>
