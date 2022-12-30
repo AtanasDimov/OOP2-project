@@ -48,4 +48,10 @@ public class LibraryDictionary {
     public static final String BorrowItem = "Заеми";
     public static final String DisplayActive = "Извеждане на  Активни артикули";
     public static final String DisplayScrapped = "Извеждане на Бракувани артикули";
+    public static final String ReaderRating = "Рейтинг";
+    public static final String OperatorUsername = "Потребителско име на оператор";
+    public static final String IdAttribute = "ID";
+    public static final String CreateOperatorTitle = "Създаване на Операторски акаунт";
+    public static final String AdminPanelTitle = "Контролен панел/оператори";
+    public static final String AdminPanel = "Контролен панел";
 }

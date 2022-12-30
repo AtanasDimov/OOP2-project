@@ -30,8 +30,6 @@ public class IndexController implements Initializable {
     @FXML
     private Button Index_btnDynamic4;
     @FXML
-    private Button Index_btnDynamic5;
-    @FXML
     private Label Index_WelcomeUserLabel;
 
 
@@ -41,7 +39,6 @@ public class IndexController implements Initializable {
         Index_btnDynamic2.setVisible(false);
         Index_btnDynamic3.setVisible(false);
         Index_btnDynamic4.setVisible(false);
-        Index_btnDynamic5.setVisible(false);
 
         try {
             String username = UserSession.getInstance().getUsername();

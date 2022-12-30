@@ -53,23 +53,25 @@ public class AccountHelper {
         }
     }
 
-    public static boolean RegisterOperator(String username, String password){
+    public static void RegisterOperator(String username, String password){
         if(CheckIfExists(username, password)){
             Logger log = new Logger();
             LibraryException lEx = new LibraryException("Operator user with these credentials already exists", SeverityCodes.Light);
             log.LogException(lEx);
-            return false;
+
+        }else {
+            String hashedPass = "";
+            try {
+                hashedPass = HashPassword(password);
+
+            } catch (Exception e) {}
+            OperatorAccount operator = new OperatorAccount(username, hashedPass);
+
+            LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+            lr.AddObject(operator);
+            lr.CloseSession();
         }
 
-        String hashedPass = HashPassword(password);
-
-        OperatorAccount operator = new OperatorAccount(username, hashedPass);
-
-        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
-        lr.AddObject(operator);
-        lr.CloseSession();
-
-        return true;
     }
     public static boolean RegisterReaderForm(String firstName, String lastName, String username, String password){
         if(CheckIfExists(username, password)){
@@ -99,8 +101,14 @@ public class AccountHelper {
         lr.AddObject(reader);
         lr.CloseSession();
     }
+    public static void DeleteOperator(int id){
+        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
+        OperatorAccount operator = (OperatorAccount) lr.GetObject(QueryGenerator.GetOperatorById(id));
+        lr.DeleteObject(operator);
+        lr.CloseSession();
+    }
 
-    private static void UnsignReader(int id){
+    public static void UnsignReader(int id){
         LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
         ReaderAccount reader = (ReaderAccount) lr.GetObject(QueryGenerator.GetReaderById(id));
         lr.DeleteObject(reader);

@@ -83,7 +83,11 @@ public class QueryGenerator {
     }
 
     public static String GetReaderById(int id){
-        String query = "From ReaderAccount Where Id = " + id;
+        String query = "From ReaderAccount Where accountId = " + id;
+        return query;
+    }
+    public static String GetOperatorById(int id){
+        String query = "From OperatorAccount Where accountId = " + id;
         return query;
     }
     public static String GetListOfAuthors(){
@@ -172,6 +176,10 @@ public class QueryGenerator {
     }
     public static String GetAllReaders(){
         String query = "From Accounts Where account_type = 3";
+        return query;
+    }
+    public static String GetAllOperators(){
+        String query = "From Accounts Where account_type = 2";
         return query;
     }
     public static String CheckScrappedItem(int id){
