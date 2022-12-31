@@ -40,7 +40,7 @@ public class Reference_ItemController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         activeItems = ReferenceHelper.GetAllReferenceItems();
-        //scrappedItems = ItemHelper.GetScrappedItems();
+        scrappedItems = ReferenceHelper.GetAllScrappedItems();
 
 
         ReferenceItem_Combobox.setItems(options);
@@ -51,8 +51,8 @@ public class Reference_ItemController implements Initializable {
                 }
                 break;
                 case LibraryDictionary.DisplayScrapped: {
-                    //GUIUtils.SetupItemsTableview(scrappedItems,ReferenceItem_Tableview);
-                    System.out.println("Bachka");
+                    GUIUtils.SetupItemsTableview(scrappedItems,ReferenceItem_Tableview);
+                    //System.out.println("Bachka");
                 }
                 break;
             }
