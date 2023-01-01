@@ -23,7 +23,7 @@ public class ItemHelper {
         List<BaseLibraryItem> items = new ArrayList<>();
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         items = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetLoadLazyDataItemsQuery());
-        return items.stream().filter(i -> !(i instanceof ScrappedItem)).collect(Collectors.toList());
+        return items.stream().filter(i -> !(i instanceof ScrappedItem)).filter(i -> i.getQuantity() > 0).collect(Collectors.toList());
     }
     public static void ArchiveItem(int id){
         ItemRepository lr = RepositoryFactory.CreateItemRepository();

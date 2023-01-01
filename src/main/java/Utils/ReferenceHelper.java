@@ -5,6 +5,7 @@ import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOAccount.ReaderAccount;
 import Library.Dto.java.DTOLibraryItems.ArchiveItem;
 import Library.Dto.java.DTOLibraryItems.BaseLibraryItem;
+import Library.Dto.java.DTOLibraryItems.ScrappedItem;
 import Library.Dto.java.DTOLibraryItems.VisualMediaItem;
 import Library.Dto.java.Form.Form;
 import Library.Dto.java.VisualizeItems.ReaderVisualize;
@@ -25,7 +26,7 @@ public class ReferenceHelper {
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         List<BaseLibraryItem> items = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetItems());
         repository.CloseSession();
-        return items;
+        return items.stream().filter(i -> !(i instanceof ScrappedItem)).filter(i -> i.getQuantity() > 0).collect(Collectors.toList());
     }
 
     public static List<BaseLibraryItem> GetAllScrappedItems(){
