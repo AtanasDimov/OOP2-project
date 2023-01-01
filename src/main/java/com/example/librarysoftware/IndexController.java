@@ -77,7 +77,16 @@ public class IndexController implements Initializable {
 
             }
             else if (UserSession.isOperator()) {
-
+                Index_btnDynamic1.setVisible(true);
+                Index_btnDynamic1.setText(LibraryDictionary.LoginAsOperator);
+                Index_btnDynamic1.setOnAction(event -> {
+                    GUIUtils.changeScene(event,"/OperatorPanel.fxml",LibraryDictionary.OperatorTitle);
+                });
+                Index_btnDynamic2.setVisible(true);
+                Index_btnDynamic2.setText("Добавяне на артикул в библиотека");
+                Index_btnDynamic2.setOnAction(event -> {
+                    GUIUtils.changeScene(event,"/CreateItem.fxml","Добавяне на артикул");
+                });
             }
             else {
                 Index_WelcomeUserLabel.setVisible(true);

@@ -52,7 +52,7 @@ public class Reference_ReaderByRating implements Initializable {
     }
 
     public void RefRatingBack(ActionEvent event){
-        GUIUtils.changeScene(event,"/Reference_ReadersRating.fxml", LibraryDictionary.ReferenceTitle);
+        GUIUtils.changeScene(event,"/ReferenceTab.fxml", LibraryDictionary.ReferenceTitle);
     }
 
     @Override

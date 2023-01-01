@@ -25,6 +25,6 @@ public class RegisterOperatorController {
         AccountHelper.RegisterOperator(username,password);
     }
     public void RegisterBack(ActionEvent event){
-        GUIUtils.changeScene(event,"/RegisterOperator.fxml", LibraryDictionary.AdminPanelTitle);
+        GUIUtils.changeScene(event,"/AdminPanel.fxml", LibraryDictionary.AdminPanelTitle);
     }
 }

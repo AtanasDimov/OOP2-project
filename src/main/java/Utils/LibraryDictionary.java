@@ -54,4 +54,6 @@ public class LibraryDictionary {
     public static final String CreateOperatorTitle = "Създаване на Операторски акаунт";
     public static final String AdminPanelTitle = "Контролен панел/оператори";
     public static final String AdminPanel = "Контролен панел";
+    public static final String OperatorTitle ="Операторски панел";
+    public static final String AddItem = "Добавяне на артикул";
 }
