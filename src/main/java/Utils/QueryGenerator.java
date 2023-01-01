@@ -200,4 +200,8 @@ public class QueryGenerator {
         String query = "SELECT DueDate FROM Reservation WHERE ItemId = " + id + "AND ReaderId = " + readerId;
         return query;
     }
+    public static String GetScrappedItems(){
+        String query = "From ScrappedItem";
+        return query;
+    }
 }

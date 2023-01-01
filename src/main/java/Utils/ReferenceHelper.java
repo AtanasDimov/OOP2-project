@@ -28,6 +28,13 @@ public class ReferenceHelper {
         return items;
     }
 
+    public static List<BaseLibraryItem> GetAllScrappedItems(){
+        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
+        List<BaseLibraryItem> scrappedItems = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetScrappedItems());
+        repository.CloseSession();
+        return scrappedItems;
+    }
+
     public static List<ReaderVisualize> GetAllReferenceReader(){
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         List<ReaderAccount> accounts = (List<ReaderAccount>) (Object)repository.GetListOfObject(QueryGenerator.GetAllReaders());
