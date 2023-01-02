@@ -24,7 +24,7 @@ public class ReferenceHelper {
 
     public static List<BaseLibraryItem> GetAllReferenceItems(){
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
-        List<BaseLibraryItem> items = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetItems());
+        List<BaseLibraryItem> items = (List<BaseLibraryItem>) (Object)repository.GetListOfObject(QueryGenerator.GetLoadLazyDataItemsQuery());
         repository.CloseSession();
         return items.stream().filter(i -> !(i instanceof ScrappedItem)).filter(i -> i.getQuantity() > 0).collect(Collectors.toList());
     }

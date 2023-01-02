@@ -204,4 +204,8 @@ public class QueryGenerator {
         String query = "From ScrappedItem";
         return query;
     }
+    public static String GetCountFromArchiveItem(int id){
+        String query="SELECT COUNT(*) FROM ArchiveItem WHERE Id =" + id;
+        return query;
+    }
 }

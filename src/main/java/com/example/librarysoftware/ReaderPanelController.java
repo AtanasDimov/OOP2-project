@@ -43,12 +43,17 @@ public class ReaderPanelController implements Initializable {
         try {
             ReaderHelper.ReturnItem(itemId);
             ReaderPanel_labelReturn.setText("");
+            reservations = ReaderHelper.GetReaderItems();
+            SetupTableview(reservations);
         } catch (Exception e) {
             Logger log = new Logger();
             log.LogException(new LibraryException(e.getMessage(), SeverityCodes.Severe));
         }
     }
     public void SetupTableview(List<BorrowedItemsVisualize> displayBorrowed){
+        ReaderPanel_tableview.refresh();
+        ReaderPanel_tableview.getColumns().clear();
+        ReaderPanel_tableview.getItems().clear();
         TableColumn<BorrowedItemsVisualize,String>column1 = new TableColumn<>("Заглавие");
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
         ReaderPanel_tableview.getColumns().add(column1);

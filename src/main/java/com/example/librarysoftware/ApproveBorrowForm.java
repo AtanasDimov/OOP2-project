@@ -5,10 +5,7 @@ import Hibernate.Control.Main.Repository.LibraryRepository;
 import Hibernate.Control.Main.Repository.RepositoryFactory;
 import Library.Dto.java.DTOLibraryItems.*;
 import Library.Dto.java.Form.Form;
-import Utils.FormHelper;
-import Utils.QueryGenerator;
-import Utils.ReaderHelper;
-import Utils.ReservationHelper;
+import Utils.*;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -43,7 +40,7 @@ public class ApproveBorrowForm extends Application {
 
         HBoxCell(int borrowFormId,int readerId, int itemId,String readerName,String itemName) {
             super();
-
+            long isArchive;
 
             ObservableList<String> dueDatesList = FXCollections.observableArrayList();
             ObservableList<String> reservationsTypeList = FXCollections.observableArrayList();
@@ -56,11 +53,16 @@ public class ApproveBorrowForm extends Application {
             reservationTypes_Combobox.setItems(reservationsTypeList);
             reservationTypes_Combobox.setPromptText("Вид на заемане");
 
-            dueDates_Combobox.setValue("Изберете период за отдаване");
             dueDates_Combobox.setOnAction(event -> { ChooseDueDate();});
 
-
-            reservationTypes_Combobox.setValue("Изберете вид отдаване:");
+            LibraryRepository lr = RepositoryFactory.CreateItemRepository();
+            isArchive = (Long) lr.GetObject(QueryGenerator.GetCountFromArchiveItem(itemId));
+            lr.CloseSession();
+            if(isArchive == 1){
+                dueDates_Combobox.getSelectionModel().selectLast();
+                reservationTypes_Combobox.setVisible(false);
+                ChooseReservationType();
+            }else
             reservationTypes_Combobox.setOnAction(event -> { ChooseReservationType();});
 
 
@@ -71,7 +73,8 @@ public class ApproveBorrowForm extends Application {
             btnApprove.setText("Одобри");
             btnReject.setText("Отхвърли");
 
-            btnApprove.setOnAction(event -> ApproveReservation(borrowFormId,dueDate,reservationType));
+            btnApprove.setOnAction(event ->{
+                ApproveReservation(borrowFormId,dueDate,reservationType);});
             btnReject.setOnAction(event -> RejectReservation(borrowFormId));
             this.getChildren().addAll(readerUsername,ItemTitle,dueDates_Combobox,reservationTypes_Combobox,btnApprove,btnReject);
 
@@ -86,7 +89,10 @@ public class ApproveBorrowForm extends Application {
         }
 
         private void ApproveReservation(int borrowFormId,  String reservationDueDate, String reservationType){
-            ReservationHelper.AddReservation(borrowFormId, reservationDueDate, reservationType);
+            if(reservationDueDate == "") GUIUtils.SetupAlert("Трябва да изберете период за отдаване");
+            if(reservationType == "") GUIUtils.SetupAlert("Трябва да изберете вид отдаване");
+            if(reservationType!=""&&reservationDueDate!=""){
+                ReservationHelper.AddReservation(borrowFormId, reservationDueDate, reservationType);}
         }
         private void RejectReservation(int borrowFormId){
             ReservationHelper.CancelReservation(borrowFormId);
