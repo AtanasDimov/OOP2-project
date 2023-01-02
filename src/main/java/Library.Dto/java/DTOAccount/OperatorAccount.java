@@ -14,6 +14,21 @@ public class OperatorAccount extends AccountBase implements OperatorInterface {
         super(username, password);
     }
 
+    @Override
+    public int getAccountId() {
+        return super.getAccountId();
+    }
+
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
+
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
     public OperatorAccount() {
 
     }
