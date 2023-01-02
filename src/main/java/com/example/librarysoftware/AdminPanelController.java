@@ -57,7 +57,7 @@ public class AdminPanelController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         AdminPanel_btnOpenAlerts.setOnAction(event -> {
-            GUIUtils.changeScene(event,"/src/main/resources/AdminPanel.fxml","Контролен панел/известия");
+            GUIUtils.changeScene(event,"/AdminAlerts.fxml","Контролен панел/известия");
         });
         AdminPanel_btnBack.setOnAction(event -> {GUIUtils.changeScene(event,"/Index.fxml","Индекс");});
 
