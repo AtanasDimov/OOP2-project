@@ -28,11 +28,11 @@ public class HibernateMain {
     public Object GetObject(String query){
 
         List<Object> objects;
+        Transaction transaction = session.beginTransaction();
         try{
             factory = new MetadataSources(registry)
                     .buildMetadata().buildSessionFactory();
             session = factory.openSession();
-            Transaction transaction = session.beginTransaction();
             objects = session.createQuery(query).getResultList();
             transaction.commit();
 
@@ -40,6 +40,7 @@ public class HibernateMain {
         }
         catch (Exception ex){
             _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+            transaction.rollback();
             return null;
         }
     }
@@ -48,59 +49,63 @@ public class HibernateMain {
     public List<Object> GetListOfObject(String query)
     {
         List<Object> objects;
+        Transaction transaction = session.beginTransaction();
         try{
             factory = new MetadataSources(registry)
                     .buildMetadata().buildSessionFactory();
             session = factory.openSession();
-            Transaction transaction = session.beginTransaction();
             objects = session.createQuery(query).getResultList();
             transaction.commit();
             return objects;
         }
         catch(Exception ex){
             _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+            transaction.rollback();
             return null;
         }
     }
 
     public void AddObject(Object object){
+        Transaction transaction = session.beginTransaction();
         try{
             factory = new MetadataSources(registry)
                     .buildMetadata().buildSessionFactory();
             session = factory.openSession();
-            Transaction transaction = session.beginTransaction();
             session.save(object);
             transaction.commit();
         }
         catch (Exception ex){
+            transaction.rollback();
             _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
         }
     }
 
     public void DeleteObject(Object object){
+        Transaction transaction = session.beginTransaction();
         try{
             factory = new MetadataSources(registry)
                     .buildMetadata().buildSessionFactory();
             session = factory.openSession();
-            Transaction transaction = session.beginTransaction();
             session.delete(object);
             transaction.commit();
         }
         catch (Exception ex){
+            transaction.rollback();
             _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
         }
     }
 
     public void UpdateObject(Object object){
+        Transaction transaction = session.beginTransaction();
         try{
             factory = new MetadataSources(registry)
                     .buildMetadata().buildSessionFactory();
             session = factory.openSession();
-            Transaction transaction = session.beginTransaction();
             session.update(object);
             transaction.commit();
         }
         catch (Exception ex){
+            transaction.rollback();
             _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
         }
     }
