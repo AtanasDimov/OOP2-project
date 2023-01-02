@@ -204,4 +204,8 @@ public class QueryGenerator {
         String query = "From ScrappedItem";
         return query;
     }
+    public static String GetLoadLazyDataScrappedItemsQuery() {
+        String query = "FROM ScrappedItem b LEFT OUTER JOIN FETCH b.author";
+        return query;
+    }
 }
