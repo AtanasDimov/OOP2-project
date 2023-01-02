@@ -1,54 +1,104 @@
 package Hibernate.Control.Main.Repository;
 
+import ExceptionHandling.LibraryException;
+import ExceptionHandling.SeverityCodes;
 import Hibernate.Control.Main.HibernateMain;
 import Library.Dto.java.Contracts.LibraryItemInterface;
 import Library.Dto.java.DTOLibraryItems.*;
+import Logger.Logger;
 import Utils.QueryGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemRepository extends LibraryRepository{
+    private Logger _logger;
 
     public ItemRepository(HibernateMain hibernateManager){
         super(hibernateManager);
+        _logger = new Logger();
     }
 
     public LibraryItemInterface GetEagerItem(int id){
-        LibraryItemInterface result = (LibraryItemInterface) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(id));
-        hibernateManager.CloseSession();
-        return result;
+        try{
+            LibraryItemInterface result = (LibraryItemInterface) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(id));
+            return result;
+        }
+        catch(Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        finally {
+            hibernateManager.CloseSession();
+        }
+        return null;
     }
 
     public void GetLazyDataItem(LibraryItemInterface b){
-        LibraryItemInterface result = (LibraryItemInterface) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(b.getId()));
-        b = result;
-        hibernateManager.CloseSession();
+        try{
+            LibraryItemInterface result = (LibraryItemInterface) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(b.getId()));
+            b = result;
+        }
+        catch(Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        finally {
+            hibernateManager.CloseSession();
+        }
     }
 
     public List<BookItem> GetBookItems(){
-        List<BookItem> bookItems = (List<BookItem>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetBookItems());
-        return bookItems;
+        try{
+            List<BookItem> bookItems = (List<BookItem>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetBookItems());
+            return bookItems;
+        }
+        catch (Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        return null;
     }
 
     public List<ArchiveItem> GetArchiveItems(){
-        List<ArchiveItem> archiveItems = (List<ArchiveItem>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetArchiveItems());
-        return archiveItems;
+        try{
+            List<ArchiveItem> archiveItems = (List<ArchiveItem>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetArchiveItems());
+            return archiveItems;
+        }
+        catch(Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        return null;
     }
 
     public List<AudioBook> GetAudioBooks(){
-        List<AudioBook> audioBooks = (List<AudioBook>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetAudioBooks());
-        return audioBooks;
+        try{
+            List<AudioBook> audioBooks = (List<AudioBook>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetAudioBooks());
+            return audioBooks;
+        }
+        catch(Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        return null;
     }
 
     public List<Movies> GetMovies(){
-        List<Movies> movies = (List<Movies>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetMovies());
-        return movies;
+        try{
+            List<Movies> movies = (List<Movies>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetMovies());
+            return movies;
+        }
+        catch (Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        return null;
     }
 
     public List<MusicItem> GetMusicItems(){
-        List<MusicItem> musicItems = (List<MusicItem>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetMusicItems());
-        return musicItems;
+        try{
+            List<MusicItem> musicItems = (List<MusicItem>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetMusicItems());
+            return musicItems;
+        }
+        catch(Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        return null;
     }
 
     public void DeleteItem(int id){
@@ -67,7 +117,7 @@ public class ItemRepository extends LibraryRepository{
             hibernateManager.DeleteObject(item);
         }
         catch(Exception ex){
-            System.out.println(ex.getMessage());
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
         }
         finally {
             hibernateManager.CloseSession();
