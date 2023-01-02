@@ -208,4 +208,9 @@ public class QueryGenerator {
         String query = "FROM ScrappedItem b LEFT OUTER JOIN FETCH b.author";
         return query;
     }
+
+    public static String GetCountFromArchiveItem(int id){
+        String query="SELECT COUNT(*) FROM ArchiveItem WHERE Id =" + id;
+        return query;
+    }
 }

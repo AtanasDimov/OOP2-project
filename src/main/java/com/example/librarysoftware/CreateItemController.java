@@ -89,6 +89,7 @@ public class CreateItemController implements Initializable {
                 String videoQuality = CreateItem_DynamicText5.getText();
                 String rating = CreateItem_MovieRating.getValue().toString();
                 Movies movie = ItemFactory.CreateMovie(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime),videoQuality,rating);
+                ItemHelper.CreateItem(movie,ids);
             }break;
 
 

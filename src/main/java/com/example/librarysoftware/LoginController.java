@@ -44,6 +44,7 @@ public class LoginController {
             GUIUtils.changeScene(e,"/Index.fxml","Добре дошли");
         }
         catch(Exception ex){
+            GUIUtils.SetupAlert(ex.getMessage());
             Logger log = new Logger();
             if(ex instanceof NotExistException){
                 log.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Light));

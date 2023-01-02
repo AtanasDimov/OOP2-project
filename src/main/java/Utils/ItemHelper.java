@@ -60,7 +60,7 @@ public class ItemHelper {
     }
     public static List<BaseLibraryItem> GetItemsForArchive(){
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
-        List<BaseLibraryItem> itemsForArchive = (List<BaseLibraryItem>)(Object)repository.GetListOfObject(QueryGenerator.GetItems());
+        List<BaseLibraryItem> itemsForArchive = (List<BaseLibraryItem>)(Object)repository.GetListOfObject(QueryGenerator.GetLoadLazyDataItemsQuery());
 
         LocalDate currentDate = LocalDate.now();
 
