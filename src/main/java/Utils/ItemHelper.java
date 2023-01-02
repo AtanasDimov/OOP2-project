@@ -15,7 +15,9 @@ import com.sun.jmx.mbeanserver.Repository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 public class ItemHelper {
@@ -28,11 +30,24 @@ public class ItemHelper {
     public static void ArchiveItem(int id){
         ItemRepository lr = RepositoryFactory.CreateItemRepository();
         BaseLibraryItem item = (BaseLibraryItem) lr.GetEagerItem(id);
-        ArchiveItem archived = new ArchiveItem(item.getTitle(), item.getDescription(),item.getPublishDate(),item.getAuthor(), item.getQuantity());
+        ArchiveItem archived;
         lr = RepositoryFactory.CreateItemRepository();
-        lr.DeleteObject(item);
+
+        Long objectCheck = (Long) lr.GetObject(QueryGenerator.CheckArchivedItem(id));
+        if(objectCheck == 0)
+            archived = new ArchiveItem(item.getTitle(), item.getDescription(),item.getPublishDate(),item.getAuthor(), item.getQuantity());
+        else{
+            archived = (ArchiveItem) lr.GetObject(QueryGenerator.GetArchiveItem(id));
+            lr.CloseSession();
+            lr = RepositoryFactory.CreateItemRepository();
+            lr.GetLazyDataItem(archived);
+            archived.setQuantity(archived.getQuantity() + 1);
+            lr.CloseSession();
+        }
+
         lr.AddObject(archived);
         lr.CloseSession();
+        RemoveItem(id);
     }
     public static void ScrapItem(int id){
         ItemRepository repository = RepositoryFactory.CreateItemRepository();
@@ -112,11 +127,8 @@ public class ItemHelper {
     }
 
     public static void RemoveItem(int id){
-        LibraryRepository lr = RepositoryFactory.CreateLibraryRepository();
-        BaseLibraryItem item = (BaseLibraryItem) lr.GetObject(QueryGenerator.GetItemById(id));
-
-        lr.DeleteObject(item);
-        lr.CloseSession();
+        ItemRepository repository = RepositoryFactory.CreateItemRepository();
+        repository.DeleteItem(id);
     }
 
     public static void CreateItem(BaseLibraryItem item, List<Integer> authorId){

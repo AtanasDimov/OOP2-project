@@ -5,6 +5,7 @@ import Library.Dto.java.Contracts.LibraryItemInterface;
 import Library.Dto.java.DTOLibraryItems.*;
 import Utils.QueryGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemRepository extends LibraryRepository{
@@ -48,5 +49,28 @@ public class ItemRepository extends LibraryRepository{
     public List<MusicItem> GetMusicItems(){
         List<MusicItem> musicItems = (List<MusicItem>) (Object) hibernateManager.GetListOfObject(QueryGenerator.GetMusicItems());
         return musicItems;
+    }
+
+    public void DeleteItem(int id){
+        try{
+            BaseLibraryItem item = (BaseLibraryItem) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataItemQuery(id));
+            List<Author> authors = item.getAuthor();
+
+            for(Author a : authors){
+                Author auth = (Author) hibernateManager.GetObject(QueryGenerator.GetLoadLazyDataAuthorQuery(a.getId()));
+                auth.getWork().remove(item);
+            }
+
+            List<Author> n = null;
+            item.setAuthor(n);
+
+            hibernateManager.DeleteObject(item);
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            hibernateManager.CloseSession();
+        }
     }
 }

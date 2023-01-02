@@ -75,8 +75,19 @@ public class BaseLibraryItem implements LibraryItemInterface {
     public void setDescription(String description) {
         this.description = description;
     }
+    public void setAuthor(List<Author> authors){
+        this.author = authors;
+    }
     public List<Author> getAuthor() {
         return author;
+    }
+
+    public void removeAuthor(int id){
+        for(Author a : author){
+            if(a.getId() == id){
+                author.remove(a);
+            }
+        }
     }
 
     public void addAuthor(Author author){

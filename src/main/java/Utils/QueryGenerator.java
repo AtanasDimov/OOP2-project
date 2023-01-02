@@ -186,6 +186,10 @@ public class QueryGenerator {
         String query = "Select Count(*) From ScrappedItem Where itemId = " + id;
         return query;
     }
+    public static String CheckArchivedItem(int id){
+        String query = "Select Count(*) From ArchiveItem Where Id = " + id;
+        return query;
+    }
     public static String GetScrappedItem(int id){
         String query = "From ScrappedItem Where itemId = " + id;
         return query;
@@ -211,6 +215,10 @@ public class QueryGenerator {
 
     public static String GetCountFromArchiveItem(int id){
         String query="SELECT COUNT(*) FROM ArchiveItem WHERE Id =" + id;
+        return query;
+    }
+    public static String GetArchiveItem(int id){
+        String query = "FROM ArchiveItem Where id = " + id;
         return query;
     }
 }

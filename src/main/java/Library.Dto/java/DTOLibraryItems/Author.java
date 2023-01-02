@@ -54,6 +54,13 @@ public abstract class Author implements AuthorInterface {
         this.work.addAll(w);
     }
 
+    public void deleteWork(int id){
+        for(BaseLibraryItem item: work){
+            if(item.getId() == id)
+                work.remove(item);
+        }
+    }
+
     public int getId(){
         return this.id;
     }
