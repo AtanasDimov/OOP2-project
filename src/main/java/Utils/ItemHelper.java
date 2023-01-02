@@ -48,6 +48,7 @@ public class ItemHelper {
             repository = RepositoryFactory.CreateItemRepository();
             repository.GetLazyDataItem(scrappedItem);
             scrappedItem.setQuantity(scrappedItem.getQuantity() + 1);
+            repository.CloseSession();
         }
 
         repository = RepositoryFactory.CreateItemRepository();
