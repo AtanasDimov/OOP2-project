@@ -113,6 +113,7 @@ public class AccountHelper {
         ReaderAccount reader = (ReaderAccount) lr.GetObject(QueryGenerator.GetReaderById(id));
         lr.DeleteObject(reader);
         lr.CloseSession();
+        ReservationHelper.DeleteReservationsForReader(id);
     }
 
     private static String HashPassword(String password){
