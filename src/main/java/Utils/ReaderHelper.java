@@ -51,9 +51,10 @@ public class ReaderHelper {
 
         Iterator itr = readerItems.iterator();
         while(itr.hasNext()){
-            Object[] obj = (Object[]) itr.next();
+            //Object[] obj = (Object[]) itr.next();
+            BaseLibraryItem item = (BaseLibraryItem) itr.next();
             repository = RepositoryFactory.CreateItemRepository();
-            BaseLibraryItem item = (BaseLibraryItem) obj[0];
+            //BaseLibraryItem item = (BaseLibraryItem) obj[0];
             Date borrowedDate = (Date) repository.GetObject(QueryGenerator.GetBorrowedDateForItem(item.getId(), readerId));
             Date dueDate = (Date) repository.GetObject(QueryGenerator.GetDueDateForItem(item.getId(), readerId));
             itemsVizualize.add(new BorrowedItemsVisualize(item.getId(),item.getTitle(), borrowedDate, dueDate));
