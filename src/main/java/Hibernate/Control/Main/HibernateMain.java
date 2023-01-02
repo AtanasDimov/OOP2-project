@@ -16,10 +16,12 @@ public class HibernateMain {
     private StandardServiceRegistry registry;
     SessionFactory factory;
     Session session;
+    private Logger _logger;
     public  HibernateMain() {
         this.registry = new StandardServiceRegistryBuilder()
                 .configure()
                 .build();
+        _logger = new Logger();
     }
 
 
@@ -37,9 +39,7 @@ public class HibernateMain {
             return objects.get(0);
         }
         catch (Exception ex){
-            LibraryException le = new LibraryException(ex.getMessage(), SeverityCodes.Medium);
-            Logger log = new Logger();
-            log.LogException(le);
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
             return null;
         }
     }
@@ -58,9 +58,7 @@ public class HibernateMain {
             return objects;
         }
         catch(Exception ex){
-            LibraryException le = new LibraryException(ex.getMessage(), SeverityCodes.Medium);
-            Logger log = new Logger();
-            log.LogException(le);
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
             return null;
         }
     }
@@ -75,9 +73,7 @@ public class HibernateMain {
             transaction.commit();
         }
         catch (Exception ex){
-            LibraryException le = new LibraryException(ex.getMessage(), SeverityCodes.Medium);
-            Logger log = new Logger();
-            log.LogException(le);
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
         }
     }
 
@@ -91,9 +87,7 @@ public class HibernateMain {
             transaction.commit();
         }
         catch (Exception ex){
-            LibraryException le = new LibraryException(ex.getMessage(), SeverityCodes.Medium);
-            Logger log = new Logger();
-            log.LogException(le);
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
         }
     }
 
@@ -107,9 +101,7 @@ public class HibernateMain {
             transaction.commit();
         }
         catch (Exception ex){
-            LibraryException le = new LibraryException(ex.getMessage(), SeverityCodes.Medium);
-            Logger log = new Logger();
-            log.LogException(le);
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
         }
     }
 
