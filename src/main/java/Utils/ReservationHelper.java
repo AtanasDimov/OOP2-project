@@ -70,4 +70,14 @@ public class ReservationHelper {
         ItemHelper.ReturnItem(res.getItemId());
     }
 
+    public static void DeleteReservationsForReader(int id){
+        LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
+        List<Reservation> readerReservations = (List<Reservation>)(Object)repository.GetListOfObject(QueryGenerator.GetReservationByReaderId(id));
+        repository.CloseSession();
+
+        for(Reservation res: readerReservations){
+            DeleteReservation(res);
+        }
+    }
+
 }
