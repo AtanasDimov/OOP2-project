@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,6 +39,7 @@ public class AdminAlertsController implements Initializable {
         List<Alert> alerts = new ArrayList<>();
         LibraryRepository repository = RepositoryFactory.CreateLibraryRepository();
         alerts = (List<Alert>) (Object) repository.GetListOfObject(QueryGenerator.GetAlerts());
+        Collections.reverse(alerts);
         TableColumn<Alert, String> column1 = new TableColumn<>("Id");
         column1.setCellValueFactory(new PropertyValueFactory<>("id"));
         AdminAlerts_Tableview.getColumns().add(column1);
