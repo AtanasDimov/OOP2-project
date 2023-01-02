@@ -1,41 +1,78 @@
 package Hibernate.Control.Main.Repository;
 
+import ExceptionHandling.LibraryException;
+import ExceptionHandling.SeverityCodes;
 import Hibernate.Control.Main.HibernateMain;
+import Logger.Logger;
 
 import java.util.List;
 
 public class LibraryRepository implements LibraryRepositoryInterface {
     protected HibernateMain hibernateManager;
+    protected Logger _logger;
 
     public LibraryRepository(HibernateMain hibernateManager)
     {
         this.hibernateManager = hibernateManager;
+        _logger = new Logger();
     }
     @Override
     public void AddObject(Object object) {
-        hibernateManager.AddObject(object);
+        try {
+            hibernateManager.AddObject(object);
+        }
+        catch (Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
     }
 
     @Override
     public Object GetObject(String query) {
-        Object result = hibernateManager.GetObject(query);
-        return result;
+        try{
+            Object result = hibernateManager.GetObject(query);
+            return result;
+        }
+        catch (Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        return null;
     }
 
     public List<Object> GetListOfObject(String query){
-        List<Object> result = hibernateManager.GetListOfObject(query);
-        return result;
+        try{
+            List<Object> result = hibernateManager.GetListOfObject(query);
+            return result;
+        }
+        catch(Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
+        return null;
     }
 
     public void DeleteObject(Object object){
-        hibernateManager.DeleteObject(object);
+        try {
+            hibernateManager.DeleteObject(object);
+        }
+        catch(Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
     }
 
     public void UpdateObject(Object object){
-        hibernateManager.UpdateObject(object);
+        try{
+            hibernateManager.UpdateObject(object);
+        }
+        catch (Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
     }
 
     public void CloseSession(){
-        hibernateManager.CloseSession();
+        try{
+            hibernateManager.CloseSession();
+        }
+        catch (Exception ex){
+            _logger.LogException(new LibraryException(ex.getMessage(), SeverityCodes.Medium));
+        }
     }
 }

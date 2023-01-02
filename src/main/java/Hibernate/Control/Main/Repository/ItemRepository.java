@@ -12,11 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemRepository extends LibraryRepository{
-    private Logger _logger;
 
     public ItemRepository(HibernateMain hibernateManager){
         super(hibernateManager);
-        _logger = new Logger();
     }
 
     public LibraryItemInterface GetEagerItem(int id){

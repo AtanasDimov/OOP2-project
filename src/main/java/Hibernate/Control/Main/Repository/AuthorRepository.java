@@ -11,11 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorRepository extends LibraryRepository{
-    private Logger _logger;
 
     public AuthorRepository(HibernateMain hibernateManager) {
         super(hibernateManager);
-        _logger = new Logger();
     }
 
     public Author GetEagerAuthor(int id){
