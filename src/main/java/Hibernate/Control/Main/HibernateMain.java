@@ -26,13 +26,12 @@ public class HibernateMain {
 
 
     public Object GetObject(String query){
-
+        factory = new MetadataSources(registry)
+                .buildMetadata().buildSessionFactory();
+        session = factory.openSession();
         List<Object> objects;
         Transaction transaction = session.beginTransaction();
         try{
-            factory = new MetadataSources(registry)
-                    .buildMetadata().buildSessionFactory();
-            session = factory.openSession();
             objects = session.createQuery(query).getResultList();
             transaction.commit();
 
@@ -47,13 +46,12 @@ public class HibernateMain {
 
 
     public List<Object> GetListOfObject(String query)
-    {
+    {   factory = new MetadataSources(registry)
+            .buildMetadata().buildSessionFactory();
+        session = factory.openSession();
         List<Object> objects;
         Transaction transaction = session.beginTransaction();
         try{
-            factory = new MetadataSources(registry)
-                    .buildMetadata().buildSessionFactory();
-            session = factory.openSession();
             objects = session.createQuery(query).getResultList();
             transaction.commit();
             return objects;
@@ -66,11 +64,11 @@ public class HibernateMain {
     }
 
     public void AddObject(Object object){
+        factory = new MetadataSources(registry)
+                .buildMetadata().buildSessionFactory();
+        session = factory.openSession();
         Transaction transaction = session.beginTransaction();
         try{
-            factory = new MetadataSources(registry)
-                    .buildMetadata().buildSessionFactory();
-            session = factory.openSession();
             session.save(object);
             transaction.commit();
         }
@@ -81,11 +79,11 @@ public class HibernateMain {
     }
 
     public void DeleteObject(Object object){
+        factory = new MetadataSources(registry)
+                .buildMetadata().buildSessionFactory();
+        session = factory.openSession();
         Transaction transaction = session.beginTransaction();
         try{
-            factory = new MetadataSources(registry)
-                    .buildMetadata().buildSessionFactory();
-            session = factory.openSession();
             session.delete(object);
             transaction.commit();
         }
@@ -96,11 +94,11 @@ public class HibernateMain {
     }
 
     public void UpdateObject(Object object){
+        factory = new MetadataSources(registry)
+                .buildMetadata().buildSessionFactory();
+        session = factory.openSession();
         Transaction transaction = session.beginTransaction();
         try{
-            factory = new MetadataSources(registry)
-                    .buildMetadata().buildSessionFactory();
-            session = factory.openSession();
             session.update(object);
             transaction.commit();
         }
