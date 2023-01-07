@@ -50,8 +50,7 @@ public class CreateItemController implements Initializable {
             LibraryDictionary.Book,
             LibraryDictionary.MusicDisc,
             LibraryDictionary.AudioBook,
-            LibraryDictionary.Movies,
-            LibraryDictionary.DictionariesAndOthers
+            LibraryDictionary.Movies
     );
 
 

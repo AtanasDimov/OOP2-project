@@ -24,8 +24,6 @@ import java.util.ResourceBundle;
 
 public class AdminAlertsController implements Initializable {
     @FXML
-    private Button AdminAlerts_btnBack;
-    @FXML
     private TableView<Alert> AdminAlerts_Tableview;
 
     public void Back(ActionEvent event){

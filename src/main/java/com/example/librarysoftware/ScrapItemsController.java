@@ -34,8 +34,7 @@ public class ScrapItemsController implements Initializable {
             LibraryDictionary.Book,
             LibraryDictionary.MusicDisc,
             LibraryDictionary.AudioBook,
-            LibraryDictionary.Movies,
-            LibraryDictionary.DictionariesAndOthers
+            LibraryDictionary.Movies
     );
 
     public void Back(ActionEvent event) {

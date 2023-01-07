@@ -23,8 +23,6 @@ public class LoginController {
     private TextField Login_Username;
     @FXML
     private PasswordField Login_Password;
-    @FXML
-    private Label Login_ErrorLabel;
 
     public void Submit(ActionEvent e) {
         String username = Login_Username.getText();
@@ -57,7 +55,6 @@ public class LoginController {
     }
 
     public void Clear() {
-        Login_ErrorLabel.setText("");
         Login_Password.clear();
         Login_Username.clear();
 
