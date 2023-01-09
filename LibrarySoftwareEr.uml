@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Persistence</ID>
+  <OriginalElement>JavaeeElement:/b347988a/LibrarySoftware/LibrarySoftware/jpa/JPA/PersistenceModel</OriginalElement>
+  <nodes>
+    <node x="63.75" y="384.0">MusicItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MusicItem.java</node>
+    <node x="191.75" y="396.5">AudioBook#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioBook.java</node>
+    <node x="-94.0" y="676.5">Admin#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/Admin.java</node>
+    <node x="-94.0" y="269.0">PaperMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/PaperMediaItem.java</node>
+    <node x="-94.0" y="796.0">BorrowForm#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BorrowForm.java</node>
+    <node x="486.0" y="-104.0">Author#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Author.java</node>
+    <node x="626.0" y="483.0">Reservation#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Reservation.java</node>
+    <node x="692.75" y="111.5">AudioBookNarrator#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioBookNarrator.java</node>
+    <node x="436.75" y="111.5">MusicArtist#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MusicArtist.java</node>
+    <node x="547.75" y="258.0">VisualMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/VisualMediaItem.java</node>
+    <node x="253.75" y="44.0">BaseLibraryItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BaseLibraryItem.java</node>
+    <node x="109.75" y="269.0">AudioMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioMediaItem.java</node>
+    <node x="561.75" y="111.5">BookAuthor#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BookAuthor.java</node>
+    <node x="807.0" y="483.0">Alert#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library/Dto/java/Alert/Alert.java</node>
+    <node x="417.75" y="281.5">ArchiveItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/ArchiveItem.java</node>
+    <node x="-72.0" y="396.5">BookItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BookItem.java</node>
+    <node x="32.5" y="483.0">AccountBase#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/AccountBase.java</node>
+    <node x="399.0" y="483.0">Form#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library/Dto/java/Form/Form.java</node>
+    <node x="210.0" y="676.5">OperatorAccount#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/OperatorAccount.java</node>
+    <node x="3.0" y="631.0">ReaderAccount#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/ReaderAccount.java</node>
+    <node x="536.75" y="384.0">Movies#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Movies.java</node>
+    <node x="272.75" y="269.0">ScrappedItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/ScrappedItem.java</node>
+    <node x="870.75" y="111.5">MovieDirector#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MovieDirector.java</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="BookItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BookItem.java" target="PaperMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/PaperMediaItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="ScrappedItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/ScrappedItem.java" target="BaseLibraryItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BaseLibraryItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="AudioBook#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioBook.java" target="AudioMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioMediaItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="244.75" y="359.0" />
+      <point x="181.25" y="359.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="MovieDirector#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MovieDirector.java" target="Author#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Author.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="932.75" y="24.0" />
+      <point x="694.5" y="24.0" />
+      <point x="694.5" y="14.0" />
+      <point x="587.25" y="14.0" />
+      <point x="33.75" y="49.0" />
+    </edge>
+    <edge source="BookAuthor#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BookAuthor.java" target="Author#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Author.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="617.25" y="24.0" />
+      <point x="694.5" y="24.0" />
+      <point x="694.5" y="14.0" />
+      <point x="587.25" y="14.0" />
+      <point x="33.75" y="49.0" />
+    </edge>
+    <edge source="ArchiveItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/ArchiveItem.java" target="BaseLibraryItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BaseLibraryItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="472.75" y="233.0" />
+      <point x="335.25" y="233.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="Movies#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Movies.java" target="VisualMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/VisualMediaItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="AudioMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioMediaItem.java" target="BaseLibraryItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BaseLibraryItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-27.0" />
+      <point x="181.25" y="233.0" />
+      <point x="335.25" y="233.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="BaseLibraryItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BaseLibraryItem.java" target="Author#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Author.java" relationship="RELATION">
+      <point x="0.0" y="-82.0" />
+      <point x="335.25" y="14.0" />
+      <point x="519.75" y="14.0" />
+      <point x="-33.75" y="49.0" />
+    </edge>
+    <edge source="MusicItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MusicItem.java" target="AudioMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioMediaItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-27.0" />
+      <point x="117.75" y="359.0" />
+      <point x="181.25" y="359.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="AudioBookNarrator#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioBookNarrator.java" target="Author#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Author.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="771.75" y="24.0" />
+      <point x="694.5" y="24.0" />
+      <point x="694.5" y="14.0" />
+      <point x="587.25" y="14.0" />
+      <point x="33.75" y="49.0" />
+    </edge>
+    <edge source="PaperMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/PaperMediaItem.java" target="BaseLibraryItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BaseLibraryItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-27.0" />
+      <point x="-24.0" y="233.0" />
+      <point x="335.25" y="233.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="OperatorAccount#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/OperatorAccount.java" target="AccountBase#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/AccountBase.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="282.0" y="606.0" />
+      <point x="96.5" y="606.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="VisualMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/VisualMediaItem.java" target="BaseLibraryItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BaseLibraryItem.java" relationship="INHERITANCE">
+      <point x="0.0" y="-38.0" />
+      <point x="619.25" y="233.0" />
+      <point x="335.25" y="233.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="ReaderAccount#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/ReaderAccount.java" target="AccountBase#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/AccountBase.java" relationship="INHERITANCE">
+      <point x="0.0" y="-60.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="MusicArtist#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MusicArtist.java" target="Author#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Author.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="489.25" y="24.0" />
+      <point x="694.5" y="24.0" />
+      <point x="694.5" y="14.0" />
+      <point x="587.25" y="14.0" />
+      <point x="33.75" y="49.0" />
+    </edge>
+    <edge source="Admin#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/Admin.java" target="AccountBase#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/AccountBase.java" relationship="INHERITANCE">
+      <point x="0.0" y="-14.5" />
+      <point x="-55.5" y="606.0" />
+      <point x="96.5" y="606.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6339044183949504" showDependencies="false" x="850.4025604551921" y="406.0" />
+  <SelectedNodes>
+    <node>MusicItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MusicItem.java</node>
+    <node>AudioBook#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioBook.java</node>
+    <node>Admin#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/Admin.java</node>
+    <node>PaperMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/PaperMediaItem.java</node>
+    <node>BorrowForm#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BorrowForm.java</node>
+    <node>Author#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Author.java</node>
+    <node>Reservation#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Reservation.java</node>
+    <node>AudioBookNarrator#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioBookNarrator.java</node>
+    <node>MusicArtist#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MusicArtist.java</node>
+    <node>VisualMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/VisualMediaItem.java</node>
+    <node>BaseLibraryItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BaseLibraryItem.java</node>
+    <node>AudioMediaItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/AudioMediaItem.java</node>
+    <node>BookAuthor#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BookAuthor.java</node>
+    <node>Alert#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library/Dto/java/Alert/Alert.java</node>
+    <node>ArchiveItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/ArchiveItem.java</node>
+    <node>BookItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/BookItem.java</node>
+    <node>AccountBase#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/AccountBase.java</node>
+    <node>Form#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library/Dto/java/Form/Form.java</node>
+    <node>OperatorAccount#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/OperatorAccount.java</node>
+    <node>ReaderAccount#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOAccount/ReaderAccount.java</node>
+    <node>Movies#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/Movies.java</node>
+    <node>ScrappedItem#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/ScrappedItem.java</node>
+    <node>MovieDirector#file://D:/Uni/OOP/OOP2_Project/OOP2-project/src/main/java/Library.Dto/java/DTOLibraryItems/MovieDirector.java</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Embeddables</Category>
+    <Category>Properties</Category>
+    <Category>Superclasses</Category>
+  </Categories>
+</Diagram>
+

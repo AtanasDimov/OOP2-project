@@ -70,6 +70,8 @@ public class ItemHelper {
         int quantity = item.getQuantity();
         item.setQuantity(--quantity);
         repository.UpdateObject(item);
+        repository.CloseSession();
+        repository = RepositoryFactory.CreateItemRepository();
         repository.AddObject(scrappedItem);
         repository.CloseSession();
     }

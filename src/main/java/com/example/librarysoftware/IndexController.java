@@ -87,6 +87,11 @@ public class IndexController implements Initializable {
                 Index_btnDynamic2.setOnAction(event -> {
                     GUIUtils.changeScene(event,"/CreateItem.fxml","Добавяне на артикул");
                 });
+                Index_btnDynamic3.setVisible(true);
+                Index_btnDynamic3.setText("Известия");
+                Index_btnDynamic3.setOnAction(event -> {
+                    GUIUtils.changeScene(event,"/AdminAlerts.fxml","Известия");
+                });
             }
             else {
                 Index_WelcomeUserLabel.setVisible(true);

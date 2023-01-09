@@ -59,15 +59,22 @@ public class CreateItemController implements Initializable {
         String description = CreateItem_DynamicText2.getText();
 
         String quantity = CreateItem_DynamicText3.getText();
-        //napravi logika za nevalidni danni --><T_T><--
         LocalDate publishDate = CreateItem_PublishDate.getValue();
 
+
+        if(title == null || description == null || quantity == null || publishDate == null || ids.size() == 0){
+            GUIUtils.SetupAlert("Трябва всички полета да са попълнени!");
+            return;
+        }
 
 
         switch(CreateItem_Combobox.getValue()){
             case LibraryDictionary.Book:{
-
                 String pageCount = CreateItem_DynamicText4.getText();
+                if(pageCount == null){
+                    GUIUtils.SetupAlert("Трябва всички полета да са попълнени!");
+                    return;
+                }
                 BookItem book = ItemFactory.CreateBookItem(title,description, publishDate,Integer.parseInt(quantity),Integer.parseInt(pageCount));
                 ItemHelper.CreateItem(book,ids);
 
@@ -75,11 +82,19 @@ public class CreateItemController implements Initializable {
             case LibraryDictionary.MusicDisc:{
                 String runtime = CreateItem_DynamicText4.getText();
                 String album = CreateItem_DynamicText5.getText();
+                if(runtime == null || album == null){
+                    GUIUtils.SetupAlert("Трябва всички полета да са попълнени!");
+                    return;
+                }
                 MusicItem musicItem = ItemFactory.CreateMusicItem(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime),album);
                 ItemHelper.CreateItem(musicItem,ids);
             }break;
             case LibraryDictionary.AudioBook:{
                 String runtime = CreateItem_DynamicText4.getText();
+                if(runtime == null){
+                    GUIUtils.SetupAlert("Трябва всички полета да са попълнени!");
+                    return;
+                }
                 AudioBook audioBook = ItemFactory.CreateAudioBook(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime));
                 ItemHelper.CreateItem(audioBook,ids);
             }break;
@@ -87,6 +102,10 @@ public class CreateItemController implements Initializable {
                 String runtime = CreateItem_DynamicText4.getText();
                 String videoQuality = CreateItem_DynamicText5.getText();
                 String rating = CreateItem_MovieRating.getValue().toString();
+                if(runtime == null || videoQuality == null || rating == null){
+                    GUIUtils.SetupAlert("Трябва всички полета да са попълнени!");
+                    return;
+                }
                 Movies movie = ItemFactory.CreateMovie(title,description,publishDate,Integer.parseInt(quantity),Integer.parseInt(runtime),videoQuality,rating);
                 ItemHelper.CreateItem(movie,ids);
             }break;
@@ -96,13 +115,14 @@ public class CreateItemController implements Initializable {
 
     }
     public void Clear(){
+
         CreateItem_DynamicText1.clear();
         CreateItem_DynamicText2.clear();
         CreateItem_DynamicText3.clear();
         CreateItem_DynamicText4.clear();
         CreateItem_DynamicText5.clear();
-        CreateItem_Combobox.setValue(LibraryDictionary.Book);
-        changeAuthors(LibraryDictionary.Book);
+        CreateItem_MovieRating.getItems().clear();
+        configureComboBox();
         ids = new ArrayList<>();
 
     }
@@ -123,29 +143,42 @@ public class CreateItemController implements Initializable {
         CreateItem_MovieRating.setVisible(false);
         CreateItem_PublishDate.setPromptText(LibraryDictionary.PublishDate);
 
+        configureComboBox();
+    }
+
+    private void configureComboBox(){
         CreateItem_Combobox.setItems(options);
         CreateItem_Combobox.setValue(LibraryDictionary.Book);
         changeAuthors(LibraryDictionary.Book);
         CreateItem_Combobox.valueProperty().addListener((observable, oldValue, newValue) -> {
             switch(newValue){
                 case LibraryDictionary.Book: {
+                    gridClear();
+                    setUpBase();
                     changeAuthors(newValue);
                     CreateItem_DynamicText4.setPromptText(LibraryDictionary.NumberOfPages);
                     CreateItem_DynamicText5.setVisible(false);
                 }break;
                 case LibraryDictionary.MusicDisc:{
+                    gridClear();
+                    setUpBase();
                     changeAuthors(newValue);
                     CreateItem_DynamicText5.setVisible(true);
                     CreateItem_DynamicText4.setPromptText(LibraryDictionary.Runtime);
                     CreateItem_DynamicText5.setPromptText(LibraryDictionary.Album);
                 }break;
                 case LibraryDictionary.AudioBook:{
+                    gridClear();
+                    setUpBase();
                     changeAuthors(newValue);
                     CreateItem_DynamicText4.setPromptText(LibraryDictionary.Runtime);
                     CreateItem_DynamicText5.setVisible(false);
                 }break;
                 case LibraryDictionary.Movies: {
+                    gridClear();
+                    setUpBase();
                     changeAuthors(newValue);
+                    CreateItem_DynamicText4.setVisible(true);
                     CreateItem_DynamicText5.setVisible(true);
                     CreateItem_MovieRating.setVisible(true);
                     CreateItem_MovieRating.getItems().setAll(MoviesAgeRating.values());
@@ -154,9 +187,21 @@ public class CreateItemController implements Initializable {
                 }}
 
         });
+    }
 
+    private void gridClear(){
+        CreateItem_DynamicText1.setVisible(false);
+        CreateItem_DynamicText2.setVisible(false);
+        CreateItem_DynamicText3.setVisible(false);
+        CreateItem_DynamicText4.setVisible(false);
+        CreateItem_DynamicText5.setVisible(false);
+        CreateItem_MovieRating.setVisible(false);
+    }
 
-
+    private void setUpBase(){
+        CreateItem_DynamicText1.setVisible(true);
+        CreateItem_DynamicText2.setVisible(true);
+        CreateItem_DynamicText3.setVisible(true);
     }
 
     private void changeAuthors(String item){

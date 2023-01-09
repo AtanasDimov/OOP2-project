@@ -4,6 +4,9 @@ import ExceptionHandling.AlreadyLoggedException;
 import ExceptionHandling.LibraryException;
 import ExceptionHandling.NotExistException;
 import ExceptionHandling.SeverityCodes;
+import Hibernate.Control.Main.Repository.LibraryRepository;
+import Hibernate.Control.Main.Repository.RepositoryFactory;
+import Library.Dto.java.DTOAccount.Admin;
 import Logger.Logger;
 import Sessions.ReservationSession;
 import Sessions.UserSession;
@@ -29,7 +32,7 @@ public class LoginController {
         String password = Login_Password.getText();
 
         if(!SqlFilter.Validate(username) || !SqlFilter.Validate(password)){
-            //sql injection detected
+            GUIUtils.SetupAlert("Засечени нелегални символи");
             return;
         }
 
@@ -58,8 +61,18 @@ public class LoginController {
         Login_Password.clear();
         Login_Username.clear();
 
+        String pass = "";
+        try{
+            pass = PasswordHasher.HashPassword("admin");
+        }
+        catch (Exception ex){
 
+        }
 
+        Admin admin = new Admin("admin", pass);
+        LibraryRepository repo = RepositoryFactory.CreateLibraryRepository();
+        repo.AddObject(admin);
+        repo.CloseSession();
     }
 
     public void Register(ActionEvent e){
