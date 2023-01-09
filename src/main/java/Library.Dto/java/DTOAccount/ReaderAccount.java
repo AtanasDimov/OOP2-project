@@ -56,6 +56,11 @@ public class ReaderAccount extends AccountBase implements BorrowItemInterface {
     }
 
     public void setReaderRating(int readerRating) {
-        this.readerRating = readerRating;
+        if(this.readerRating < readerRating){
+            this.readerRating = (this.readerRating + readerRating) / 2;
+        }
+        else{
+            this.readerRating = readerRating;
+        }
     }
 }
